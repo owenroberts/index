@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>index of new words</title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+	<link rel="shortcut icon" type= "text/css" href= "{{ url_for('static',filename='favicon.ico') }}">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+	<div id="container">
+		<p><a href="/"><strong>Index of New Words</strong></a></p>
+		<a href="/">Home</a> \ <a href="about.html">About</a>
+		<hr>
+
+		<div id="menu">
+			<ul>
+				<li><a href="#text">Text</a></li>
+				<li><a href="#markov">Markov</a></li>
+
+			</ul>
+			<button onclick="document.location.reload(true);">Refresh</button>
+		</div>
+		<hr>
+		<div id="text">
+			<h2>Text</h2>
+			{% for line in newtext  %}
+				<p> {{ line }} </p>
+			{% endfor %}
+		</div>
+		<hr>
+		<div id="markov">
+			<h2>Markov</h2>
+			{% for line in mark  %}
+				<p> {{ line }} </p>
+			{% endfor %}
+		</div>
+
+
+
+	</div>
+</body>
