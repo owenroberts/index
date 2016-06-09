@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 import random
 import nltk
 nltk.download('punkt')
+nltk.download('maxent_treebank_pos_tagger');
 from nltk.tokenize import word_tokenize
 from markov import MarkovGenerator
 
