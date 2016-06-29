@@ -54,6 +54,13 @@ li:before { content: "—"; position:relative; left:-6px;}
 #input-noun { padding: 1em 0; }
 #nouns, #def-wrap, #prefix, #alphabetical { clear:both;}
 
+#text, #markov {
+	
+	line-height:1.6;
+	width:320px;
+	margin:2em auto;
+}
+
 #def-wrap {
 	
 }
