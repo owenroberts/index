@@ -1,0 +1,23 @@
+<html>
+<head>
+	{% block head %}
+	<title>index</title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+	<script type="text/javascript" src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='cool.js') }}"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	{% endblock %}
+</head>
+
+<body>
+	<div id="container">
+		<p><a href="/"><strong>...</strong></a></p>
+		{% block nav %}
+		<a href="/">Home</a> \ <a href="about.html">About</a>
+		{% endblock %}
+		<hr>
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>

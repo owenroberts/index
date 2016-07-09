@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<p>
+<a href="/word">word</a> \ 
+<a href="/input">input</a> \ 
+</p>
+
+
+<form method="GET" action="/noun">
+	<input type="text" name="noun" placeholder="Input noun">
+	<input type="hidden" name="origin" value="input">
+</form>
+
+{% endblock %}

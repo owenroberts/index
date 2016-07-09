@@ -9,6 +9,7 @@ import sys
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
+
 def generateText(text):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.readlines()

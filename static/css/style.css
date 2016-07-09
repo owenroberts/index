@@ -19,7 +19,9 @@ div {
 	margin-top:1em;
 	padding: 0;s
 }
-hr { width: auto; height: 1px; border:0; border-top: 1px solid black; margin-top:1em; margin-bottom:1em;}	
+hr { width: auto; height: 1px; border:0; border-top: 1px solid black; margin-top:1em; margin-bottom:1em;}
+
+h2 { font-size: 1.4em; margin: 0.1em 0;}
 
 a {
 	text-decoration: none;
@@ -50,7 +52,7 @@ li:before { content: "—"; position:relative; left:-6px;}
 
 #counter { float:right; }
 
-.menu { width: 160px; float:left;}
+
 #input-noun { padding: 1em 0; }
 #nouns, #def-wrap, #prefix, #alphabetical { clear:both;}
 
