@@ -6,6 +6,10 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html")
 
+@app.route('/about')
+def about():
+	return render_template("about.html")
+
 @app.route('/word')
 def word():
 	return render_template("word.html")
@@ -43,6 +47,19 @@ def newword(noun, prefix):
 			if row[0] == prefix:
 				prefixdef = row[1]
 	return render_template("newword.html", prefix=prefix, noun=noun, prefixdef = prefixdef)
+
+@app.route('/nouns/<num>')
+def nouns(num):
+	prefix_file = open("input/pref.txt")
+	prefixes = prefix_file.read().splitlines() 
+	return render_template("nouns.html", num=num, prefixes=prefixes )
+
+@app.route('/nouns/<num>/<prefix>')
+def num_nouns(num, prefix):
+	noun_file = open('input/'+num+'nouns.txt')
+	nouns = noun_file.read().splitlines()
+	return render_template("nouns-pref.html", num=num, nouns=nouns, prefix=prefix )
+
 
 @app.route('/text')
 def gen():

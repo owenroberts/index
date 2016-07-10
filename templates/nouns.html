@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h2>Index 1</h2>
+<p>
+<a href="/word">word</a> \
+<a href="/nouns/{{num}}">{{num}}</a> \
+</p>
+
+<p><strong>Choose prefix:</strong></p>
+<div id="prefixes">
+	{% for pref in prefixes %}
+		<a href="/nouns/{{num}}/{{pref}}">{{ pref }}</a>
+		<br>
+	{% endfor %}
+</div>
+<p><strong>Input prefix:</strong></p> 
+<form method="GET" action="/noun">
+	<input type="text" name="prefix" >
+	<input type="hidden" name="num" value="{{num}}">
+	<input type="submit" value="Enter">
+</form>
+
+
+{% endblock %}

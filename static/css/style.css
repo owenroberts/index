@@ -37,10 +37,8 @@ li:before { content: "—"; position:relative; left:-6px;}
 	text-decoration: underline;
 }
 .active { font-weight: bold; }
-.hidden {
-	display:none;
-}
-#nouns, #prefixes, .prefix {
+
+#nouns, #prefixes, .prefix, #words {
 	-webkit-columns: 150px;
 	-moz-columns: 150px;
 	columns: 150px;
@@ -50,7 +48,7 @@ li:before { content: "—"; position:relative; left:-6px;}
 	margin-top:1em;
 }
 
-#counter { float:right; }
+
 
 
 #input-noun { padding: 1em 0; }
