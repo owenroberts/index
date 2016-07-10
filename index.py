@@ -37,8 +37,8 @@ def noun(origin, noun):
 	prefixes = prefix_file.read().splitlines() 
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
-@app.route('/newword/<noun>/<prefix>')
-def newword(noun, prefix):
+@app.route('/newword/<origin>/<noun>/<prefix>')
+def newword(origin, noun, prefix):
 	prefixdef = ""
 	import csv
 	with open('input/prefix.csv', 'rb') as f:
@@ -46,19 +46,47 @@ def newword(noun, prefix):
 		for row in reader:
 			if row[0] == prefix:
 				prefixdef = row[1]
-	return render_template("newword.html", prefix=prefix, noun=noun, prefixdef = prefixdef)
+	return render_template("newword.html", origin=origin, prefix=prefix, noun=noun, prefixdef = prefixdef)
 
-@app.route('/nouns/<num>')
-def nouns(num):
+@app.route('/nouns/<origin>')
+def nouns(origin):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.read().splitlines() 
-	return render_template("nouns.html", num=num, prefixes=prefixes )
+	return render_template("nouns.html", origin=origin, prefixes=prefixes )
 
-@app.route('/nouns/<num>/<prefix>')
-def num_nouns(num, prefix):
-	noun_file = open('input/'+num+'nouns.txt')
+@app.route('/nouns/<origin>/<prefix>')
+def num_nouns(origin, prefix):
+	if prefix == "input":
+		prefix = request.args['prefix']
+	noun_file = open('input/'+origin+'nouns.txt')
 	nouns = noun_file.read().splitlines()
-	return render_template("nouns-pref.html", num=num, nouns=nouns, prefix=prefix )
+	if (origin == "some"):
+		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
+	else:
+		alpha = "abcdefghijklmnopqrstuvwxyz"
+		d = {}
+		for letter in alpha:
+			d[letter] = []
+			d[letter+"num"] = 0
+		count = 0
+		for noun in nouns:
+			if count < len( alpha ):
+				d[ alpha[count] + "num" ] += 1;
+				if alpha[count] == noun[0] and len( d[alpha[count]] ) < 25:
+					d[alpha[count]].append( noun )
+				elif alpha[count] != noun[0]:
+					count += 1
+		return render_template("alphabetical.html", alpha=alpha, origin=origin, prefix=prefix, d=d)
+
+@app.route('/nouns/<origin>/<prefix>/<letter>')
+def nouns_alpha(origin, prefix, letter):
+	noun_file = open('input/'+origin+'nouns.txt')
+	nouns = noun_file.read().splitlines()
+	letternouns = []
+	for noun in nouns:
+		if letter == noun[0]:
+			letternouns.append( noun )
+	return render_template("nouns-pref.html", origin=origin, nouns=letternouns, prefix=prefix, letter=letter )
 
 
 @app.route('/text')
@@ -77,7 +105,8 @@ def text(title):
 	print "me"
 	print(data['poem'])
 	return render_template(
-		"text.html", 
+		"text.html",
+		title = title,
 		newtext = data['lines'][:8],
 		mark = data['poem']
 	)

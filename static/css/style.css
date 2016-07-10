@@ -38,7 +38,7 @@ li:before { content: "—"; position:relative; left:-6px;}
 }
 .active { font-weight: bold; }
 
-#nouns, #prefixes, .prefix, #words {
+#nouns, #prefixes, .prefix, #words, .column {
 	-webkit-columns: 150px;
 	-moz-columns: 150px;
 	columns: 150px;
@@ -57,8 +57,8 @@ li:before { content: "—"; position:relative; left:-6px;}
 #text, #markov {
 	
 	line-height:1.6;
-	width:320px;
-	margin:2em auto;
+	width:460px;
+	/*margin:2em auto;*/
 }
 
 #def-wrap {

@@ -1,3 +1,4 @@
+<!-- noun.html -->
 {% extends "layout.html" %}
 {% block nav %}
 {{ super() }}
@@ -6,26 +7,26 @@
 <h2>Index 1</h2>
 <p>
 	<a href="/word">word</a> \ 
+	{% if origin == "some" or origin == "all" %}
+	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+	{% else %}
 	<a href="/{{origin}}">{{origin}}</a> \ 
-	<a href="/noun/{{noun}}">{{ noun }}</a> \
+	{% endif %}
+	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
 </p>
-<div id="nouns">
-	{% for prefix in prefixes %}
-		<a href="/newword/{{noun}}/{{prefix}}" class="newword">{{prefix}}{{noun}}</a>
-		<br>
-	{% endfor %}
-</div>
 
-<script type="text/javascript">
-	console.log("hello");
-	$('body').on("mouseover", ".newword", function(){
-		$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
-	})
-	.on("mouseout", ".newword", function(){
-		$(this).css({color:"black"});
-	});
-</script>
+<div id="words"></div>
 
+{% for prefix in prefixes %}
+	<a href="/newword/{{origin}}/{{noun}}/{{prefix}}" class="newword">{{prefix}}{{noun}}</a>
+	<br>
+{% endfor %}
+
+{% endblock %}
+
+
+{% block script %}
+{{ super() }}
 {% endblock %}
 
 

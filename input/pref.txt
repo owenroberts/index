@@ -1,6 +1,5 @@
 acu
 aero
-afro
 agro
 ambi
 ampli
@@ -59,7 +58,7 @@ hypho
 judeo
 ideo
 idio
-Immuno 
+immuno 
 indo
 infra
 inter

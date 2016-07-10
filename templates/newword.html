@@ -1,3 +1,4 @@
+<!-- newword.html -->
 {% extends "layout.html" %}
 {% block nav %}
 {{ super() }}
@@ -5,9 +6,14 @@
 {% block content %}
 <h2>Index 1</h2>
 <p>
-	<a href="/word">word</a> \ 
-	<a href="/input">input</a> \ 
-	<a href="/noun/{{noun}}">{{ noun }}</a> \
+	<a href="/word">word</a> \
+	{% if origin == "some" or origin == "all" %}
+	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+	{% else %}
+	<a href="/{{origin}}">{{origin}}</a> \ 
+	{% endif %}
+	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
+	<a href="/newword/{{origin}}/{{noun}}/{{prefix}}">{{ prefix }}</a> \
 </p>
 
 
@@ -48,4 +54,7 @@ $.ajax({
 });
 </script>
 
+{% endblock %}
+
+{% block script %}
 {% endblock %}
