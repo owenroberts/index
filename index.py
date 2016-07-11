@@ -25,7 +25,7 @@ def word_noun():
 @app.route('/random')
 def random():
 	import random
-	noun_file = open('input/somenouns.txt')
+	noun_file = open('input/1525.txt')
 	nouns = noun_file.read().splitlines()
 	noun = random.choice(nouns).rstrip().lower()
 	return redirect( url_for('noun', origin = "random", noun = noun,  ) )
@@ -58,9 +58,9 @@ def nouns(origin):
 def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
-	noun_file = open('input/'+origin+'nouns.txt')
+	noun_file = open('input/'+origin+'.txt')
 	nouns = noun_file.read().splitlines()
-	if (origin == "some"):
+	if (origin == "1525"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
 	else:
 		alpha = "abcdefghijklmnopqrstuvwxyz"
@@ -80,7 +80,7 @@ def num_nouns(origin, prefix):
 
 @app.route('/nouns/<origin>/<prefix>/<letter>')
 def nouns_alpha(origin, prefix, letter):
-	noun_file = open('input/'+origin+'nouns.txt')
+	noun_file = open('input/'+origin+'.txt')
 	nouns = noun_file.read().splitlines()
 	letternouns = []
 	for noun in nouns:
