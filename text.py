@@ -33,27 +33,26 @@ def generateText(text):
 			newgraf += newsent + " "
 		newtext.append( newgraf )
 	
-	generator = MarkovGenerator(n=2, max=200)
+	generator = MarkovGenerator(n=2, max=2000)
 	for lin in newtext:
 		generator.feed( lin )
 	genpoem = generator.generate()
-	while len( genpoem ) < 100:
-		genpoem = generator.generate()
-	
-	print len( genpoem )
-	print genpoem
+	#while len( genpoem ) < 100:
+	#	genpoem = generator.generate()
+	for i in range(10):
+		genpoem += " " + generator.generate()
+
 	
 	poemsents = nltk.sent_tokenize( genpoem )
-	print len( poemsents )
-	print poemsents
-	print poemsents[:-1]
 
-	if len(poemsents) == 1:
-		return { 'lines': newtext, 'poem': poemsents }
-	if len(poemsents) > 0:
-		return { 'lines': newtext, 'poem': poemsents[:-1] }
-	else:
-		return { 'lines': newtext, 'poem': genpoem }
+
+	# if len(poemsents) == 1:
+	# 	return { 'lines': newtext, 'poem': poemsents }
+	# if len(poemsents) > 0:
+	# 	return { 'lines': newtext, 'poem': poemsents[:-1] }
+	# else:
+	# 	return { 'lines': newtext, 'poem': genpoem }
+	return { 'lines': newtext, 'poem': poemsents }
 
 if __name__ == '__main__':
 

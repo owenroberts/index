@@ -15,7 +15,7 @@ def text():
 	print(data['poem'])
 	return render_template(
 		"text.html", 
-		newtext = data['lines'][:8],
+		newtext = data['lines'][:3],
 		mark = data['poem']
 	)
 

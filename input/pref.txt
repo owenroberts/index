@@ -1,6 +1,5 @@
 acu
 aero
-afro
 agro
 ambi
 ampli
@@ -59,7 +58,7 @@ hypho
 judeo
 ideo
 idio
-Immuno 
+immuno 
 indo
 infra
 inter
@@ -105,7 +104,7 @@ oxy
 paleo
 para
 patho
-Penta
+penta
 petro
 philo
 phono
@@ -156,11 +155,10 @@ un
 under
 uni
 ur
-ur
 urano
 urbi
 vivi
 voca
-Wiki
+wiki
 xeno
 zygo
