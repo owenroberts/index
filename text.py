@@ -45,6 +45,8 @@ def generateText(text):
 	
 	poemsents = nltk.sent_tokenize( genpoem )
 
+	print newtext[:10]
+
 	if len(poemsents) == 1:
 		return { 'lines': newtext, 'poem': poemsents }
 	if len(poemsents) > 0:

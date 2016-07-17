@@ -10,12 +10,22 @@
 
 	{% if origin == "1525" or origin == "55,191" %}
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
-	{% elif origin == "input" or origin == "random" %}
-	<a href="/{{origin}}">{{origin}}</a> \
-	{% endif %}
-
 	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
 	<a href="/new/{{origin}}/{{noun}}/{{prefix}}">{{ prefix }}</a> \
+	
+	{% elif origin == "input" or origin == "random" %}
+	<a href="/{{origin}}">{{origin}}</a> \
+	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
+	<a href="/new/{{origin}}/{{noun}}/{{prefix}}">{{ prefix }}</a> \
+	
+
+	{% else %}
+	<a href="/noun/input/{{noun}}">{{ noun }}</a> \
+	<a href="/nouns/55,191/{{prefix}}">{{ prefix }}</a> \
+	
+	{% endif %}
+
+	
 </p>
 
 
