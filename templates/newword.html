@@ -1,0 +1,62 @@
+<!-- newword.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+	<a href="/word">word</a> \
+
+	{% if origin == "1525" or origin == "55,191" %}
+	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+	{% else %}
+	<a href="/{{origin}}">{{origin}}</a> \ 
+	{% endif %}
+
+	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
+	<a href="/newword/{{origin}}/{{noun}}/{{prefix}}">{{ prefix }}</a> \
+</p>
+
+
+<div id="prefix-wrap">
+	<div id="prefix-word">{{ prefix }}</div>
+	<div id="prefix-def">{{ prefixdef }}</div>
+</div>
+<div id="noun-wrap">
+	<div id="noun-word">{{ noun }}</div>
+	<div id="noun-def">Loading...</div>
+</div>
+
+<script type="text/javascript">
+$.ajax({
+	url: "https://en.wiktionary.org/w/api.php",
+	dataType: 'jsonp', 
+	data: { 
+    	action: "query", 
+    	prop: 'extracts', 
+    	titles: "{{ noun }}",
+    	format: "json"
+	},
+	success: function(data) {
+		var html = "";
+		for (var obj in data.query.pages) {
+			if (data.query.pages[obj].extract) 
+				html = data.query.pages[obj].extract;
+			else 
+				$('#noun-def').html("Not found.");
+		}
+		$('#noun-def').html(html);
+	},
+	error: function(error) {
+		console.log(error);
+		$('#noun-def').html("Not found.");
+
+	}
+});
+</script>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

@@ -19,7 +19,9 @@ div {
 	margin-top:1em;
 	padding: 0;s
 }
-hr { width: auto; height: 1px; border:0; border-top: 1px solid black; margin-top:1em; margin-bottom:1em;}	
+hr { width: auto; height: 1px; border:0; border-top: 1px solid black; margin-top:1em; margin-bottom:1em;}
+
+h2 { font-size: 1.4em; margin: 0.1em 0;}
 
 a {
 	text-decoration: none;
@@ -35,10 +37,8 @@ li:before { content: "—"; position:relative; left:-6px;}
 	text-decoration: underline;
 }
 .active { font-weight: bold; }
-.hidden {
-	display:none;
-}
-#nouns, #prefixes, .prefix {
+
+#nouns, #prefixes, .prefix, #words, .column {
 	-webkit-columns: 150px;
 	-moz-columns: 150px;
 	columns: 150px;
@@ -48,17 +48,17 @@ li:before { content: "—"; position:relative; left:-6px;}
 	margin-top:1em;
 }
 
-#counter { float:right; }
 
-.menu { width: 160px; float:left;}
+
+
 #input-noun { padding: 1em 0; }
 #nouns, #def-wrap, #prefix, #alphabetical { clear:both;}
 
 #text, #markov {
 	
 	line-height:1.6;
-	width:320px;
-	margin:2em auto;
+	width:460px;
+	/*margin:2em auto;*/
 }
 
 #def-wrap {
@@ -81,8 +81,12 @@ li:before { content: "—"; position:relative; left:-6px;}
 	margin-left:1em;
 }
 
-#noun-def h2, #noun-def h3, #noun-def p {
+#noun-def h2, #noun-def h6, #noun-def h5, #noun-def h3, #noun-def h4, #noun-def p, #noun-def ul, #noun-def dl, #noun-def hr {
 	display:none;
+}
+#noun-def ol {
+	padding:6px;
+	list-style:none;
 }
 
 #prefix-word, #noun-word {
@@ -94,16 +98,35 @@ li:before { content: "—"; position:relative; left:-6px;}
 	font-weight:bold;
 }
 
+#gallery {
+	margin: 0 auto;
+	margin-top:20%;
+}
+#gallery .newword { font-size: 4em; }
+#gallery .text { font-size:2em; }
+
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ 
 	#container	{max-width: 600px}
+	#gallery .newword { font-size: 3em; }
+	#gallery .text { font-size: 1.5em; }
+
 }
 
 @media (min-width:620px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
 	#container	{max-width: 760px}
+	#gallery .newword { font-size: 4em; }
+	#gallery .text { font-size: 2em; }
+
 }
 @media (min-width:961px) { /* tablet, landscape iPad, lo-res laptops ands desktops */
 	#container	{max-width: 1088px}
+	#gallery .newword { font-size: 5em; }
+	#gallery .text { font-size: 2.5em; }
+
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */ 
 	.container	{max-width: 1700px;}
+	#gallery .newword { font-size: 6em; }
+	#gallery .text { font-size: 3em; }
+
 }

@@ -1,0 +1,71 @@
+<html>
+<head>
+	{% block head %}
+	<title>kaf index</title>
+	<link rel='shortcut icon' href="{{ url_for('static',filename='favicon.ico') }}" type='image/x-icon'/ >
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+	<script type="text/javascript" src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='cool.js') }}"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	{% endblock %}
+</head>
+
+<body>
+	<div id="container">
+		{% block nav %}
+		<p><a href="/"><strong>Kaf Index</strong></a></p>
+		<a href="/">Home</a> \ <a href="/about">About</a>
+		<hr>
+		{% endblock %}
+		{% block content %}
+		{% endblock %}
+	</div>
+
+{% block script %}
+<script type="text/javascript">
+var stop = false;
+var asyncLoop = function(o) {
+	var i=-1;
+	var loop = function() {
+		if (stop) return;
+		i++;
+		if (i==o.length){o.callback(); return;}
+		o.functionToLoop(loop, i);
+	}
+	loop();
+};
+
+var $words = $('.newword');
+var $wordsContainer = $('#words');
+var $counter = $('#counter');
+var len = $words.length;
+var count = 0;
+
+
+asyncLoop({
+	length: len,
+	functionToLoop : function(loop, i) {
+		setTimeout(function() {
+			$words[i].style.display = "inline";
+			$wordsContainer.append($words[i]).append('<br>');
+			count++;
+			$counter.text( count + " / " + len )
+			loop();
+		}, 1);
+	},
+	callback : function() {
+		console.log("done!");
+	}
+});
+
+$('body').on("mouseover", ".newword", function(){
+	$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
+})
+.on("mouseout", ".newword", function(){
+	$(this).css({color:"black"});
+});
+
+</script>
+{% endblock %}
+</body>

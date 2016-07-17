@@ -9,6 +9,7 @@ import sys
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
+
 def generateText(text):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.readlines()
@@ -37,26 +38,24 @@ def generateText(text):
 	for lin in newtext:
 		generator.feed( lin )
 	genpoem = generator.generate()
-	#while len( genpoem ) < 100:
-	#	genpoem = generator.generate()
-	for i in range(10):
-		genpoem += " " + generator.generate()
-
+	while len( genpoem ) < 100:
+		genpoem = generator.generate()
 	
 	poemsents = nltk.sent_tokenize( genpoem )
 
 
-	# if len(poemsents) == 1:
-	# 	return { 'lines': newtext, 'poem': poemsents }
-	# if len(poemsents) > 0:
-	# 	return { 'lines': newtext, 'poem': poemsents[:-1] }
-	# else:
-	# 	return { 'lines': newtext, 'poem': genpoem }
-	return { 'lines': newtext, 'poem': poemsents }
+	if len(poemsents) == 1:
+		return { 'lines': newtext, 'poem': poemsents }
+	if len(poemsents) > 0:
+		return { 'lines': newtext, 'poem': poemsents[:-1] }
+	else:
+		return { 'lines': newtext, 'poem': genpoem }
 
 if __name__ == '__main__':
 
-	data = generateText(sys.argv[1])
-	#for line in data['lines'][:8]:
-	#	print line
-	print data['poem']
+	for i in range(50):
+		data = generateText(sys.argv[1])
+		f = open('zine/mem-1.txt', 'w')
+		for line in data['poem']:
+			f.write(line)
+	f.close()

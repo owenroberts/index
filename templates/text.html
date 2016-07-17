@@ -1,29 +1,28 @@
-<html>
-<head>
-	<title>index of new words</title>
-	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
-	<link rel="shortcut icon" type= "text/css" href= "{{ url_for('static',filename='favicon.ico') }}">
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
-</head>
-<body>
-	<div id="container">
-		<p><a href="/"><strong>Index of New Words</strong></a></p>
-		<a href="/">Home</a> \ <a href="about.html">About</a>
-		<hr>
-		<div id="text">
-			{% for line in newtext  %}
-				<p> {{ line }} </p>
-			{% endfor %}
-		</div>
-		<hr>
-		<div id="markov">
-			{% for line in mark  %}
-				<p> {{ line }} </p>
-			{% endfor %}
-		</div>
+<!-- text.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
 
-		<button onclick="document.location.reload(true);">Refresh</button>
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+	<a href="/text">text</a> \
+	<a href="/text/{{title}}">{{title}}</a> \
 
-	</div>
-</body>
+</p>
+<br>
+<div id="text">
+	{% for line in newtext  %}
+		<p> {{ line }} </p>
+	{% endfor %}
+</div>
+<div id="markov">
+	{% for line in mark  %}
+		<p> {{ line }} </p>
+	{% endfor %}
+</div>
+<br>
+<button onclick="document.location.reload(true);">Refresh</button>
+
+{% endblock %}

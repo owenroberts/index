@@ -1,34 +1,17 @@
-<html>
-<head>
-	<title>index of new words</title>
-	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
-</head>
-<body>
-	<div id="container">
-		<p><a href="/"><strong>Index of New Words</strong></a></p>
-		<a href="/">Home</a> \ <a href="about.html">About</a>
-		<hr>
+<!-- index.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
 
-		<div id="input">
-			<form method="GET" action="/text">
-				<input type="radio" name="text" value="sonnets" checked >Shakespeare<br>
-  				<input type="radio" name="text" value="genesis" >Genesis<br>
-  				<input type="radio" name="text" value="msgboard" >Message Board<br>
-  				<!-- <input type="radio" name="text" value="quarter-stein" >Gertrude Stein<br> -->
-  				<input type="radio" name="text" value="hillary" >Hillary Clinton<br>
-  				<input type="radio" name="text" value="reagan" >Ronald Reagan<br>
-  				<input type="radio" name="text" value="politics" >Politics<br>
-  				<input type="radio" name="text" value="utopia" >Utopia<br>
-  				<input type="radio" name="text" value="eighth-stein" >Gertrude Stein<br>
-  				<input type="radio" name="text" value="ulysses" >Ulysses<br>
-  				<input type="radio" name="text" value="wake" >Finnegan's Wake<br>
-  				<input type="radio" name="text" value="herodotus" >Herodotus<br>
-  				<input type="radio" name="text" value="tom" >Tom's Texts<br>
-  				<input type="submit" value="Generate">
-			</form> 
+<p><strong><a href="/">Index 1</a></strong></strong>
+<ul>
+	<li><a href="/word">Word generator</a></li>
+	<li><a href="/text">Text generator</a></li>
+</ul>
 
-		</div>
-	</div>
-</body>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

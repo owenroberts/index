@@ -1,0 +1,24 @@
+<!-- word.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+<a href="/word">word</a> \ 
+</p>
+
+<div id="set-nouns" class="menu">
+	<ul>
+		<li><a href="/input">Input noun</a></li>
+		<li><a href="/random">Random noun</a></li>
+		<li><a href="/nouns/1525">1525 nouns</a></li>
+		<li><a href="/nouns/55,191">55,191 nouns</a></li>
+	</ul>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

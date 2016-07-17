@@ -1,0 +1,23 @@
+<!--  gen.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+	<a href="/word">text</a> \
+</p>
+
+<div id="input">
+	<form method="GET" action="/text">
+		<input type="radio" name="title" value="genesis" checked >Genesis<br>
+		<!-- <input type="radio" name="title" value="utopia" >Utopia<br> -->
+		<input type="radio" name="title" value="eighth-stein" >Gertrude Stein<br>
+		<input type="radio" name="title" value="ulysses" >Ulysses<br>
+		<br>
+		<input type="submit" value="Generate">
+	</form> 
+</div>
+{% endblock %}

@@ -110,7 +110,7 @@ philo
 phono
 photo
 poli
-Poly
+poly
 porno
 post
 pre

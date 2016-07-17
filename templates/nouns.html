@@ -1,0 +1,28 @@
+<!-- nouns.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+<a href="/word">word</a> \
+<a href="/nouns/{{origin}}">{{origin}} nouns</a> \
+</p>
+<p><strong>Input prefix:</strong></p> 
+<form method="GET" action="/nouns/{{origin}}/input">
+	<input type="text" name="prefix" >
+	<input type="submit" value="Enter">
+</form>
+<p><strong>Choose prefix:</strong></p>
+<div id="prefixes">
+	{% for pref in prefixes %}
+		<a href="/nouns/{{origin}}/{{pref}}">{{ pref }}</a>
+		<br>
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

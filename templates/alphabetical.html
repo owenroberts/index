@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+	<a href="/word">word</a> \
+	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+	<a href="/nouns/{{origin}}/{{prefix}}">{{ prefix }}</a> \
+</p>
+
+{% for letter in alpha %}
+	<p>
+		<strong>{{letter}}</strong>
+		<span style="float:right;"> ( 25 / {{d[letter+"num"]}} ) <a href="/nouns/{{origin}}/{{prefix}}/{{letter}}">See all {{letter}} ⟶</a></span>
+	</p>
+	<hr>
+	<div class="column">
+		{% for word in d[letter] %}
+			<a href="/newword/{{origin}}/{{word}}/{{prefix}}" class="newword">{{ prefix }}{{ word }}</a>
+			<br>
+		{% endfor %}
+	</div>
+{% endfor %}
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+{% endblock %}

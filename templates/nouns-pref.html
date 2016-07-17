@@ -1,0 +1,38 @@
+<!-- nouns-pref.html -->
+{% extends "layout.html" %}
+{% block nav %}{{ super() }}{% endblock %}
+{% block content %}
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+	<a href="/word">word</a> \
+	
+	{% if origin == "1525" or origin == "55,191" %}
+	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+	{% else %}
+	<a href="/{{origin}}">{{origin}}</a> \ 
+	{% endif %}
+	
+	<a href="/nouns/{{origin}}/{{prefix}}">{{ prefix }}</a> \
+	
+	{% if letter != undefined %}
+	<a href="/nouns/{{origin}}/{{prefix}}/{{letter}}">{{ letter }}</a> \
+	{% endif %}
+
+</p>
+
+<div>
+	<span id="counter"></span> <br>
+	<a onclick="stop=true;">stop loading</a> <br>
+</div>
+
+<div id="words"></div>
+
+{% for noun in nouns %}
+	<a href="/newword/{{origin}}/{{noun}}/{{prefix}}" style="display:none;" class="newword">{{ prefix }}{{ noun }}</a>
+{% endfor %}
+
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+{% endblock %}
