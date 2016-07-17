@@ -14,12 +14,12 @@
 <br>
 <div id="text">
 	{% for line in newtext  %}
-		<p> {{ line }} </p>
+		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
 <div id="markov">
 	{% for line in mark  %}
-		<p> {{ line }} </p>
+		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
 <br>

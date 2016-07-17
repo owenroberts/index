@@ -7,12 +7,12 @@
 <div id="gallery">
 	<div class="text">
 		{% for line in newtext  %}
-			<p> {{ line }} </p>
+			<p> {{ line|safe }} </p>
 		{% endfor %}
 	</div>
 	<div class="text">
 		{% for line in mark  %}
-			<p> {{ line }} </p>
+			<p> {{ line|safe }} </p>
 		{% endfor %}
 	</div>
 </div>
@@ -21,6 +21,9 @@
 
 {% block script %}
 <script>
+$("a").each( function() {
+	$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
+});
 setTimeout( function() { document.location.reload(true); }, 10000 );
 </script>
 {% endblock %}

@@ -1,7 +1,7 @@
 body {
 	padding:0; 
 	margin:0; 
-	font: 10pt/1.4 Verdana, Arial, sans-serif; 
+	font: 12pt/1.4 Arial, sans-serif; 
 	padding-left: 1em; 
 	padding-right: 1em; 
 	-webkit-text-size-adjust: 95%; 
@@ -49,25 +49,17 @@ li:before { content: "—"; position:relative; left:-6px;}
 }
 
 
-
-
 #input-noun { padding: 1em 0; }
 #nouns, #def-wrap, #prefix, #alphabetical { clear:both;}
 
 #text, #markov {
-	
 	line-height:1.6;
 	width:460px;
-	/*margin:2em auto;*/
 }
 
-#def-wrap {
-	
-}
+#text { border-bottom: 1px solid black; }
 
-#def {
-	
-}
+
 
 #prefix-wrap {
 	float:left;
@@ -85,8 +77,9 @@ li:before { content: "—"; position:relative; left:-6px;}
 	display:none;
 }
 #noun-def ol {
-	padding:6px;
+	padding-left:6px;
 	list-style:none;
+	margin:0;
 }
 
 #prefix-word, #noun-word {

@@ -36,7 +36,7 @@ def noun(origin, noun):
 	prefixes = prefix_file.read().splitlines() 
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
-@app.route('/newword/<origin>/<noun>/<prefix>')
+@app.route('/new/<origin>/<noun>/<prefix>')
 def newword(origin, noun, prefix):
 	prefixdef = ""
 	import csv
@@ -46,6 +46,17 @@ def newword(origin, noun, prefix):
 			if row[0] == prefix:
 				prefixdef = row[1]
 	return render_template("newword.html", origin=origin, prefix=prefix, noun=noun, prefixdef = prefixdef)
+
+@app.route('/new/<noun>/<prefix>')
+def newword_orphan(noun, prefix):
+	prefixdef = ""
+	import csv
+	with open('input/prefix.csv', 'rb') as f:
+		reader = csv.reader(f)
+		for row in reader:
+			if row[0] == prefix:
+				prefixdef = row[1]
+	return render_template("newword.html", prefix=prefix, noun=noun, prefixdef = prefixdef)
 
 @app.route('/nouns/<origin>')
 def nouns(origin):
