@@ -107,7 +107,7 @@ def text(title):
 	return render_template(
 		"text.html",
 		title = title,
-		newtext = data['lines'][:8],
+		newtext = data['lines'][:20],
 		mark = data['poem']
 	)
 

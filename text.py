@@ -14,7 +14,7 @@ def generateText(text):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.readlines()
 	file = open("input/"+text+".txt")
-	lines = file.readlines()
+	lines = file.read().splitlines()
 	nountypes = ["NN", "NNS"]
 	punc = [".",",",";","?","-",]
 	newtext = []
@@ -34,20 +34,14 @@ def generateText(text):
 			newgraf += newsent + " "
 		newtext.append( newgraf )
 	
-	generator = MarkovGenerator(n=2, max=200)
+	generator = MarkovGenerator(n=2, max=2000)
 	for lin in newtext:
 		generator.feed( lin )
 	genpoem = generator.generate()
 	while len( genpoem ) < 100:
 		genpoem = generator.generate()
 	
-	print len( genpoem )
-	print genpoem
-	
 	poemsents = nltk.sent_tokenize( genpoem )
-	print len( poemsents )
-	print poemsents
-	print poemsents[:-1]
 
 	if len(poemsents) == 1:
 		return { 'lines': newtext, 'poem': poemsents }
@@ -59,6 +53,6 @@ def generateText(text):
 if __name__ == '__main__':
 
 	data = generateText(sys.argv[1])
-	#for line in data['lines'][:8]:
-	#	print line
-	print data['poem']
+	for line in data['poem']:
+		print line
+	
