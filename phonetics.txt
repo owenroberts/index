@@ -1,0 +1,30 @@
+http://www.seeingspeech.ac.uk/ipachart/display.php?chart=1&datatype=1&speaker=1
+
+
+https://www.youtube.com/watch?v=XTzkT3j9pHI // ling space haha
+- broadly w phonemes, narrowly with allophones
+- unrollable
+
+https://www.youtube.com/watch?v=2bCM9RnDBZw // nativlang
+- pronouncing vowels, height, backness
+https://www.youtube.com/watch?v=luYZnqmjWaI 
+- consonants, place of articulation, manner of articulation
+https://www.youtube.com/watch?v=1LBKaVPGgHo
+- syllables
+https://www.youtube.com/watch?v=iO29J3krsfs
+- assimilation, 
+
+https://www.youtube.com/watch?v=g_SHfoUDj8A
+- explains chart
+
+https://pypi.python.org/pypi/raze
+- actually NATO phonetic alphabet, maybe not useful?
+from raze.phonetic import PhoneticDictionary
+pd.spell("Hello world")
+'HOTEL-echo-lima-lima-oscar whiskey-oscar-romeo-lima-delta'
+
+https://pypi.python.org/pypi/dragonmapper
+- ipa in chinese
+
+http://texttophonetic.appspot.com/
+- api version

@@ -1,9 +1,10 @@
+<!-- alphabetical -->
 {% extends "layout.html" %}
 {% block nav %}
 {{ super() }}
 {% endblock %}
 {% block content %}
-<h2>Index 1</h2>
+<p><strong><a href="/">Index 1</a></strong></strong>
 <p>
 	<a href="/word">word</a> \
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
@@ -18,10 +19,11 @@
 	<hr>
 	<div class="column">
 		{% for word in d[letter] %}
-			<a href="/newword/{{origin}}/{{word}}/{{prefix}}" class="newword">{{ prefix }}{{ word }}</a>
+			<a href="/new/{{origin}}/{{word}}/{{prefix}}" class="newword">{{ prefix }}{{ word }}</a>
 			<br>
 		{% endfor %}
 	</div>
+	<br>
 {% endfor %}
 {% endblock %}
 

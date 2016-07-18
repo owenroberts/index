@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% block nav %}{{ super() }}{% endblock %}
 {% block content %}
-<h2>Index 1</h2>
+<p><strong><a href="/">Index 1</a></strong></strong>
 <p>
 	<a href="/word">word</a> \
 	
@@ -28,7 +28,7 @@
 <div id="words"></div>
 
 {% for noun in nouns %}
-	<a href="/newword/{{origin}}/{{noun}}/{{prefix}}" style="display:none;" class="newword">{{ prefix }}{{ noun }}</a>
+	<a href="/new/{{origin}}/{{noun}}/{{prefix}}" style="display:none;" class="newword">{{ prefix }}{{ noun }}</a>
 {% endfor %}
 
 {% endblock %}

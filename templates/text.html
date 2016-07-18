@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 
-<h2>Index 1</h2>
+<p><strong><a href="/">Index 1</a></strong></strong>
 <p>
 	<a href="/text">text</a> \
 	<a href="/text/{{title}}">{{title}}</a> \
@@ -14,12 +14,12 @@
 <br>
 <div id="text" style="border-bottom: 1px solid black;">
 	{% for line in newtext  %}
-		<p> {{ line }} </p>
+		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
 <div id="markov">
 	{% for line in mark  %}
-		<p> {{ line }} </p>
+		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
 <br>

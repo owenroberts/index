@@ -4,7 +4,7 @@
 {{ super() }}
 {% endblock %}
 {% block content %}
-<h2>Index 1</h2>
+<p><strong><a href="/">Index 1</a></strong></strong>
 <p>
 	<a href="/word">word</a> \ 
 
@@ -20,7 +20,7 @@
 <div id="words"></div>
 
 {% for prefix in prefixes %}
-	<a href="/newword/{{origin}}/{{noun}}/{{prefix}}" class="newword">{{prefix}}{{noun}}</a>
+	<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="newword">{{prefix}}{{noun}}</a>
 	<br>
 {% endfor %}
 

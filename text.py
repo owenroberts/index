@@ -1,5 +1,6 @@
 import random
 import nltk
+import re
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 from nltk.tokenize import word_tokenize
@@ -29,8 +30,9 @@ def generateText(text):
 			for idx, tag in enumerate(tagged):
 				#print idx, tag
 				if any(tag[1] in n for n in nountypes):
-					newword = random.choice(prefixes).rstrip().lower() + tag[0]
-					newsent = newsent.replace(tag[0], newword)
+					pref = random.choice(prefixes).rstrip().lower()
+					newword = pref + tag[0]
+					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent, 1)
 			newgraf += newsent + " "
 		newtext.append( newgraf )
 	
@@ -53,6 +55,6 @@ def generateText(text):
 if __name__ == '__main__':
 
 	data = generateText(sys.argv[1])
-	for line in data['poem']:
+	for line in data['lines'][:10]:
 		print line
-	
+

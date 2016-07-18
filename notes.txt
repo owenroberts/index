@@ -44,3 +44,13 @@ Description
 -- issues --
 - within one sentence, if noun appears twice it gets replaced twice and ends up with 2 prefixes.
   - http://stackoverflow.com/questions/1883980/find-the-nth-occurrence-of-substring-in-a-string
+
+-- gallery
+- twitter random new words, every noun, every prefix
+- one projector new words generated
+- another project is interactive, choosing, adding or texting/tweeting text
+
+
+
+-- samples
+- Clinton "Life is too short, sentitime is too short, sentitime is too precious, and the immunostakes are too high to dwell on what might have been."
