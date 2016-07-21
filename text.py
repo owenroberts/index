@@ -18,6 +18,7 @@ def generateText(text):
 	lines = file.read().splitlines()
 	nountypes = ["NN", "NNS"]
 	punc = [".",",",";","?","-",]
+	badwords = ['thee', 'hath']
 	newtext = []
 	for line in lines:
 		#print "--", i
@@ -29,10 +30,11 @@ def generateText(text):
 			newsent = sent
 			for idx, tag in enumerate(tagged):
 				#print idx, tag
-				if any(tag[1] in n for n in nountypes):
+				if any(tag[1] in n for n in nountypes) and any(tag[0] not in b for b in badwords):
 					pref = random.choice(prefixes).rstrip().lower()
 					newword = pref + tag[0]
-					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent, 1)
+					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent)
+					#newsent = re.sub(r'(?<![>/])\b'+tag[0], newword, newsent, 1)
 			newgraf += newsent + " "
 		newtext.append( newgraf )
 	
@@ -55,6 +57,6 @@ def generateText(text):
 if __name__ == '__main__':
 
 	data = generateText(sys.argv[1])
-	for line in data['lines'][:10]:
+	for line in data['lines'][:100]:
 		print line
 
