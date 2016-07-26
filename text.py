@@ -15,9 +15,10 @@ def generateText(text):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.readlines()
 	file = open("input/"+text+".txt")
-	lines = file.readlines()
+	lines = file.read().splitlines()
 	nountypes = ["NN", "NNS"]
 	punc = [".",",",";","?","-",]
+	badwords = ['thee', 'hath']
 	newtext = []
 	for line in lines:
 		#print "--", i
@@ -29,10 +30,11 @@ def generateText(text):
 			newsent = sent
 			for idx, tag in enumerate(tagged):
 				#print idx, tag
-				if any(tag[1] in n for n in nountypes):
+				if any(tag[1] in n for n in nountypes) and any(tag[0] not in b for b in badwords):
 					pref = random.choice(prefixes).rstrip().lower()
 					newword = pref + tag[0]
 					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent)
+					#newsent = re.sub(r'(?<![>/])\b'+tag[0], newword, newsent)
 			newgraf += newsent + " "
 		newtext.append( newgraf )
 	
@@ -45,8 +47,6 @@ def generateText(text):
 	
 	poemsents = nltk.sent_tokenize( genpoem )
 
-	print newtext[:10]
-
 	if len(poemsents) == 1:
 		return { 'lines': newtext, 'poem': poemsents }
 	if len(poemsents) > 0:
@@ -57,8 +57,6 @@ def generateText(text):
 if __name__ == '__main__':
 
 	data = generateText(sys.argv[1])
-	for line in data['lines'][:10]:
+	for line in data['lines'][:100]:
 		print line
-
-
 
