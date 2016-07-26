@@ -1,10 +1,13 @@
 <!-- gallery-word.html {{ prefix }} {{ noun }}-->
+<style>
+body { overflow: hidden; }
+</style>
 {% extends "layout.html" %}
 {% block nav %}
 {% endblock %}
 {% block content %}
 
-<div id="gallery">
+<div id="gallery-word">
 	<p class="newword">{{ prefix }}{{ noun }}</p>
 	<p>{{ prefixdef }}</p>
 	<p>+</p>

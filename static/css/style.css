@@ -91,35 +91,30 @@ li:before { content: "—"; position:relative; left:-6px;}
 	font-weight:bold;
 }
 
-#gallery {
+#gallery-word {
 	margin: 0 auto;
 	margin-top:20%;
+	margin-left:20%;
 }
-#gallery .newword { font-size: 4em; }
-#gallery .text { font-size:2em; }
+#gallery-text {
+	margin: 0 auto;
+	margin-top:10%;
+}
+
+#gallery-word .newword { font-size: 4em; }
+#gallery-text .text { font-size:2em; }
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ 
 	#container	{max-width: 600px}
-	#gallery .newword { font-size: 3em; }
-	#gallery .text { font-size: 1.5em; }
 
 }
 
 @media (min-width:620px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
 	#container	{max-width: 760px}
-	#gallery .newword { font-size: 4em; }
-	#gallery .text { font-size: 2em; }
-
 }
 @media (min-width:961px) { /* tablet, landscape iPad, lo-res laptops ands desktops */
 	#container	{max-width: 1088px}
-	#gallery .newword { font-size: 5em; }
-	#gallery .text { font-size: 2.5em; }
-
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */ 
 	.container	{max-width: 1700px;}
-	#gallery .newword { font-size: 6em; }
-	#gallery .text { font-size: 3em; }
-
 }

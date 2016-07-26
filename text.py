@@ -32,7 +32,7 @@ def generateText(text):
 				if any(tag[1] in n for n in nountypes):
 					pref = random.choice(prefixes).rstrip().lower()
 					newword = pref + tag[0]
-					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent, 1)
+					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent)
 			newgraf += newsent + " "
 		newtext.append( newgraf )
 	

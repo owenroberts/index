@@ -1,15 +1,19 @@
 <!-- gallery-text.html -->
+<style>
+body { overflow: hidden; }
+</style>
 {% extends "layout.html" %}
 {% block nav %}
 {% endblock %}
 {% block content %}
 
-<div id="gallery">
+<div id="gallery-text">
 	<div class="text">
 		{% for line in newtext  %}
 			<p> {{ line|safe }} </p>
 		{% endfor %}
 	</div>
+	<p class="text">...</p>
 	<div class="text">
 		{% for line in mark  %}
 			<p> {{ line|safe }} </p>
@@ -21,8 +25,9 @@
 
 {% block script %}
 <script>
+//var c = ;
 $("a").each( function() {
-	$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
+	$(this).css({color: "hsla("+getRandomInt(0,360)+","+getRandomInt(50,100)+"%,"+getRandomInt(40, 70)+"%,1)" });
 });
 setTimeout( function() { document.location.reload(true); }, 10000 );
 </script>
