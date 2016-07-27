@@ -10,7 +10,8 @@ anglo,relating to the English,Latin,,
 ante,"before, in front of, prior to; old",Latin,"ante ""before"", ""against""; see also antiquus ""old""",
 anthro,Of or pertaining to human beings,Greek,,
 anti,"against, opposed to, preventive",Greek,"ἀντί (antí) ""against""","antagonist, antagonize, antibiotic, antidote, antipodes, antirrhinum"
-archeo,"ancient, olden, primitive, primeval, from the beginning",Greek,arkhaios,
+apo,"away, off",Greek,,
+archeo,"ancient, primitive, primeval, from the beginning",Greek,arkhaios,
 astro,"star, star-shaped",Greek,"ἀστήρ, ἀστέρος (astḗr,astéros), ἄστρον(ástron) ""star""","aster, asterisk, asteroid, astrology, astronomy, astronaut, diasterism geaster, monaster"
 auto,self; directed from within,Greek,"αὐτός (autós) ""self"", ""same""","autarchism, autarchy, autarky, authentic, autism, autistic, autocracy, autograph, automatic, automaton,autonomy"
 belli,war,Latin,"bellum, belli","antebellum, bellicose, belligerent, rebellion"
@@ -29,7 +30,7 @@ contra,against,Latin,contra,"contraband, contraception, contradict, contraindica
 cranio,skull,Greek,κρανίον(kraníon),"craniologist, craniometry, craniosynostosis, cranium, hemicrania, megrim, migraine"
 cryo,"very cold, freezing","Latin, Greek",kryeros,
 crypto,secret or hidden,"Latin, Greek",,
-cult,"cultivate, till, inhabit",Latin,"colere, cultus","acculturate, acculturation, agriculture, apiculture, bicultural, colonial, colony, countercultural, counterculture, cult, cultivable, cultivate, cultivation, cultivator, cultural, culturati, culture, deculturate, deculturation, incult, inculturation, inquiline, inquilinity, inquilinous, intercultural, multicultural, postcolonial, precolonial, subcultural, subculture"
+culti,"cultivate, till, inhabit",Latin,"colere, cultus","acculturate, acculturation, agriculture, apiculture, bicultural, colonial, colony, countercultural, counterculture, cult, cultivable, cultivate, cultivation, cultivator, cultural, culturati, culture, deculturate, deculturation, incult, inculturation, inquiline, inquilinity, inquilinous, intercultural, multicultural, postcolonial, precolonial, subcultural, subculture"
 cune,wedge,Latin,cuneus,"coign, coigne, coin, cuneate, cuneiform, cuneus, encoignure, obcuneate, precuneus, quoin, sconcheon, scuncheon"
 cyano,blue,Greek,κυανός(kuanós),"cyanic, cyanide, cyanogen, cyanophobia, cyanophore, cyanosis, cyanotic, isocyanic"
 cyclo,circle,Greek,"κύκλος(kúklos),κυκλικός(kuklikós)","acyclic, anticyclone, anticyclonic, bicycle, cycle, cyclic, cyclide,cycloid, cyclone, cyclops, cyclosis, cyclotomic, dicyclic,eccyclema, epicycle, epicycloid, hemicycle, hemicyclium, heterocyclic, homocyclic, hypercycle, hypocycloid, isocyclic,mesocyclone, monocyclic, polycyclic, pseudocyclosis, tetracyclic, tricycle, tricyclic, unicycle"
@@ -59,7 +60,7 @@ hypho,weave,Greek,"ὑφαίνειν(huphaínein), ὕφασμα,ὑφή (huph�
 judeo,relating to the Jewish people or religion,Latin,Iudaeus,
 ideo,idea; thought,Greek,"ἰδεῖν (ideîn), ιδέα (idéa)","ideogram, ideologue,ideology"
 idio,"own, peculiarity",Greek,"ἴδιος (ídios), ""private, personal, one's own"", ϝίδιος","idiom, idiopathic,idiosyncrasy, idiosyncratic, idiot"
-immuno,"free, exempt",Latin,Latin immunis ,
+immuno,"free, exempt",Latin,Latin immunis,
 indo,of or pertaining to India,Latin,Indo,
 infra,"below, under",Latin,infra,infrastructure
 inter,"between, among, during",Latin,inter,
@@ -107,17 +108,17 @@ patho,"feeling, disease",Greek,"πάσχειν (páschein),παθητικός(pa
 penta,five,Greek,,
 petro,rock,Greek,πέτρα (pétra),"epipetric, petroglyph, petrographic, petrography,petrology, petrosomatoglyph"
 philo,"love, friendship",Greek,"φίλος (phílos), φιλικός (philikós), φιλεῖν(phileîn), φιλία (philía), φίλτρον (phíltron)","bibliophile, heterophil, hydrophile, paraphilia, philanthropy, philharmonic, philophobia, philosophy, philter, philtre, philtrum"
-phono,sound,Greek,"φωνή (phōnḗ), φωνητικός (phōnētikós), φώνημα (phṓnēma)","acrophonic, acrophony, allophone, antiphon, antiphony, aphonia, aphonic, apophony, archiphoneme, cacophony, diaphony, diplophonia, dysphonia, euphonic, euphonious, euphonize, euphony, heterophonic,heterophony, homophone, homophonous, homophony, hypophonesis, ideophone, idiophone, isophone, logophonetic, megaphone, microphone, misophonia, monophonic, monophony, morphophonology,phonaesthesia, phonaesthetics, phone, phonemic, phonesthemic, phonetic, phonetics, phonics,phonogram, phonograph, phonology, phonophobia,phonosemantics, phonotactics, polyphonic, polyphony, stereophonic, symphonic, symphony, telephonic, telephony"
-photo,"light, photographic, photoelectric",,,,
-poli,"gray, grey",Greek,"πολιός (poliós), πολιότης","poliomyelitis, poliosis"
-poly,"many, much, multiGreek",,,
+phono,"sound, voice, speech",Greek,"φωνή (phōnḗ), φωνητικός (phōnētikós), φώνημα (phṓnēma)","acrophonic, acrophony, allophone, antiphon, antiphony, aphonia, aphonic, apophony, archiphoneme, cacophony, diaphony, diplophonia, dysphonia, euphonic, euphonious, euphonize, euphony, heterophonic,heterophony, homophone, homophonous, homophony, hypophonesis, ideophone, idiophone, isophone, logophonetic, megaphone, microphone, misophonia, monophonic, monophony, morphophonology,phonaesthesia, phonaesthetics, phone, phonemic, phonesthemic, phonetic, phonetics, phonics,phonogram, phonograph, phonology, phonophobia,phonosemantics, phonotactics, polyphonic, polyphony, stereophonic, symphonic, symphony, telephonic, telephony"
+photo,light,,,
+polio,"gray, grey",Greek,"πολιός (poliós), πολιότης","poliomyelitis, poliosis"
+poly,"many, much, multi",,,
 porno,prostitute,Greek,πόρνη (pórnē),"pornographic, pornography"
 post,"after, behind",Latin,post,"posterior, posterity, postscript"
 pre,before,Latin,,
 preter,beyond,Latin,,
 pro,"for, forward",Latin,pro,"procrastinate, propel, propulsion"
 proto,first,Greek,πρῶτος (prōtos) [note 1],"antiproton, protagonist, protist, protocol, proton,protoplasm, prototype, Protozoa"
-pseudo,false,Greek,"ψεύδω, ψεῦδος(pseûdos)",pseudonym
+pseudo, false,Greek,"ψεύδω, ψεῦδος(pseûdos)",pseudonym
 psoro,itch,Greek,"ψωρός (psōrós), ψώρα(psṓra), ψωριᾶν(psōriân), (psōríāsis)","psora, psoriasis, psoric, psorosis"
 psycho,mind,Greek,"ψύχειν (psúchein),ψυχή (psuchḗ), ψυχικός (psuchikós)","hylopsychism, panpsychism, psyche, psychiatry, psychic, psychoanalysis, psychologist, psychology, psychopathic, psychopathy, psychopomp, psychosis,psychotherapy, psychotic, psychoticism"
 ptero,wing,Greek,"πτερόν, πτεροῦ(pterón), πτέρυξ, πτέρυγος (ptérux), (pterugōtós), πτερίσκος","apterous, apterygote, archaeopteryx, brachypterous,brachyptery, Chiroptera, chiropterologist, Endopterygota,exopterygote, helicopter, hemipterous, heteropterous, homopterous, Neoptera, peripteros, pterodactyl, pteron,pteropod, pterosaur, pterostigma, pterygote, tetrapterous"
@@ -134,7 +135,7 @@ sclero,hard,Greek,"σκέλλειν (skéllein),σκληρός (sklēros), σκ�
 sema,sign,Greek,σῆμα (sēma),"aposematic, asemasia, asemia, asemic, pentaseme,polyseme, polysemic, polysemous, polysemy,semantics, semaphore, semasiology, sematic, seme,sememe, semiotic, tetraseme, triseme"
 semi,half,Latin,semis,"semiannual, semicolon, semiconductor, semiconscious, semifinal, seminatural"
 senti,feel,Latin,"sentire, sensus","assent, consensus, consent, dissent, resent, scent, sensation, sense, sensible, sensitive, sensory, sentence, sentient, sentience, sentiment"
-sider,star,Latin,"sidus, sideris",sidereal
+sidero,star,Latin,"sidus, sideris",sidereal
 socio,"social, of society",Latin,,
 somno,sleep,Latin,somnus,"insomnia, somnambulist, somnifacient, somniferous, somnific, somniloquy, somnolent"
 sphero,ball,Greek,σφαῖρα (sphaîra),"aspheric, hemisphere, hypersphere, mesosphere,pseudosphere, sphere, spherics, spheroid, spherometer,spherulite, stratosphere, trimetasphere"
@@ -144,7 +145,7 @@ supra,"above, over",Latin,supra,supranationalism
 syco,fig,Greek,"συκῆ, σῦκον (sûkon)","sycomancy, sycophant"
 techno,"art, craft, skill",Greek,"τίκτειν(tíktein), τέχνη(téchnē),τέκτων, τέκτονος(téktōn),τεκτονικός(tektonikós)","architect, polytechnic, techne, technique, technocracy, technocrat, technogaianism, technology, technophilia,technophobia, tectonic"
 tele,complete,Greek,"τέλος, τέλεος(télos, téleos), τέλεσις (télesis)","atelectasis, ateleiosis, atelophobia, teleology, telesis, toll"
-thana,death,Greek,"θνήσκειν,θάνατος(thánatos)","euthanasia, thanatocoenosis, thanatoid, thanatology,thanatophobia, thanatophoric, thanatopsis"
+thanato,death,Greek,"θνήσκειν,θάνατος(thánatos)","euthanasia, thanatocoenosis, thanatoid, thanatology,thanatophobia, thanatophoric, thanatopsis"
 thermo,"heat, warm",Greek,"θέρεσθαι(théresthai),θέρμη(thérmē),θερμός(thermós)","thermal, athermancy, diathermancy, ectotherm, endotherm,endothermic, exothermic, geothermic, homeothermy,hyperthermia, hypothermia, isotherm, poikilotherm, thermobaric, thermochromism, thermodynamic, thermolysis,thermometer, thermophilic, thermophobia, thermoplastic, thermoplegia, thermos, thermosphere, thermostat, thermostatic"
 trans,across,Latin,trans,"intransigent, tradition, transact, transcend, transient, transitory, transparent, transport"
 tri,three,Greek,,

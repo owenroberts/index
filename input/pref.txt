@@ -10,6 +10,7 @@ anglo
 ante
 anthro
 anti
+apo
 archeo
 astro
 auto
@@ -22,6 +23,7 @@ cata
 centri
 choreo
 chryso
+cine
 circulo
 circum
 contra
@@ -144,7 +146,7 @@ supra
 syco
 techno
 tele
-thana
+thanato
 thermo
 trans
 tri
