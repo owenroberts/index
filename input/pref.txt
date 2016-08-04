@@ -135,8 +135,9 @@ schema
 sclero
 sema
 semi
+semio
 senti
-sider
+sidero
 socio
 somno
 sphero
@@ -146,6 +147,7 @@ supra
 syco
 techno
 tele
+teleo
 thanato
 thermo
 trans

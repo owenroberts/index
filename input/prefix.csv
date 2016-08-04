@@ -134,6 +134,7 @@ schema,plan,Greek,σχῆμα (schēma),"schema, schematic, schematism, schemati
 sclero,hard,Greek,"σκέλλειν (skéllein),σκληρός (sklēros), σκληρότης (sklērótēs)","sclera, sclerectomy, scleredema, sclereid, sclerema,sclerenchyma, sclerite, scleritis, scleroderma,sclerophyll, sclerophyllous, sclerosis, sclerotic, sclerotium, sclerotize"
 sema,sign,Greek,σῆμα (sēma),"aposematic, asemasia, asemia, asemic, pentaseme,polyseme, polysemic, polysemous, polysemy,semantics, semaphore, semasiology, sematic, seme,sememe, semiotic, tetraseme, triseme"
 semi,half,Latin,semis,"semiannual, semicolon, semiconductor, semiconscious, semifinal, seminatural"
+semio,"sign, signal",,,
 senti,feel,Latin,"sentire, sensus","assent, consensus, consent, dissent, resent, scent, sensation, sense, sensible, sensitive, sensory, sentence, sentient, sentience, sentiment"
 sidero,star,Latin,"sidus, sideris",sidereal
 socio,"social, of society",Latin,,
@@ -145,6 +146,7 @@ supra,"above, over",Latin,supra,supranationalism
 syco,fig,Greek,"συκῆ, σῦκον (sûkon)","sycomancy, sycophant"
 techno,"art, craft, skill",Greek,"τίκτειν(tíktein), τέχνη(téchnē),τέκτων, τέκτονος(téktōn),τεκτονικός(tektonikós)","architect, polytechnic, techne, technique, technocracy, technocrat, technogaianism, technology, technophilia,technophobia, tectonic"
 tele,complete,Greek,"τέλος, τέλεος(télos, téleos), τέλεσις (télesis)","atelectasis, ateleiosis, atelophobia, teleology, telesis, toll"
+teleo,end; goal; purpose,,,
 thanato,death,Greek,"θνήσκειν,θάνατος(thánatos)","euthanasia, thanatocoenosis, thanatoid, thanatology,thanatophobia, thanatophoric, thanatopsis"
 thermo,"heat, warm",Greek,"θέρεσθαι(théresthai),θέρμη(thérmē),θερμός(thermós)","thermal, athermancy, diathermancy, ectotherm, endotherm,endothermic, exothermic, geothermic, homeothermy,hyperthermia, hypothermia, isotherm, poikilotherm, thermobaric, thermochromism, thermodynamic, thermolysis,thermometer, thermophilic, thermophobia, thermoplastic, thermoplegia, thermos, thermosphere, thermostat, thermostatic"
 trans,across,Latin,trans,"intransigent, tradition, transact, transcend, transient, transitory, transparent, transport"
