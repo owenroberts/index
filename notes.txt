@@ -54,3 +54,10 @@ Description
 
 -- samples
 - Clinton "Life is too short, sentitime is too short, sentitime is too precious, and the immunostakes are too high to dwell on what might have been."
+
+- bot -
+- godaddy host - 
+- nohup command line
+- ssh to server
+- https://github.com/bear/python-twitter
+
