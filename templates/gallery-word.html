@@ -8,7 +8,7 @@ body { overflow: hidden; }
 {% block content %}
 
 <div id="gallery-word">
-	<p class="newword">{{ prefix }}{{ noun }}</p>
+	<p class="newword"><a href="/new/{{ prefix }}/{{ noun }}">{{ prefix }}{{ noun }}</a></p>
 	<p>{{ prefixdef }}</p>
 	<p>+</p>
 	<p id="noun-def">loading...</p>
@@ -18,7 +18,7 @@ body { overflow: hidden; }
 
 {% block script %}
 <script>
-$(".newword").css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
+$(".newword a").css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
 
 $.ajax({
 	url: "https://en.wiktionary.org/w/api.php",
@@ -46,6 +46,6 @@ $.ajax({
 	}
 });
 
-setTimeout( function() { document.location.reload(true); }, 5000 );
+//setTimeout( function() { document.location.reload(true); }, 5000 );
 </script>
 {% endblock %}
