@@ -1,3 +1,5 @@
+flask tut: http://rwet.decontextualize.com/book/web-applications/
+
 Alphabetical list of part-of-speech tags used in the Penn Treebank Project:
 
 Number

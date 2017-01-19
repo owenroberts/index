@@ -63,7 +63,6 @@ li:before { content: "—"; position:relative; left:-6px;}
 
 #prefix-wrap {
 	float:left;
-	width:30%;
 	display:inline-block;
 }
 
