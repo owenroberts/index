@@ -38,32 +38,11 @@
 	<div id="noun-def">Loading...</div>
 </div>
 
+<script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
 <script type="text/javascript">
-$.ajax({
-	url: "https://en.wiktionary.org/w/api.php",
-	dataType: 'jsonp', 
-	data: { 
-    	action: "query", 
-    	prop: 'extracts', 
-    	titles: "{{ noun }}",
-    	format: "json"
-	},
-	success: function(data) {
-		var html = "";
-		for (var obj in data.query.pages) {
-			if (data.query.pages[obj].extract) 
-				html = data.query.pages[obj].extract;
-			else 
-				$('#noun-def').html("Not found.");
-		}
-		$('#noun-def').html(html);
-	},
-	error: function(error) {
-		console.log(error);
-		$('#noun-def').html("Not found.");
-
-	}
-});
+	$(document).ready(function() {
+		getDef( "{{ noun }}" );
+	});
 </script>
 
 {% endblock %}
