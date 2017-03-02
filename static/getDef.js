@@ -58,3 +58,4 @@ var getDef = function(noun, attempted) {
 };
 
 // http://stackoverflow.com/questions/2971550/how-to-push-different-local-git-branches-to-heroku-master
+// git push indexi +HEAD:master
