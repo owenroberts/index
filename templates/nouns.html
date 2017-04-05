@@ -9,20 +9,16 @@
 <a href="/word">word</a> \
 <a href="/nouns/{{origin}}">{{origin}} nouns</a> \
 </p>
-<p><strong>Input prefix:</strong></p> 
+<p></p> 
 <form method="GET" action="/nouns/{{origin}}/input">
-	<input type="text" name="prefix" >
+	<input type="text" name="prefix" class="underline" placeholder="Input prefix" >
 	<input type="submit" value="Enter">
 </form>
 <p><strong>Choose prefix:</strong></p>
-<div id="prefixes">
+<div id="words">
 	{% for pref in prefixes %}
-		<a href="/nouns/{{origin}}/{{pref}}">{{ pref }}</a>
-		<br>
+		<a href="/nouns/{{origin}}/{{pref}}" class="newword">{{ pref }}</a>
 	{% endfor %}
 </div>
 
-{% endblock %}
-
-{% block script %}
 {% endblock %}

@@ -33,6 +33,15 @@ a:hover { /*text-decoration: underline;*/ color: #46FDFD; }
 ul { list-style:none; padding:0; margin-left:8px; }
 li:before { content: "—"; position:relative; left:-6px;}
 
+input.underline {
+	border: none;
+	border-bottom: 1px solid black;
+	font-size: 1em;
+}
+input.underline:focus {
+	outline:none;
+}
+
 #about a {
 	text-decoration: underline;
 }
@@ -48,6 +57,9 @@ li:before { content: "—"; position:relative; left:-6px;}
 	margin-top:1em;
 }
 
+#words .newword {
+	display:none;
+}
 
 #input-noun { padding: 1em 0; }
 #nouns, #def-wrap, #prefix, #alphabetical { clear:both;}
