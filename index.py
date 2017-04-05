@@ -126,7 +126,6 @@ def from_url():
 	print request.args['url']
 
 	f = urllib.urlopen( request.args['url'] ).read()
-	print f
 
 	try:
 		soup = BeautifulSoup( f, 'html.parser')
@@ -148,9 +147,6 @@ def from_url():
 		)
 	
 
-
-
-
 @app.route('/paste')
 def paste():
 	import text
@@ -161,8 +157,6 @@ def paste():
 		newtext = data['lines'][:10],
 		mark = data['poem']
 	)
-
-
 
 @app.route('/gallery/word')
 def gallery_word():
@@ -189,7 +183,8 @@ def gallery_word():
 @app.route('/gallery/text')
 def gallery_text():
 	import text
-	data = text.generateText( "genesis" )
+	text_from_file = text.load_text_from_file("genesis")
+	data = text.generate_text( text_from_file )
 	return render_template(
 		"gallery-text.html",
 		newtext = data['lines'][:8],
