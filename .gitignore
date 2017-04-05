@@ -4,3 +4,4 @@ source/
 doc/
 zine/
 zine.*
+*.pyc
