@@ -15,7 +15,7 @@ div {
 	text-align: left; 
 	margin-left: auto; 
 	margin-right: auto; 
-	margin-bottom:-4em; 
+	/*margin-bottom:-4em; */
 	margin-top:1em;
 	padding: 0;s
 }
@@ -41,6 +41,13 @@ input.underline {
 input.underline:focus {
 	outline:none;
 }
+
+.error {
+	color: #ff9b2d;
+}
+/*input, button {
+	font-size:1em;
+}*/
 
 #about a {
 	text-decoration: underline;

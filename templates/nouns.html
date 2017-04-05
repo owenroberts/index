@@ -4,12 +4,10 @@
 {{ super() }}
 {% endblock %}
 {% block content %}
-<p><strong><a href="/">Index 1</a></strong></strong>
 <p>
-<a href="/word">word</a> \
-<a href="/nouns/{{origin}}">{{origin}} nouns</a> \
+	<a href="/word">word</a> \
+	<a href="/nouns/{{origin}}">{{origin}} nouns</a> \
 </p>
-<p></p> 
 <form method="GET" action="/nouns/{{origin}}/input">
 	<input type="text" name="prefix" class="underline" placeholder="Input prefix" >
 	<input type="submit" value="Enter">
