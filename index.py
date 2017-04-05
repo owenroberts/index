@@ -147,10 +147,10 @@ def from_url():
 		)
 	
 
-@app.route('/paste')
+@app.route('/paste', methods=['GET', 'POST'])
 def paste():
 	import text
-	data = text.generate_text( request.args['text'] )
+	data = text.generate_text( request.form['text'] )
 	return render_template(
 		"text.html",
 		title = "?",
