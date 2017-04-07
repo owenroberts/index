@@ -1,0 +1,41 @@
+<!-- crazy.html -->
+{% extends "layout.html" %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<p><strong><a href="/">Index 1</a></strong></strong>
+<p>
+	<a href="/word">word</a> \ <a href="/crazy">crazy</a>	
+</p>
+
+<div style="width:40%">
+{% for prefix in prefix_list %}
+<div class="prefix-wrap" style="padding-right:0.25em;">
+	<div id="prefix-word">{{ prefix.word }}</div>
+	<div id="prefix-def">{{ prefix.def }}</div>
+</div>
+{% endfor %}
+</div>
+
+<div id="noun-wrap">
+	<div id="noun-word">{{ noun }}</div>
+	<div id="noun-def">Loading...</div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		getDef( "{{ noun }}" );
+	});
+</script>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$prefixWraps = $('.prefix-wrap');
+console.log( 100/$prefixWraps.length + '%')
+$prefixWraps.css({width: Math.floor(100/$prefixWraps.length) + '%'});
+</script>
+{% endblock %}
