@@ -91,8 +91,8 @@ input.underline:focus {
 	padding-left:1em;
 }
 
-#crazy {
-	width:40%;
+#crazy td {
+	vertical-align:top;
 }
 
 #noun-def h2, #noun-def h6, #noun-def h5, #noun-def h3, #noun-def h4, #noun-def p, #noun-def ul, #noun-def dl, #noun-def hr {

@@ -9,19 +9,20 @@
 	<a href="/word">word</a> \ <a href="/crazy">crazy</a>	
 </p>
 
-<div id="crazy">
+<table id="crazy">
+	<tr>
 	{% for prefix in prefix_list %}
-	<div class="prefix-wrap" style="padding-right:0.25em;">
-		<div id="prefix-word">{{ prefix.word }}</div>
-		<div id="prefix-def">{{ prefix.def }}</div>
-	</div>
+		<td id="prefix-word">{{ prefix.word }}</td>		
 	{% endfor %}
-</div>
+		<td id="noun-word">{{ noun }}</td>
+	</tr>
 
-<div id="noun-wrap">
-	<div id="noun-word">{{ noun }}</div>
-	<div id="noun-def">Loading...</div>
-</div>
+	<tr>
+	{% for prefix in prefix_list %}
+		<td id="prefix-def">{{ prefix.def }}</td>
+	{% endfor %}
+		<td id="noun-def">Loading...</td>
+	</tr>
 
 <script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
 <script type="text/javascript">
@@ -30,12 +31,4 @@
 	});
 </script>
 
-{% endblock %}
-
-{% block script %}
-<script type="text/javascript">
-$prefixWraps = $('.prefix-wrap');
-console.log( 100/$prefixWraps.length + '%')
-$prefixWraps.css({width: Math.floor(100/$prefixWraps.length) + '%'});
-</script>
 {% endblock %}
