@@ -32,9 +32,13 @@
 	<div id="prefix-word">{{ prefix }}</div>
 	<div id="prefix-def">{{ prefixdef }}</div>
 </div>
-<div id="noun-wrap">
-	<div id="noun-word">{{ noun }}</div>
+<div id="wiki-wrap" class="noun-wrap">
+	<div id="noun-word"><strong>{{ noun }}</strong></div>
 	<div id="noun-def">Loading...</div>
+</div>
+<div id="pearson-wrap" class="noun-wrap">
+	<div id="pearson-word"><strong>{{ noun }}</strong></div>
+	<div id="pearson-def">Loading...</div>
 </div>
 
 <script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
