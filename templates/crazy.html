@@ -9,13 +9,13 @@
 	<a href="/word">word</a> \ <a href="/crazy">crazy</a>	
 </p>
 
-<div style="width:40%">
-{% for prefix in prefix_list %}
-<div class="prefix-wrap" style="padding-right:0.25em;">
-	<div id="prefix-word">{{ prefix.word }}</div>
-	<div id="prefix-def">{{ prefix.def }}</div>
-</div>
-{% endfor %}
+<div id="crazy">
+	{% for prefix in prefix_list %}
+	<div class="prefix-wrap" style="padding-right:0.25em;">
+		<div id="prefix-word">{{ prefix.word }}</div>
+		<div id="prefix-def">{{ prefix.def }}</div>
+	</div>
+	{% endfor %}
 </div>
 
 <div id="noun-wrap">

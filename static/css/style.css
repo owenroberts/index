@@ -80,7 +80,6 @@ input.underline:focus {
 #text { border-bottom: 1px solid black; }
 
 
-
 #prefix-wrap, .prefix-wrap {
 	float:left;
 	display:inline-block;
@@ -90,6 +89,10 @@ input.underline:focus {
 	float:left;
 	width:60%;
 	padding-left:1em;
+}
+
+#crazy {
+	width:40%;
 }
 
 #noun-def h2, #noun-def h6, #noun-def h5, #noun-def h3, #noun-def h4, #noun-def p, #noun-def ul, #noun-def dl, #noun-def hr {

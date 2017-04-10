@@ -30,7 +30,7 @@ contra
 cranio
 cryo
 crypto
-cult
+culti
 cune
 cyano
 cyclo
@@ -60,7 +60,7 @@ hypho
 judeo
 ideo
 idio
-immuno 
+immuno
 indo
 infra
 inter
@@ -71,20 +71,19 @@ itera
 janu
 juxta
 kine
-cine
 klepto
 laxa
 litho
 loca
 luna
 macro
-magni
 magna
+magni
 medi
-midi
 mega
 meta
 micro
+midi
 mini
 mono
 multi
@@ -111,7 +110,7 @@ petro
 philo
 phono
 photo
-poli
+polio
 poly
 porno
 post
@@ -158,6 +157,7 @@ umbra
 un
 under
 uni
+ur
 ur
 urano
 urbi
