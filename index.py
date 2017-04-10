@@ -109,10 +109,51 @@ def gen():
 @app.route('/text/<title>')
 def text(title):
 	import text
-	data = text.generateText( title )
+	text_from_file = text.load_text_from_file(title)
+	data = text.generate_text( text_from_file )
 	return render_template(
 		"text.html",
 		title = title,
+		newtext = data['lines'][:10],
+		mark = data['poem']
+	)
+
+@app.route('/fromurl')
+def from_url():
+	import urllib
+	import text
+	from bs4 import BeautifulSoup
+	print request.args['url']
+
+	f = urllib.urlopen( request.args['url'] ).read()
+
+	try:
+		soup = BeautifulSoup( f, 'html.parser')
+		text_from_url = ""
+		for p in soup.find_all('p'):
+			print p
+			text_from_url += p.get_text()
+		data = text.generate_text( text_from_url )
+		return render_template(
+			"text.html",
+			title = soup.title.string,
+			newtext = data['lines'][:10],
+			mark = data['poem']
+		)
+	except:
+		return render_template(
+			"gen.html",
+			error = "Sorry, that URL did not load correctly.  Try another URL."
+		)
+	
+
+@app.route('/paste', methods=['GET', 'POST'])
+def paste():
+	import text
+	data = text.generate_text( request.form['text'] )
+	return render_template(
+		"text.html",
+		title = "?",
 		newtext = data['lines'][:10],
 		mark = data['poem']
 	)
@@ -142,7 +183,8 @@ def gallery_word():
 @app.route('/gallery/text')
 def gallery_text():
 	import text
-	data = text.generateText( "genesis" )
+	text_from_file = text.load_text_from_file("genesis")
+	data = text.generate_text( text_from_file )
 	return render_template(
 		"gallery-text.html",
 		newtext = data['lines'][:8],

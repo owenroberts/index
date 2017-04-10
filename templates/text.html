@@ -5,7 +5,6 @@
 {% endblock %}
 {% block content %}
 
-<p><strong><a href="/">Index 1</a></strong></strong>
 <p>
 	<a href="/text">text</a> \
 	<a href="/text/{{title}}">{{title}}</a> \
@@ -25,4 +24,11 @@
 <br>
 <button onclick="document.location.reload(true);">Refresh</button>
 
+{% endblock %}
+{% block script %}
+<script>
+$("a[href*='new']").each( function() {
+	$(this).css({color: "hsla("+getRandomInt(0,360)+","+getRandomInt(50,100)+"%,"+getRandomInt(40, 70)+"%,1)" });
+});
+</script>
 {% endblock %}

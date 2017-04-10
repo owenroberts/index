@@ -10,18 +10,18 @@ import sys
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
+def load_text_from_file(title):
+	return open("input/"+title+".txt").read()
 
-def generateText(text):
+def generate_text(text):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.readlines()
-	file = open("input/"+text+".txt")
-	lines = file.read().splitlines()
+	lines = text.splitlines()
 	nountypes = ["NN", "NNS"]
 	punc = [".",",",";","?","-",]
 	badwords = ['thee', 'hath']
 	newtext = []
 	for line in lines:
-		#print "--", i
 		sents = nltk.sent_tokenize( line )
 		newgraf = ""
 		for sent in sents:
@@ -29,7 +29,6 @@ def generateText(text):
 			tagged = nltk.pos_tag(tokens)
 			newsent = sent
 			for idx, tag in enumerate(tagged):
-				#print idx, tag
 				if any(tag[1] in n for n in nountypes) and any(tag[0] not in b for b in badwords):
 					pref = random.choice(prefixes).rstrip().lower()
 					newword = pref + tag[0]
