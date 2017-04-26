@@ -68,4 +68,13 @@ Description
 - push new gallery page links, set up testing python anywhere
 - allison parrish talk send to tom
 
+4.10.2017
+- testing defs on both dictionaries
+- pearson
+	- a: total 4007, fail: 1814, success: 2193
+	- b: total 3236, fail: 1244, success: 1992
+- wiki
+	- a: total 4007, fail: 926, sucess: 3081
+	- b: total 3236, fail: 631, success: 2605
 
+	- a - total: 4007, fail: 444, success: 3563
