@@ -22,12 +22,8 @@
 	<a href="/noun/input/{{noun}}">{{ noun }}</a> \
 	<a href="/nouns/55,191/{{prefix}}">{{ prefix }}</a> \
 	
-	{% endif %}
-
-	
+	{% endif %}	
 </p>
-
-
 
 <div id="prefix-wrap">
 	<div id="prefix-word">{{ prefix }}</div>
@@ -43,13 +39,6 @@
 		</ul>
 	</div>
 </div>
-
-<script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
-<script type="text/javascript">
-/*	$(document).ready(function() {
-		getDef( "{{ noun }}" );
-	});*/
-</script>
 
 {% endblock %}
 
