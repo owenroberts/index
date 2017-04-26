@@ -80,6 +80,11 @@ def newword(origin, noun, prefix):
 
 @app.route('/new/<noun>/<prefix>')
 def newword_orphan(noun, prefix):
+	rom nltk.corpus import wordnet as wn
+	sets = wn.synsets(noun, wn.NOUN)
+	defs = []
+	for s in sets:
+		defs.append(s.definition())
 	prefixdef = ""
 	import csv
 	with open('input/prefix.csv', 'rb') as f:
@@ -87,7 +92,7 @@ def newword_orphan(noun, prefix):
 		for row in reader:
 			if row[0] == prefix:
 				prefixdef = row[1]
-	return render_template("newword.html", prefix=prefix, noun=noun, prefixdef = prefixdef)
+	return render_template("newword.html", origin=origin, prefix=prefix, noun=noun, prefixdef = prefixdef, defs=defs)
 
 @app.route('/nouns/<origin>')
 def nouns(origin):
@@ -221,6 +226,8 @@ def gallery_text():
 		newtext = data['lines'][:8],
 		mark = data['poem']
 	)
+
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
