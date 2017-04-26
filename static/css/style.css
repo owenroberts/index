@@ -10,6 +10,7 @@ body {
 div {
 	margin:1em 0;
 }
+* {box-sizing:border-box;}
 
 #container {
 	text-align: left; 
@@ -79,8 +80,7 @@ input.underline:focus {
 #text { border-bottom: 1px solid black; }
 
 
-
-#prefix-wrap {
+#prefix-wrap, .prefix-wrap {
 	float:left;
 	display:inline-block;
 }
@@ -89,6 +89,11 @@ input.underline:focus {
 	float:left;
 	width:30%;
 	margin-left:1em;
+
+}
+
+#crazy td {
+	vertical-align:top;
 }
 
 #noun-def h2, #noun-def h6, #noun-def h5, #noun-def h3, #noun-def h4, #noun-def p, #noun-def ul, #noun-def dl, #noun-def hr {

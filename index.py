@@ -28,7 +28,33 @@ def random():
 	noun_file = open('input/1525.txt')
 	nouns = noun_file.read().splitlines()
 	noun = random.choice(nouns).rstrip().lower()
-	return redirect( url_for('noun', origin = "random", noun = noun,  ) )
+	return redirect( url_for('noun', origin = "random", noun = noun ) )
+
+@app.route('/crazy')
+def crazy():
+	import random
+	from random import randint
+	import csv
+	noun_file = open('input/55,191.txt')
+	nouns = noun_file.read().splitlines()
+	prefix_file = open("input/pref.txt")
+	prefixes = prefix_file.read().splitlines()
+	num_prefixes = randint(2, 5)
+	prefix_list = []
+	for i in range(0, num_prefixes):
+		prefix = random.choice(prefixes).rstrip()
+		with open('input/prefix.csv', 'rb') as f:
+			reader = csv.reader(f)
+			for row in reader:
+				if row[0] == prefix:
+					prefixdef = row[1]
+		pref = {
+			"word": prefix,
+			"def": prefixdef
+		}
+		prefix_list.append(pref)
+	noun = random.choice(nouns).rstrip().lower()
+	return render_template("crazy.html", prefix_list=prefix_list, noun=noun)
 
 @app.route('/noun/<origin>/<noun>')
 def noun(origin, noun):
