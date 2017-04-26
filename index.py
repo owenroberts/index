@@ -80,7 +80,7 @@ def newword(origin, noun, prefix):
 
 @app.route('/new/<noun>/<prefix>')
 def newword_orphan(noun, prefix):
-	rom nltk.corpus import wordnet as wn
+	from nltk.corpus import wordnet as wn
 	sets = wn.synsets(noun, wn.NOUN)
 	defs = []
 	for s in sets:
