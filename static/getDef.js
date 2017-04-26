@@ -11,6 +11,7 @@ var getDef = function(noun, attempted) {
 			"redirects": 1
 		},
 		success: function(data) {
+			// console.log(data);
 			var html = "";
 			if (data.query.pages[-1]) {
 				if (!attempted) getDef(noun.charAt(0).toUpperCase() + noun.slice(1), true);
