@@ -68,4 +68,5 @@ Description
 - push new gallery page links, set up testing python anywhere
 - allison parrish talk send to tom
 
-
+4.26.2017
+- http://www.nltk.org/howto/wordnet.html

@@ -1,8 +1,9 @@
 import requests
 from nltk.corpus import wordnet as wn
 #noun_file = open('input/55,191.txt')
-letter = 'a'
-noun_file = open('input/alpha/'+letter+'.txt')
+letter = 'b'
+#noun_file = open('input/alpha/'+letter+'.txt')
+noun_file = open('input/1525.txt')
 nouns = noun_file.read().splitlines()
 #nouns = ['test', 'butt', 'hello', 'world', 'tasdfaflc']
 success = 0
@@ -49,13 +50,14 @@ for noun in nouns:
 	# 		break
 
 	sets = wn.synsets(noun, wn.NOUN)
-
 	if len(sets) > 0:
 		success += 1
 		#f.write( noun )
 		#f.write( '\n' )
-		print noun, "success", success
+		#print noun, "success", success
 	else:
 		fail += 1
 		print noun, "fail", fail
+		print wn.synsets(noun)
+print "success", success
 # f.close()
