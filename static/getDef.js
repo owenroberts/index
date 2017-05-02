@@ -1,5 +1,29 @@
 var getDef = function(noun, attempted) {
 
+	//http://api.pearson.com/v2/dictionaries/entries?headword=test
+
+	$.getJSON("//api.pearson.com/v2/dictionaries/entries?headword="+noun, function(data){
+		var list = document.createElement("ul");
+		document.querySelector('#pearson-def').innerHTML = "";
+		document.querySelector('#pearson-def').appendChild(list);
+		if (data.count > 0) {
+			data.results.forEach(function(result) {
+				result.senses.forEach(function(sense){
+					var def;
+					if (sense.definition) 
+						def = sense.definition;
+					if (sense.translation) 
+						def = sense.translation;
+					if (def) {
+						var listItem = document.createElement("li");
+						listItem.innerHTML = def;
+						list.appendChild(listItem);
+					}
+				})
+			});
+		}
+	});
+
 	$.ajax({
 		url: "https://en.wiktionary.org/w/api.php",
 		dataType: 'jsonp', 
@@ -35,3 +59,4 @@ var getDef = function(noun, attempted) {
 };
 
 // http://stackoverflow.com/questions/2971550/how-to-push-different-local-git-branches-to-heroku-master
+// git push indexi +HEAD:master

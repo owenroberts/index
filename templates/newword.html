@@ -22,11 +22,8 @@
 	<a href="/noun/input/{{noun}}">{{ noun }}</a> \
 	<a href="/nouns/55,191/{{prefix}}">{{ prefix }}</a> \
 	
-	{% endif %}
-
-	
+	{% endif %}	
 </p>
-
 
 <div id="prefix-wrap">
 	<div id="prefix-word">{{ prefix }}</div>
@@ -34,15 +31,14 @@
 </div>
 <div id="noun-wrap">
 	<div id="noun-word">{{ noun }}</div>
-	<div id="noun-def">Loading...</div>
+	<div id="noun-def">
+		<ul>
+		{% for def in defs %}
+			<li>{{ def }}</li>
+		{% endfor %}
+		</ul>
+	</div>
 </div>
-
-<script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		getDef( "{{ noun }}" );
-	});
-</script>
 
 {% endblock %}
 

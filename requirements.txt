@@ -8,3 +8,4 @@ itsdangerous==0.24
 nltk==3.2.1
 wsgiref==0.1.2
 beautifulsoup4
+nltk==3.2.1

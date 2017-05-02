@@ -95,10 +95,7 @@ input.underline:focus {
 	vertical-align:top;
 }
 
-#noun-def h2, #noun-def h6, #noun-def h5, #noun-def h3, #noun-def h4, #noun-def p, #noun-def ul, #noun-def dl, #noun-def hr {
-	display:none;
-}
-#noun-def ol {
+#noun-def ul {
 	padding-left:6px;
 	list-style:none;
 	margin:0;

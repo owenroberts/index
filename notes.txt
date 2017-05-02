@@ -78,3 +78,7 @@ Description
 	- b: total 3236, fail: 631, success: 2605
 
 	- a - total: 4007, fail: 444, success: 3563
+
+4.26.2017
+- http://www.nltk.org/howto/wordnet.html
+
