@@ -25,7 +25,7 @@ def word_noun():
 @app.route('/random')
 def random():
 	import random
-	noun_file = open('input/1525.txt')
+	noun_file = open('input/1480.txt')
 	nouns = noun_file.read().splitlines()
 	noun = random.choice(nouns).rstrip().lower()
 	return redirect( url_for('noun', origin = "random", noun = noun ) )
@@ -42,7 +42,11 @@ def crazy():
 	num_prefixes = randint(2, 5)
 	prefix_list = []
 	for i in range(0, num_prefixes):
-		prefix_list.append( random.choice(prefixes).rstrip() )
+		# no duplicate prefixes
+		pref = random.choice(prefixes).rstrip()
+		while pref in prefix_list:
+			pref = random.choice(prefixes).rstrip()
+		prefix_list.append( pref )
 	noun = random.choice(nouns).rstrip().lower()
 	url = '/new/multi/' + noun + '/'
 	for p in prefix_list[:-1]:
@@ -66,36 +70,52 @@ def newword(origin, noun, prefix):
 	for s in sets:
 		defs.append(s.definition())
 	if '+' in prefix:
-		prefix_list = prefix.split('+')
+		prefixes = prefix.split('+')
 	else:
-		prefix_list = [prefix]
-	prefixdef_list = []
+		prefixes = [prefix]
+	prefix_list = []
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
 		for row in reader:
-			if row[0] in prefix_list:
+			if row[0] in prefixes:
 				pref = {
 					"word": row[0],
 					"def": row[1]
 				}
 				prefix_list[prefix_list.index(row[0])] = pref
+	if len(prefix_list) == 0:
+		def_sets = wn.synsets(prefix)
+		if len(def_sets) > 0:
+			pref_def = def_sets[0].definition()
+		else:
+			pref_def = "Not found."
+		pref = {
+			"word": prefix,
+			"def": pref_def
+
+		}
+		prefix_list.append( pref )
 	return render_template("newword.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
 @app.route('/new/<noun>/<prefix>')
 def newword_orphan(noun, prefix):
 	from nltk.corpus import wordnet as wn
+	import csv
 	sets = wn.synsets(noun, wn.NOUN)
 	defs = []
 	for s in sets:
 		defs.append(s.definition())
-	prefixdef = ""
-	import csv
+	prefix_list = []
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
 		for row in reader:
 			if row[0] == prefix:
-				prefixdef = row[1]
-	return render_template("newword.html", prefix=prefix, noun=noun, prefixdef = prefixdef, defs=defs)
+				pref = {
+					"word": row[0],
+					"def": row[1]
+				}
+				prefix_list.append( pref )
+ 	return render_template("newword.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
 @app.route('/nouns/<origin>')
 def nouns(origin):
@@ -107,10 +127,9 @@ def nouns(origin):
 def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
-	# get def for prefix here
 	noun_file = open('input/'+origin+'.txt')
 	nouns = noun_file.read().splitlines()
-	if (origin == "1525"):
+	if (origin == "1480"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
 	else:
 		alpha = "abcdefghijklmnopqrstuvwxyz"

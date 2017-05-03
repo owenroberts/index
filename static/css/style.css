@@ -79,18 +79,25 @@ input.underline:focus {
 
 #text { border-bottom: 1px solid black; }
 
+#all-prefixes {
+	float:left;
+	position:relative;
+	max-width:40%;
+}
 
 #prefix-wrap, .prefix-wrap {
-	float:left;
+	position:relative;
 	display:inline-block;
 	margin-right:0.5em;
-	max-width:12.5%;
+	max-width:25%;
+	vertical-align:top;
+	float:left;
 }
 
 #noun-wrap {
 	float:left;
 	width:60%;
-	padding-left:1em;
+	/*padding-left:1em;*/
 }
 
 #crazy td {

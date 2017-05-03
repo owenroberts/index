@@ -34,7 +34,7 @@ alpha = "abcdefghijklmnopqrstuvwxyz"
 #			f.close()
 
 
-# f = open('input/wiki/'+letter+'.txt', 'w+')
+f = open('input/1400.txt', 'w+')
 
 for noun in nouns:
 	#r = requests.get('https://api.pearson.com/v2/dictionaries/#entries?headword='+noun)
@@ -52,12 +52,12 @@ for noun in nouns:
 	sets = wn.synsets(noun, wn.NOUN)
 	if len(sets) > 0:
 		success += 1
-		#f.write( noun )
-		#f.write( '\n' )
-		#print noun, "success", success
+		f.write( noun )
+		f.write( '\n' )
+		print noun, "success", success
 	else:
 		fail += 1
 		print noun, "fail", fail
 		print wn.synsets(noun)
 print "success", success
-# f.close()
+f.close()
