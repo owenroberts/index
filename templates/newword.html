@@ -10,13 +10,16 @@
 	{% if origin == "1525" or origin == "55,191" %}
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
 	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
-	<a href="/new/{{origin}}/{{noun}}/{{prefix}}">{{ prefix }}</a> \
+	{% for prefix in prefix_list %}
+		{{ prefix.word }} \
+	{% endfor %}
 	
-	{% elif origin == "input" or origin == "random" %}
+	{% elif origin == "input" or origin == "random" or origin == "multi" %}
 	<a href="/{{origin}}">{{origin}}</a> \
 	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
-	<a href="/new/{{origin}}/{{noun}}/{{prefix}}">{{ prefix }}</a> \
-	
+	{% for prefix in prefix_list %}
+		{{ prefix.word }} \
+	{% endfor %}
 
 	{% else %}
 	<a href="/noun/input/{{noun}}">{{ noun }}</a> \
@@ -24,11 +27,12 @@
 	
 	{% endif %}	
 </p>
-
+{% for prefix in prefix_list %}
 <div id="prefix-wrap">
-	<div id="prefix-word">{{ prefix }}</div>
-	<div id="prefix-def">{{ prefixdef }}</div>
+	<div id="prefix-word">{{ prefix.word }}</div>
+	<div id="prefix-def">{{ prefix.def }}</div>
 </div>
+{% endfor %}
 <div id="noun-wrap">
 	<div id="noun-word">{{ noun }}</div>
 	<div id="noun-def">

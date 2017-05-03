@@ -42,19 +42,14 @@ def crazy():
 	num_prefixes = randint(2, 5)
 	prefix_list = []
 	for i in range(0, num_prefixes):
-		prefix = random.choice(prefixes).rstrip()
-		with open('input/prefix.csv', 'rb') as f:
-			reader = csv.reader(f)
-			for row in reader:
-				if row[0] == prefix:
-					prefixdef = row[1]
-		pref = {
-			"word": prefix,
-			"def": prefixdef
-		}
-		prefix_list.append(pref)
+		prefix_list.append( random.choice(prefixes).rstrip() )
 	noun = random.choice(nouns).rstrip().lower()
-	return render_template("crazy.html", prefix_list=prefix_list, noun=noun)
+	url = '/new/multi/' + noun + '/'
+	for p in prefix_list[:-1]:
+		url += p
+		url += '+'
+	url += prefix_list[-1]
+	return redirect( url )
 
 @app.route('/noun/<origin>/<noun>')
 def noun(origin, noun):
@@ -64,19 +59,27 @@ def noun(origin, noun):
 
 @app.route('/new/<origin>/<noun>/<prefix>')
 def newword(origin, noun, prefix):
+	import csv
 	from nltk.corpus import wordnet as wn
 	sets = wn.synsets(noun, wn.NOUN)
 	defs = []
 	for s in sets:
 		defs.append(s.definition())
-	prefixdef = ""
-	import csv
+	if '+' in prefix:
+		prefix_list = prefix.split('+')
+	else:
+		prefix_list = [prefix]
+	prefixdef_list = []
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
 		for row in reader:
-			if row[0] == prefix:
-				prefixdef = row[1]
-	return render_template("newword.html", origin=origin, prefix=prefix, noun=noun, prefixdef = prefixdef, defs=defs)
+			if row[0] in prefix_list:
+				pref = {
+					"word": row[0],
+					"def": row[1]
+				}
+				prefix_list[prefix_list.index(row[0])] = pref
+	return render_template("newword.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
 @app.route('/new/<noun>/<prefix>')
 def newword_orphan(noun, prefix):
@@ -92,7 +95,7 @@ def newword_orphan(noun, prefix):
 		for row in reader:
 			if row[0] == prefix:
 				prefixdef = row[1]
-	return render_template("newword.html", origin=origin, prefix=prefix, noun=noun, prefixdef = prefixdef, defs=defs)
+	return render_template("newword.html", prefix=prefix, noun=noun, prefixdef = prefixdef, defs=defs)
 
 @app.route('/nouns/<origin>')
 def nouns(origin):
@@ -104,6 +107,7 @@ def nouns(origin):
 def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
+	# get def for prefix here
 	noun_file = open('input/'+origin+'.txt')
 	nouns = noun_file.read().splitlines()
 	if (origin == "1525"):

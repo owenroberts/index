@@ -83,6 +83,8 @@ input.underline:focus {
 #prefix-wrap, .prefix-wrap {
 	float:left;
 	display:inline-block;
+	margin-right:0.5em;
+	max-width:12.5%;
 }
 
 #noun-wrap {
