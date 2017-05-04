@@ -63,36 +63,15 @@ def noun(origin, noun):
 
 @app.route('/new/<origin>/<noun>/<prefix>')
 def newword(origin, noun, prefix):
-	import csv
 	defs = get_noun_defs(noun)
-	prefix_list = [] # initialize prefix list
-	if '+' in prefix: # if more than one prefix
-		prefixes = prefix.split('+')	
-	else:
-		prefixes = [prefix]
-	for pref in prefixes:
-			prefix_list.append({"word":pref, "def":""})
-	
-	with open('input/prefix.csv', 'rb') as f:
-		reader = csv.reader(f)
-		for row in reader:
-			if row[0] in prefixes:
-				pref = {
-					"word": row[0],
-					"def": row[1]
-				}
-				prefix_list[prefixes.index(row[0])]["def"] = row[1]
-
-	# only for prefixes that are input by user
-	if prefix_list[0]['def'] == "":
-		def_sets = wn.synsets(prefix)
-		if len(def_sets) > 0:
-			prefix_list[0]['def'] = def_sets[0].definition()
-		else:
-			prefix_list[0]['def'] = "Not found."
-		print prefix_list
-
+	prefix_list = get_prefix_list(prefix)
 	return render_template("newword.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
+
+@app.route('/new/<noun>/<prefix>')
+def newword_orphan(noun, prefix):
+	defs = get_noun_defs(noun)
+	prefix_list = get_prefix_list(prefix)
+ 	return render_template("newword.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
 def get_noun_defs(noun):
 	from nltk.corpus import wordnet as wn
@@ -104,22 +83,32 @@ def get_noun_defs(noun):
 		defs.append("Not found.")
 	return defs
 
-
-@app.route('/new/<noun>/<prefix>')
-def newword_orphan(noun, prefix):
+def get_prefix_list(prefix):
 	import csv
-	defs = get_noun_defs(noun)
 	prefix_list = []
+	if '+' in prefix: # if more than one prefix
+		prefixes = prefix.split('+')	
+	else:
+		prefixes = [prefix]
+	for pref in prefixes:
+			prefix_list.append({"word":pref, "def":""})
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
 		for row in reader:
-			if row[0] == prefix:
-				pref = {
-					"word": row[0],
-					"def": row[1]
-				}
-				prefix_list.append( pref )
- 	return render_template("newword.html", noun=noun, defs=defs, prefix_list = prefix_list)
+			for pref in prefix_list:
+				if row[0] == pref["word"]:
+					pref['def'] = row[1]
+
+	# only for prefixes that are input by user
+	if prefix_list[0]['def'] == "":
+		def_sets = wn.synsets(prefix)
+		if len(def_sets) > 0:
+			prefix_list[0]['def'] = def_sets[0].definition()
+		else:
+			prefix_list[0]['def'] = "Not found."
+		print prefix_list
+	return prefix_list
+
 
 @app.route('/nouns/<origin>')
 def nouns(origin):
@@ -254,9 +243,6 @@ def gallery_text():
 		newtext = data['lines'][:8],
 		mark = data['poem']
 	)
-
-
-
 
 if __name__ == '__main__':
 	app.run(debug=True)
