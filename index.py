@@ -106,7 +106,6 @@ def get_prefix_list(prefix):
 			prefix_list[0]['def'] = def_sets[0].definition()
 		else:
 			prefix_list[0]['def'] = "Not found."
-		print prefix_list
 	return prefix_list
 
 
@@ -175,7 +174,6 @@ def from_url():
 	import urllib
 	import text
 	from bs4 import BeautifulSoup
-	print request.args['url']
 
 	f = urllib.urlopen( request.args['url'] ).read()
 
@@ -183,7 +181,6 @@ def from_url():
 		soup = BeautifulSoup( f, 'html.parser')
 		text_from_url = ""
 		for p in soup.find_all('p'):
-			print p
 			text_from_url += p.get_text()
 		data = text.generate_text( text_from_url )
 		return render_template(
@@ -245,5 +242,5 @@ def gallery_text():
 	)
 
 if __name__ == '__main__':
-	app.run(debug=True)
-	#app.run()
+	#app.run(debug=True)
+	app.run()
