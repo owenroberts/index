@@ -85,6 +85,7 @@ def get_noun_defs(noun):
 
 def get_prefix_list(prefix):
 	import csv
+
 	prefix_list = []
 	if '+' in prefix: # if more than one prefix
 		prefixes = prefix.split('+')	
@@ -101,6 +102,7 @@ def get_prefix_list(prefix):
 
 	# only for prefixes that are input by user
 	if prefix_list[0]['def'] == "":
+		from nltk.corpus import wordnet as wn
 		def_sets = wn.synsets(prefix)
 		if len(def_sets) > 0:
 			prefix_list[0]['def'] = def_sets[0].definition()
@@ -242,5 +244,5 @@ def gallery_text():
 	)
 
 if __name__ == '__main__':
-	#app.run(debug=True)
-	app.run()
+	app.run(debug=True)
+	#app.run()
