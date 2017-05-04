@@ -32,7 +32,7 @@ def generate_text(text):
 				if any(tag[1] in n for n in nountypes) and any(tag[0] not in b for b in badwords):
 					pref = random.choice(prefixes).rstrip().lower()
 					newword = pref + tag[0]
-					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent)
+					newsent = re.sub(r'(?<![>/])\b'+tag[0], '<a class="newword" href="/new/'+tag[0]+'/'+pref+'">' + newword + '</a>', newsent)
 					#newsent = re.sub(r'(?<![>/])\b'+tag[0], newword, newsent)
 			newgraf += newsent + " "
 		newtext.append( newgraf )

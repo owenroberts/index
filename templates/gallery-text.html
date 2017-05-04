@@ -24,10 +24,5 @@
 {% endblock %}
 
 {% block script %}
-<script>
-$("a").each( function() {
-	$(this).css({color: "hsla("+getRandomInt(0,360)+","+getRandomInt(50,100)+"%,"+getRandomInt(40, 70)+"%,1)" });
-});
-setTimeout( function() { document.location.reload(true); }, 10000 );
-</script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/gallery.js') }}"></script>
 {% endblock %}

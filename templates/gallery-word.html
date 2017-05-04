@@ -6,7 +6,7 @@
 {% block content %}
 
 <div id="gallery-word">
-	<p class="newword"><a href="/new/{{ noun }}/{{ prefix }}">{{ prefix }}{{ noun }}</a></p>
+	<p><a class="newword" href="/new/{{ noun }}/{{ prefix }}">{{ prefix }}{{ noun }}</a></p>
 	<p>{{ prefixdef }}</p>
 	<p>+</p>
 	<p id="noun-def">
@@ -21,11 +21,5 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".newword a").css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
-		setTimeout( function() { document.location.reload(true); }, 5000 );
-	});
-</script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/gallery.js') }}"></script>
 {% endblock %}

@@ -74,7 +74,7 @@ input.underline:focus {
 
 #text, #markov {
 	line-height:1.6;
-	width:460px;
+	/*width:460px;*/
 }
 
 #text { border-bottom: 1px solid black; }

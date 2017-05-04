@@ -1,6 +1,5 @@
 <!-- nouns-pref.html -->
 {% extends "layout.html" %}
-{% block nav %}{{ super() }}{% endblock %}
 {% block content %}
 <p>
 	<a href="/word">word</a> \
@@ -30,8 +29,4 @@
 	<a href="/new/{{origin}}/{{noun}}/{{prefix}}" style="display:none;" class="newword">{{ prefix }}{{ noun }}</a>
 {% endfor %}
 
-{% endblock %}
-
-{% block script %}
-{{ super() }}
 {% endblock %}

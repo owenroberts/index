@@ -4,8 +4,8 @@
 	<title>kaf index</title>
 	<link rel='shortcut icon' href="{{ url_for('static',filename='favicon.ico') }}" type='image/x-icon'/ >
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
-	<script type="text/javascript" src="{{ url_for('static',filename='jquery.min.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static',filename='cool.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/cool.js') }}"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	{% endblock %}
@@ -17,48 +17,16 @@
 		<p><a href="/"><strong>Kaf Index</strong></a></p>
 		<a href="/">Home</a> \ <a href="/about">About</a>
 		<hr>
-		{% block index1 %}
-		<p><strong><a href="/">Index 1: Geneword</a></strong></strong>
-		{% endblock %}
+			{% block index1 %}
+			<p><strong><a href="/">Index 1: Geneword</a></strong></strong>
+			{% endblock %}
 		{% endblock %}
 		{% block content %}
+			<!-- content goes here -->
 		{% endblock %}
 	</div>
 
 {% block script %}
-<script type="text/javascript">
-/* why is this here and not a js file? */
-var stop = false;
-
-var $words = $('.newword');
-var $wordsContainer = $('#words');
-var $counter = $('#counter');
-var len = $words.length;
-var count = 0;
-
-asyncLoop({
-	length: len,
-	functionToLoop : function(loop, i) {
-		setTimeout(function() {
-			$words[i].style.display = "inline";
-			$wordsContainer.append($words[i]).append('<br>');
-			count++;
-			$counter.text( count + " / " + len )
-			loop();
-		}, 1);
-	},
-	callback : function() {
-		console.log("done!");
-	}
-});
-
-$('body').on("mouseover", ".newword", function(){
-	$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
-})
-.on("mouseout", ".newword", function(){
-	$(this).css({color:"black"});
-});
-
-</script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/wordAnimator.js') }}"></script>
 {% endblock %}
 </body>

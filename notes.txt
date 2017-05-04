@@ -87,3 +87,6 @@ Description
 - code needs clean up
 - multi prefix css has some weird break points
 - look at separating flask routes when on internet
+- flask includes?
+- don't love test/genesis style
+- can javascript add pseudo rules?
