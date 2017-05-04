@@ -64,14 +64,8 @@ def noun(origin, noun):
 @app.route('/new/<origin>/<noun>/<prefix>')
 def newword(origin, noun, prefix):
 	import csv
-	from nltk.corpus import wordnet as wn
-	sets = wn.synsets(noun, wn.NOUN) # get all defs for noun
-	defs = [] # noun defs
+	defs = get_noun_defs(noun)
 	prefix_list = [] # initialize prefix list
-	for s in sets:
-		defs.append(s.definition()) # get defs
-	if len(sets) == 0:
-		defs.append("Not found.")
 	if '+' in prefix: # if more than one prefix
 		prefixes = prefix.split('+')	
 	else:
@@ -100,14 +94,21 @@ def newword(origin, noun, prefix):
 
 	return render_template("newword.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
-@app.route('/new/<noun>/<prefix>')
-def newword_orphan(noun, prefix):
+def get_noun_defs(noun):
 	from nltk.corpus import wordnet as wn
-	import csv
 	sets = wn.synsets(noun, wn.NOUN)
 	defs = []
 	for s in sets:
 		defs.append(s.definition())
+	if len(sets) == 0:
+		defs.append("Not found.")
+	return defs
+
+
+@app.route('/new/<noun>/<prefix>')
+def newword_orphan(noun, prefix):
+	import csv
+	defs = get_noun_defs(noun)
 	prefix_list = []
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
@@ -227,6 +228,7 @@ def gallery_word():
 	noun_file = open('input/55,191.txt')
 	nouns = noun_file.read().splitlines()
 	noun = random.choice(nouns).rstrip().lower()
+	defs = get_noun_defs(noun)
 	
 	prefix_file = open('input/pref.txt')
 	prefixes = prefix_file.read().splitlines()
@@ -239,7 +241,7 @@ def gallery_word():
 			if row[0] == prefix:
 				prefixdef = row[1]
 
-	return render_template("gallery-word.html", prefix=prefix, prefixdef=prefixdef, noun=noun);
+	return render_template("gallery-word.html", prefix=prefix, prefixdef=prefixdef, noun=noun, defs=defs);
 
 
 @app.route('/gallery/text')
@@ -252,6 +254,7 @@ def gallery_text():
 		newtext = data['lines'][:8],
 		mark = data['poem']
 	)
+
 
 
 

@@ -9,7 +9,13 @@
 	<p class="newword"><a href="/new/{{ noun }}/{{ prefix }}">{{ prefix }}{{ noun }}</a></p>
 	<p>{{ prefixdef }}</p>
 	<p>+</p>
-	<p id="noun-def">loading...</p>
+	<p id="noun-def">
+		<ul>
+			{% for def in defs %}
+			<li>{{ def }}</li>
+			{% endfor %}
+		</ul>
+	</p>
 </div>
 
 {% endblock %}
@@ -18,7 +24,6 @@
 <script type="text/javascript" src="{{ url_for('static',filename='getDef.js') }}"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		getDef( "{{ noun }}", false);
 		$(".newword a").css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
 		setTimeout( function() { document.location.reload(true); }, 5000 );
 	});

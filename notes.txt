@@ -86,3 +86,4 @@ Description
 - fixed a bunch of different possibilities, input prefix, multiple prefix defs, multiple prefix urls, routing issues
 - code needs clean up
 - multi prefix css has some weird break points
+- look at separating flask routes when on internet
