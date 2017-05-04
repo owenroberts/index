@@ -65,15 +65,20 @@ def noun(origin, noun):
 def newword(origin, noun, prefix):
 	import csv
 	from nltk.corpus import wordnet as wn
-	sets = wn.synsets(noun, wn.NOUN)
-	defs = []
+	sets = wn.synsets(noun, wn.NOUN) # get all defs for noun
+	defs = [] # noun defs
+	prefix_list = [] # initialize prefix list
 	for s in sets:
-		defs.append(s.definition())
-	if '+' in prefix:
-		prefixes = prefix.split('+')
+		defs.append(s.definition()) # get defs
+	if len(sets) == 0:
+		defs.append("Not found.")
+	if '+' in prefix: # if more than one prefix
+		prefixes = prefix.split('+')	
 	else:
 		prefixes = [prefix]
-	prefix_list = []
+	for pref in prefixes:
+			prefix_list.append({"word":pref, "def":""})
+	
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
 		for row in reader:
@@ -82,19 +87,17 @@ def newword(origin, noun, prefix):
 					"word": row[0],
 					"def": row[1]
 				}
-				prefix_list[prefix_list.index(row[0])] = pref
-	if len(prefix_list) == 0:
+				prefix_list[prefixes.index(row[0])]["def"] = row[1]
+
+	# only for prefixes that are input by user
+	if prefix_list[0]['def'] == "":
 		def_sets = wn.synsets(prefix)
 		if len(def_sets) > 0:
-			pref_def = def_sets[0].definition()
+			prefix_list[0]['def'] = def_sets[0].definition()
 		else:
-			pref_def = "Not found."
-		pref = {
-			"word": prefix,
-			"def": pref_def
+			prefix_list[0]['def'] = "Not found."
+		print prefix_list
 
-		}
-		prefix_list.append( pref )
 	return render_template("newword.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
 @app.route('/new/<noun>/<prefix>')

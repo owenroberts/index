@@ -82,3 +82,7 @@ Description
 4.26.2017
 - http://www.nltk.org/howto/wordnet.html
 
+5.4.2017
+- fixed a bunch of different possibilities, input prefix, multiple prefix defs, multiple prefix urls, routing issues
+- code needs clean up
+- multi prefix css has some weird break points
