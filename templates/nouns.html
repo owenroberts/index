@@ -1,9 +1,9 @@
 <!-- nouns.html -->
 {% extends "layout.html" %}
 {% block content %}
-<p>
+<p class="crumbs">
 	<a href="/word">word</a> \
-	<a href="/nouns/{{origin}}">{{origin}} nouns</a> \
+	{{origin}} nouns
 </p>
 <form method="GET" action="/nouns/{{origin}}/input">
 	<input type="text" name="prefix" class="underline" placeholder="Input prefix" >

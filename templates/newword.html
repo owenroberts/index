@@ -1,22 +1,26 @@
 <!-- newword.html -->
 {% extends "layout.html" %}
 {% block content %}
-<p>
+<p class="crumbs">
 	<a href="/word">word</a> \
 
 	{% if origin == "1480" or origin == "55,191" %}
-	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
-	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
-	{% elif origin == "input" or origin == "random" or origin == "multi" %}
-	<a href="/{{origin}}">{{origin}}</a> \
-	<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
+		<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+		<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
+	{% elif origin == "input" or origin == "random" %}
+		<a href="/{{origin}}">{{origin}}</a> \
+		<a href="/noun/{{origin}}/{{noun}}">{{ noun }}</a> \
+	{% elif origin == "multi" %}
+		<a href="/{{origin}}">{{origin}}</a> \
+		<a href="/{{origin}}/{{noun}}">{{ noun }}</a> \
 	{% else %}
-	<a href="/noun/input/{{noun}}">{{ noun }}</a> \
+		<a href="/noun/input/{{noun}}">{{ noun }}</a> \
 	{% endif %}	
 	
-	{% for prefix in prefix_list %}
+	{% for prefix in prefix_list[:-1] %}
 		{{ prefix.word }} \
 	{% endfor %}
+	{{ prefix_list[-1].word }}
 </p>
 {% if prefix_list|length > 1 %}
 <div id="all-prefixes">

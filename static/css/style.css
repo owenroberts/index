@@ -50,6 +50,11 @@ input.underline:focus {
 	font-size:1em;
 }*/
 
+.crumbs a {
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+}
+
 #about a {
 	text-decoration: underline;
 }

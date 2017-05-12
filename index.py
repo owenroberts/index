@@ -55,6 +55,28 @@ def crazy():
 	url += prefix_list[-1]
 	return redirect( url )
 
+@app.route('/multi/<noun>')
+def crazy_noun(noun):
+	import random
+	from random import randint
+	import csv
+	prefix_file = open("input/pref.txt")
+	prefixes = prefix_file.read().splitlines()
+	num_prefixes = randint(2, 5)
+	prefix_list = []
+	for i in range(0, num_prefixes):
+		# no duplicate prefixes
+		pref = random.choice(prefixes).rstrip()
+		while pref in prefix_list:
+			pref = random.choice(prefixes).rstrip()
+		prefix_list.append( pref )
+	url = '/new/multi/' + noun + '/'
+	for p in prefix_list[:-1]:
+		url += p
+		url += '+'
+	url += prefix_list[-1]
+	return redirect( url )
+
 @app.route('/noun/<origin>/<noun>')
 def noun(origin, noun):
 	prefix_file = open("input/pref.txt")
