@@ -102,11 +102,17 @@ input.underline:focus {
 #noun-wrap {
 	float:left;
 	width:60%;
-	/*padding-left:1em;*/
 }
 
-#crazy td {
+table {
+	font: 12pt/1.4 Arial, sans-serif; 
+}
+table td {
 	vertical-align:top;
+	padding:0;
+	margin:0;
+	padding-right:0.25em;
+	padding-bottom:0.25em;
 }
 
 #noun-def ul {

@@ -22,29 +22,28 @@
 	{% endfor %}
 	{{ prefix_list[-1].word }}
 </p>
-{% if prefix_list|length > 1 %}
-<div id="all-prefixes">
-{% endif %}
-{% for prefix in prefix_list %}
-	<div id="prefix-wrap">
-		<div id="prefix-word">{{ prefix.word }}</div>
-		<div id="prefix-def">{{ prefix.def }}</div>
-	</div>
-{% endfor %}
-{% if prefix_list|length > 1 %}
-</div>
-{% endif %}
 
-<div id="noun-wrap">
-	<div id="noun-word">{{ noun }}</div>
-	<div id="noun-def">
-		<ul>
-		{% for def in defs %}
-			<li>{{ def }}</li>
+<table>
+	<tr>
+		{% for prefix in prefix_list %}
+		<td id="prefix-word">{{ prefix.word }}</td>
 		{% endfor %}
-		</ul>
-	</div>
-</div>
+		<td id="noun-word">{{ noun }}</td>
+	</tr>
+	<tr>
+		{% for prefix in prefix_list %}
+		<td id="prefix-def">{{ prefix.def }}</td>
+		{% endfor %}
+		<td id="noun-def">
+			<ul>
+				{% for def in defs %}
+					<li>{{ def }}</li>
+				{% endfor %}
+			</ul>
+		</td>
+	</tr>
+</table>
+
 
 {% endblock %}
 
