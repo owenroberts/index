@@ -25,7 +25,7 @@ def word_noun():
 @app.route('/random')
 def random():
 	import random
-	noun_file = open('input/1480.txt')
+	noun_file = open('input/1514.txt')
 	nouns = noun_file.read().splitlines()
 	noun = random.choice(nouns).rstrip().lower()
 	return redirect( url_for('noun', origin = "random", noun = noun ) )
@@ -102,12 +102,18 @@ def get_noun_defs(noun):
 	for s in sets:
 		defs.append(s.definition())
 	if len(sets) == 0:
-		defs.append("Not found.")
+		import csv
+		with open('input/defs.csv', 'rb') as f:
+			reader = csv.reader(f)
+			for row in reader:
+				if row[0] == noun:
+					defs.append(row[1])
+		if len(defs) == 0:
+			defs.append("Not found.")
 	return defs
 
 def get_prefix_list(prefix):
 	import csv
-
 	prefix_list = []
 	if '+' in prefix: # if more than one prefix
 		prefixes = prefix.split('+')	
@@ -144,8 +150,9 @@ def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
 	noun_file = open('input/'+origin+'.txt')
+	print origin
 	nouns = noun_file.read().splitlines()
-	if (origin == "1480"):
+	if (origin == "1514"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
 	else:
 		alpha = "abcdefghijklmnopqrstuvwxyz"
