@@ -1,5 +1,6 @@
 acu
 aero
+afro
 agro
 ambi
 ampli
@@ -157,7 +158,6 @@ umbra
 un
 under
 uni
-ur
 ur
 urano
 urbi

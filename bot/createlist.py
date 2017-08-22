@@ -1,7 +1,7 @@
 import random
 prefix_file = open("../input/pref.txt")
 prefixes = prefix_file.readlines()
-nouns_file = open("../input/allnouns.txt")
+nouns_file = open("../input/55,191.txt")
 nouns = nouns_file.readlines()
 
 url = "http://www.indexindexindex.com/new/" 
