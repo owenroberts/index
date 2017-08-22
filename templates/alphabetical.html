@@ -1,10 +1,10 @@
 <!-- alphabetical -->
 {% extends "layout.html" %}
 {% block content %}
-<p>
+<p class="crumbs">
 	<a href="/word">word</a> \
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
-	<a href="/nouns/{{origin}}/{{prefix}}">{{ prefix }}</a> \
+	{{ prefix }}
 </p>
 
 {% for letter in alpha %}

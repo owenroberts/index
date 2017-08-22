@@ -1,19 +1,20 @@
 <!-- nouns-pref.html -->
 {% extends "layout.html" %}
 {% block content %}
-<p>
+<p class="crumbs">
 	<a href="/word">word</a> \
 	
-	{% if origin == "1480" or origin == "55,191" %}
+	{% if origin == "1514" or origin == "55,191" %}
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
 	{% else %}
 	<a href="/{{origin}}">{{origin}}</a> \ 
 	{% endif %}
 	
-	<a href="/nouns/{{origin}}/{{prefix}}">{{ prefix }}</a> \
-	
 	{% if letter != undefined %}
-	<a href="/nouns/{{origin}}/{{prefix}}/{{letter}}">{{ letter }}</a> \
+		<a href="/nouns/{{origin}}/{{prefix}}">{{ prefix }}</a> \
+		{{ letter }}
+	{% else %}
+		{{ prefix }}
 	{% endif %}
 
 </p>

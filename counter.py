@@ -54,10 +54,10 @@ for noun in nouns:
 		success += 1
 		f.write( noun )
 		f.write( '\n' )
-		print noun, "success", success
+		#print noun, "success", success
 	else:
 		fail += 1
-		print noun, "fail", fail
-		print wn.synsets(noun)
+		print noun #, "fail", fail
+		#print wn.synsets(noun)
 print "success", success
 f.close()
