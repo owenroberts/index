@@ -299,6 +299,12 @@ def phon():
 		'phon.html',
 		words = words
 	)
+# to dos
+# - more espeak parameters: http://www.masswerk.at/mespeak/
+# - print transliterated text? i don't think epitran does this https://github.com/dmort27/epitran
+#	- something else
+# - make sentences of the words and talk them
+# - hebrew genesis transliteration https://github.com/aharonium/opensiddur/tree/develop/opensiddur-demos/src/translit
 
 if __name__ == '__main__':
 	#app.run(debug=True)
