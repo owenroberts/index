@@ -272,6 +272,34 @@ def gallery_text():
 		mark = data['poem']
 	)
 
+@app.route('/phon')
+def phon():
+	from phon.mark_letter_switch import MarkovGenerator as Mark
+	import codecs
+	import re
+	f1 = codecs.open('phon/genesis_esp_ipa.txt', encoding="utf-8").readlines()
+	f2 = codecs.open('phon/genesis_ipa.txt', encoding="utf-8").readlines()
+	files = [f1, f2]
+	lineNum = min(len(f1), len(f2)) # get the lower text line num
+	gen = Mark(n=3, max=20)
+	print lineNum
+	for index, file in enumerate(files):
+		for line in file[:lineNum]:
+			line = line.strip()
+			line = re.sub('[\p{P}\p{Sm}]+', '', line)
+			words = line.split(" ")
+			for word in words:
+				gen.feed(word, index)
+	words = []
+	for i in range(10):
+		new = gen.generate()
+		words.append(new)
+
+	return render_template(
+		'phon.html',
+		words = words
+	)
+
 if __name__ == '__main__':
 	#app.run(debug=True)
 	app.run()

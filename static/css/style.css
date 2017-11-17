@@ -143,6 +143,21 @@ table td {
 #gallery-word .newword { font-size: 4em; }
 #gallery-text .text { font-size:2em; }
 
+.phon_word {
+	cursor: pointer;
+	font-size: 2em;
+}
+
+.phon_word span:nth-child(odd) {
+	color:green;
+}
+
+.phon_word span:first-child, .phon_word span:nth-child(even) {
+	color:blue;
+}
+
+
+
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ 
 	#container	{max-width: 600px}
 

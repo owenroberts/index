@@ -28,3 +28,95 @@ https://pypi.python.org/pypi/dragonmapper
 
 http://texttophonetic.appspot.com/
 - api version
+
+questions for linguist (9.17.2017)
+- what are limitations or possible problems of combining two random phonemes
+	- markov chain as possiblity (may need to explain)
+- collisions based on phoneme similarities in different languages
+- syllabus structure (first slides)
+- sonority sequencing principle (second slides)
+- constraints, things that don't occur in english and aren't possible
+- imaginary set of phonotactical rules?  
+	- no rules with ipa in different languges
+	- mix rules of different languages
+- robert kosic
+- ipa landscape changes with english vs other languages
+- inputting a starting syllable or a few syllables
+
+skype call with luke
+- nepali subject marking, corpus stuff
+- s-side and p-side
+	- phonetics and phonology
+	- syntax and morphology
+- universal linguistics
+- historical linguistics
+	- sound change that happened after norman conquest
+	- english mixed with french, made it modern
+	- added french phonemes, pleasure/leisure
+	- mixing of inventories
+- nepali royal languges
+	- only for nepali royals
+	- mixed nepali persian
+- model of entire language and phonemic/syllabic inventory
+	- know about phontactics of language
+		- what syllables are possible
+	- do it for another language, how to combine
+- language and dialect
+	- constructs self imposed, things are always fuzzy
+	- political reasons for different languages
+	- urdu and hindi are the same
+	- chinese all different but called chinese
+	- disinction is mutual incomprehensibility
+	- gradients of understanding, asymmetric
+	- portugese understand spanish, not vice versa
+	- sound changes influenced by other languages shared by region
+- phonetics vs phonology
+	- phonetics about sounds
+		- produced and percieved
+		- physical restrictions
+		- some things that are difficult
+		- ie clicks take a lot more work
+	- phonology representation in brain
+		- inventory of sounds
+		- sounds are continuous
+		- gradient of T
+		- ipa is rough approximation of all sounds
+	- phonotactics how they're combined
+		- nt as beginning is physically possible, just doesn't happen in english
+		- difficult to imagine other languages without these rules
+- naivest thing to do
+	- phonemic inventories of two languages, combine randomly
+	- random phonemes won't be pronouncable
+	- take syallable structure into account
+	- combine rules in an interesting way
+- different classes of phonemes, more or less vowel like
+	- outisde syllables are less vowel like
+- sound properties, voicing
+	- place of articulation
+	- different places of the mouth
+	- manner, level of constriction
+	- difference between p and b
+	- articulated in same place - but humming
+	- n vs t, some air goes through nose on n
+	- english - cccvcccc strenghts
+	- economy vs semantic specificity
+- um, discourse marker, has a meaning
+	- meaning of "like"
+- orthography 
+	- unlike language, innaccurately repoducing sounds in language
+	- CMU arpanet to IPA - typing easier
+	- python modules varying accuracy
+	- CMU mostly correct
+	- arpabet is for english
+	
+9.20.2017
+- http://www.zompist.com/kitlong.html // overview of a bunch of phonetics stuff
+- http://espeak.sourceforge.net/download.html
+	- try brew install espeak
+- https://github.com/bootphon/phonemizer
+	- looks promising but a million fucking dependencies
+- https://github.com/rhdunn/cmudict-tools // could be useful? description tooo looong
+- http://www.photransedit.com/Online/Text2Phonetics.aspx // online transliterate (also windows desktop app)
+- https://github.com/dmort27/epitran // seems good so far
+- http://upodn.com/phon.php // english to IPA
+- english to IPA // https://github.com/mphilli/English_to_IPA
