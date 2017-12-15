@@ -277,8 +277,8 @@ def phon():
 	from phon.mark_letter_switch import MarkovGenerator as Mark
 	import codecs
 	import re
-	f1 = codecs.open('phon/genesis_esp_ipa.txt', encoding="utf-8").readlines()
-	f2 = codecs.open('phon/genesis_ipa.txt', encoding="utf-8").readlines()
+	f1 = codecs.open('phon/input/genesis_heb_ipa.txt', encoding="utf-8").readlines()
+	f2 = codecs.open('phon/input/genesis_ipa.txt', encoding="utf-8").readlines()
 	files = [f1, f2]
 	lineNum = min(len(f1), len(f2)) # get the lower text line num
 	gen = Mark(n=3, max=20)
@@ -290,22 +290,26 @@ def phon():
 			words = line.split(" ")
 			for word in words:
 				gen.feed(word, index)
-	words = []
-	for i in range(10):
-		new = gen.generate()
-		words.append(new)
+	sentences = []
+	for i in range(5):
+		words = []
+		for j in range(10):
+			new = gen.generate()
+			words.append(new)
+		sentences.append({
+			"sentence": " ".join(words),
+			"words": words
+		})
 
 	return render_template(
 		'phon.html',
-		words = words
+		sentences = sentences
 	)
 # to dos
 # - more espeak parameters: http://www.masswerk.at/mespeak/
 # - print transliterated text? i don't think epitran does this https://github.com/dmort27/epitran
 #	- something else
-# - make sentences of the words and talk them
-# - hebrew genesis transliteration https://github.com/aharonium/opensiddur/tree/develop/opensiddur-demos/src/translit
 
 if __name__ == '__main__':
-	#app.run(debug=True)
-	app.run()
+	app.run(debug=True)
+	#app.run()

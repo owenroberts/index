@@ -90,3 +90,6 @@ Description
 - flask includes?
 - don't love test/genesis style
 - can javascript add pseudo rules?
+
+12.15.2017
+- multiple route files: http://flask.pocoo.org/docs/0.12/patterns/packages/

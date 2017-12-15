@@ -143,9 +143,14 @@ table td {
 #gallery-word .newword { font-size: 4em; }
 #gallery-text .text { font-size:2em; }
 
+.phon_sentence {
+	margin-bottom: 1em;
+}
+
 .phon_word {
 	cursor: pointer;
-	font-size: 2em;
+	font-size: 1em;
+	display: inline-block;
 }
 
 .phon_word span:nth-child(odd) {
