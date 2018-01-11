@@ -310,7 +310,6 @@ def phon():
 def choice():
 	import codecs
 	f1 = codecs.open('phon/input/genesis_ipa.txt', encoding="utf-8").readlines()
-	print f1[0]
 	return render_template(
 		'choice.html',
 		text = f1[:10]
