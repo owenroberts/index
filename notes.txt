@@ -93,3 +93,28 @@ Description
 
 12.15.2017
 - multiple route files: http://flask.pocoo.org/docs/0.12/patterns/packages/
+- https://stackoverflow.com/questions/2971550/how-to-push-different-local-git-branches-to-heroku-master
+
+12.16.2017
+- esp, heb, eng choose two, add them together show results
+- try just dictionary?  
+- alter ending of words or some part of words throughout a text, familiar text?
+- find non-overlapping sounds and add them 
+- flipping phonemes within a language
+- master/grand scheme apples and banaenaes song
+- 
+
+1.11.2018
+- http://web.mit.edu/6.mitx/www/24.900%20IPA/IPAapp.html
+- https://itinerarium.github.io/phoneme-synthesis/
+- nltk synonym break down and changing stuff
+- morphology?
+- share cinematosis as well
+- phoneme show english version as well
+- add multiple swaps
+- historical constraints
+
+https://stackoverflow.com/questions/15822832/rhyme-dictionary-from-cmu-pronunciation-database
+https://en.wikipedia.org/wiki/CMU_Pronouncing_Dictionary
+http://www.speech.cs.cmu.edu/cgi-bin/cmudict?in=hello&stress=-s#phones
+https://stackoverflow.com/questions/405161/detecting-syllables-in-a-word
