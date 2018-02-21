@@ -110,7 +110,7 @@ Description
 - nltk synonym break down and changing stuff
 - morphology?
 - share cinematosis as well
-- phoneme show english version as well
+- phoneme show english version as well (how to do this in front end?)
 - add multiple swaps
 - historical constraints
 
@@ -118,3 +118,7 @@ https://stackoverflow.com/questions/15822832/rhyme-dictionary-from-cmu-pronuncia
 https://en.wikipedia.org/wiki/CMU_Pronouncing_Dictionary
 http://www.speech.cs.cmu.edu/cgi-bin/cmudict?in=hello&stress=-s#phones
 https://stackoverflow.com/questions/405161/detecting-syllables-in-a-word
+https://datascience.stackexchange.com/questions/23376/how-to-get-the-number-of-syllables-in-a-word
+
+kaf squarespace
+- 
