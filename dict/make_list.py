@@ -1,6 +1,6 @@
 from nltk.corpus import wordnet as wn
 
-nouns_file = open("input/55,191.txt")
+nouns_file = open("../input/55,191.txt")
 nouns = nouns_file.readlines()
 
 f = open('non_proper_list_2.txt', 'w')
