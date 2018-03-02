@@ -90,3 +90,13 @@ Description
 - flask includes?
 - don't love test/genesis style
 - can javascript add pseudo rules?
+
+
+8.27.2017
+- smaller list of nouns
+	- http://www.desiquintans.com/nounlist
+	- https://frozenfractal.com/blog/2012/3/22/word-list/
+		- seems he created a program to manually review words
+		- hard to identify word groups that can definitely be eliminated, needs some kind of feedback from original words, like probably taxonomic group but maybe not?
+		- how many levels of hyponyms from entity to go through?
+		- using number of hyponyms, lemmas, synsets?
