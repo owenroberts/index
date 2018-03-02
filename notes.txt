@@ -100,3 +100,17 @@ Description
 		- hard to identify word groups that can definitely be eliminated, needs some kind of feedback from original words, like probably taxonomic group but maybe not?
 		- how many levels of hyponyms from entity to go through?
 		- using number of hyponyms, lemmas, synsets?
+
+
+2.25.2018
+- base types http://www.globalwordnet.org/gwa/ewn_to_bc/BaseTypes.htm
+- http://www.randomhacks.net/2009/12/29/visualizing-wordnet-relationships-as-graphs/
+	- synopath graphs?
+- https://www.youtube.com/watch?v=FLZvOKSCkxY&list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL
+	- fuck me i guess i'm going to watch all of these
+- http://www.nltk.org/api/nltk.corpus.reader.html#module-nltk.corpus.reader.wordnet
+	- wordnet doc
+- test: abetalipoproteinemia
+- http://www.nltk.org/howto/wordnet.html - wn doc
+- http://www.phmartin.info/CGKAT/ontologies/coWordNet.html
+
