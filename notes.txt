@@ -114,3 +114,98 @@ Description
 - http://www.nltk.org/howto/wordnet.html - wn doc
 - http://www.phmartin.info/CGKAT/ontologies/coWordNet.html
 
+
+3.2.2018
+- using hypernym_paths() 41k words
+	- set 4			
+	- process 1006			
+	- attribute 5621			
+	- measure 976			
+	- entity 1			
+	- relation 613			
+	- pacifier 0			
+	- group 772			
+	- thing 1209			
+	- freshener 1			
+	- communication 1792			
+	- psychological_feature 8746			
+	- abstraction 1			
+	- horror 1			
+	- object 11991			
+	- otherworld 1			
+	- whacker 2			
+	- causal_agent 5888			
+	- change 0			
+	- physical_entity 0			
+	- substance 0			
+	- stinker 0			
+	- security_blanket 0			
+	- matter 2864			
+	- jimdandy 3
+- hyp paths 1 lemma 29k words
+	set 6
+	process 688
+	attribute 3671
+	measure 656
+	entity 1
+	relation 454
+	pacifier 1
+	group 547
+	thing 856
+	freshener 1
+	communication 1233
+	psychological_feature 5930
+	abstraction 1
+	horror 1
+	object 8666
+	otherworld 1
+	whacker 1
+	causal_agent 3952
+	change 0
+	physical_entity 0
+	substance 0
+	stinker 1
+	security_blanket 0
+	matter 2197
+	jimdandy 1
+- short paths - level 1 41k words
+	physical_entity 22930
+	thing 7
+	abstraction 18554
+	entity 1
+- short paths - level 2 41k words
+	set 4
+	process 1008
+	attribute 5622
+	measure 981
+	entity 1
+	relation 611
+	pacifier 0
+	group 773
+	thing 1208
+	freshener 1
+	communication 1802
+	psychological_feature 8759
+	abstraction 1
+	horror 1
+	object 11814
+	otherworld 1
+	whacker 2
+	causal_agent 5882
+	change 0
+	physical_entity 0
+	substance 0
+	stinker 0
+	security_blanket 0
+	matter 3018
+	jimdandy 3
+- forced 10 cats 41k words
+	possession 194
+	abstraction 8819
+	group 792
+	phenomenon 247
+	entity 22151
+	state 2146
+	location 516
+	act 5442
+	event 1185
