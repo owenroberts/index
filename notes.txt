@@ -90,3 +90,9 @@ Description
 - flask includes?
 - don't love test/genesis style
 - can javascript add pseudo rules?
+
+11.23.2019
+- new geneword for new ayin site
+- take out 1514 words - just use 37199 and just say "all nouns" or "all non proper nouns" or something
+- underline links?
+- 

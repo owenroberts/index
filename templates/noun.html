@@ -13,9 +13,10 @@
 
 <div id="words"></div>
 
-{% for prefix in prefixes %}
-	<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="newword">{{prefix}}{{noun}}</a>
-	<br>
-{% endfor %}
+<div style="display:none;">
+	{% for prefix in prefixes %}
+		<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="newword">{{prefix}}{{noun}}</a>
+	{% endfor %}
+</div>
 
 {% endblock %}

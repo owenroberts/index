@@ -14,7 +14,7 @@ asyncLoop({
 			count++;
 			$counter.text( count + " / " + len )
 			loop();
-		}, 1);
+		}, 2);
 	},
 	callback : function() {
 		console.log("done!");
