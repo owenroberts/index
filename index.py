@@ -25,7 +25,7 @@ def word_noun():
 @app.route('/random')
 def random():
 	import random
-	noun_file = open('input/1514.txt')
+	noun_file = open('input/37,199.txt')
 	nouns = noun_file.read().splitlines()
 	noun = random.choice(nouns).rstrip().lower()
 	return redirect( url_for('noun', origin = "random", noun = noun ) )
@@ -35,7 +35,7 @@ def crazy():
 	import random
 	from random import randint
 	import csv
-	noun_file = open('input/55,191.txt')
+	noun_file = open('input/37,199.txt')
 	nouns = noun_file.read().splitlines()
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.read().splitlines()
