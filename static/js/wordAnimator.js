@@ -1,5 +1,6 @@
 var stop = false;
-var $words = $('.newword');
+var $words = $('.new-word');
+var words = document.getElementsByClassName('new-word');
 var $wordsContainer = $('#words');
 var $counter = $('#counter');
 var len = $words.length;
@@ -21,9 +22,9 @@ asyncLoop({
 	}
 });
 
-$('body').on("mouseover", ".newword", function(){
+$('body').on("mouseover", ".new-word", function(){
 	$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
 })
-.on("mouseout", ".newword", function(){
+.on("mouseout", ".new-word", function(){
 	$(this).css({color:"black"});
 });

@@ -84,16 +84,16 @@ def noun(origin, noun):
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
 @app.route('/new/<origin>/<noun>/<prefix>')
-def newword(origin, noun, prefix):
+def new_word(origin, noun, prefix):
 	defs = get_noun_defs(noun)
 	prefix_list = get_prefix_list(prefix)
-	return render_template("newword.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
+	return render_template("new.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
 @app.route('/new/<noun>/<prefix>')
-def newword_orphan(noun, prefix):
+def new_word_orphan(noun, prefix):
 	defs = get_noun_defs(noun)
 	prefix_list = get_prefix_list(prefix)
- 	return render_template("newword.html", noun=noun, defs=defs, prefix_list = prefix_list)
+ 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
 def get_noun_defs(noun):
 	from nltk.corpus import wordnet as wn

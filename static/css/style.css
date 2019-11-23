@@ -70,7 +70,7 @@ input.underline:focus {
 	margin-top:1em;
 }
 
-#words .newword {
+#words .new-word {
 	display:none;
 }
 
@@ -140,7 +140,7 @@ table td {
 	margin-top:10%;
 }
 
-#gallery-word .newword { font-size: 4em; }
+#gallery-word .new-word { font-size: 4em; }
 #gallery-text .text { font-size:2em; }
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ 
