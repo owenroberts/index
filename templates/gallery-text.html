@@ -7,11 +7,10 @@
 
 <div id="gallery-text">
 	<div class="text">
-		{% for line in newtext  %}
+		{% for line in new_text  %}
 			<p> {{ line|safe }} </p>
 		{% endfor %}
 	</div>
-	<p class="text">...</p>
 	<div class="text">
 		{% for line in mark  %}
 			<p> {{ line|safe }} </p>
