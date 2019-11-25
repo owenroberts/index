@@ -272,7 +272,7 @@ def gallery_text():
 	data = text.generate_text( text_from_file )
 	return render_template(
 		"gallery-text.html",
-		newtext = data['lines'][:8],
+		new_text = data['lines'][:8],
 		mark = data['poem']
 	)
 
