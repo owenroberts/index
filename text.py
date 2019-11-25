@@ -47,7 +47,7 @@ def generate_text(text):
 
 	if len(poem_sents) == 1:
 		return { 'lines': new_text, 'poem': poem_sents }
-	if len(poemsents) > 0:
+	if len(poem_sents) > 0:
 		return { 'lines': new_text, 'poem': poem_sents[:-1] }
 	else:
 		return { 'lines': new_text, 'poem': gen_poem }

@@ -1,16 +1,17 @@
 body {
-	padding:0; 
-	margin:0; 
+	padding: 0; 
+	margin: 0; 
 	font: 12pt/1.4 Arial, sans-serif; 
 	padding-left: 1em; 
 	padding-right: 1em; 
 	-webkit-text-size-adjust: 95%; 
 	min-width: 320px;}
 }
+
 div {
-	margin:1em 0;
+	margin: 1em 0;
 }
-* {box-sizing:border-box;}
+* { box-sizing:border-box; }
 
 #container {
 	text-align: left; 
@@ -20,7 +21,15 @@ div {
 	margin-top:1em;
 	padding: 0;s
 }
-hr { width: auto; height: 1px; border:0; border-top: 1px solid black; margin-top:1em; margin-bottom:1em;}
+
+hr { 
+	width: auto; 
+	height: 1px; 
+	border: 0; 
+	border-top: 1px solid black; 
+	margin-top:1em;
+	margin-bottom:1em;
+}
 
 h2 { font-size: 1.4em; margin: 0.1em 0;}
 
@@ -29,7 +38,10 @@ a {
 	color:black;
 	cursor:pointer;
 }
-a:hover { /*text-decoration: underline;*/ color: #46FDFD; }
+a:hover { 
+	/*text-decoration: underline; */
+	color: #46FDFD; 
+}
 
 ul { list-style:none; padding:0; margin-left:8px; }
 li:before { content: "—"; position:relative; left:-6px;}
@@ -46,9 +58,6 @@ input.underline:focus {
 .error {
 	color: #ff9b2d;
 }
-/*input, button {
-	font-size:1em;
-}*/
 
 .crumbs a {
 	border-bottom-style: dotted;
@@ -68,10 +77,6 @@ input.underline:focus {
 	-moz-column-gap: 1em;
 	column-gap: 1em;
 	margin-top:1em;
-}
-
-#words .new-word {
-	display:none;
 }
 
 #input-noun { padding: 1em 0; }
@@ -132,12 +137,18 @@ table td {
 
 #gallery-word {
 	margin: 0 auto;
-	margin-top:20%;
-	margin-left:20%;
+	/*margin-top:20%;*/
+	/*margin-left:20%;*/
 }
+
 #gallery-text {
 	margin: 0 auto;
 	margin-top:10%;
+}
+
+#progress {
+	width: 100%;
+	height: 20px;
 }
 
 #gallery-word .new-word { font-size: 4em; }

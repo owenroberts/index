@@ -1,30 +1,29 @@
-var stop = false;
-var $words = $('.new-word');
-var words = document.getElementsByClassName('new-word');
-var $wordsContainer = $('#words');
-var $counter = $('#counter');
-var len = $words.length;
-var count = 0;
+window.addEventListener('load', function() {
+	let stop = false;
+	let count = 0;
 
-asyncLoop({
-	length: len,
-	functionToLoop : function(loop, i) {
-		setTimeout(function() {
-			$words[i].style.display = "inline";
-			$wordsContainer.append($words[i]).append('<br>');
-			count++;
-			$counter.text( count + " / " + len )
-			loop();
-		}, 2);
-	},
-	callback : function() {
-		console.log("done!");
-	}
-});
+	const words = document.getElementsByClassName('new-word');
+	const container = document.getElementById('words');
+	const counter = document.getElementById('counter');
+	const len = words.length;
 
-$('body').on("mouseover", ".new-word", function(){
-	$(this).css({color:"hsla("+getRandomInt(30,300, 200)+","+getRandomInt(60,90)+"%,"+getRandomInt(50, 80)+"%,1)"});
-})
-.on("mouseout", ".new-word", function(){
-	$(this).css({color:"black"});
+
+	asyncLoop({
+		length: len,
+		functionToLoop: function(loop, i) {
+			setTimeout(function() {
+				words[i].style.display = "inline";
+				container.appendChild(words[i])
+				container.appendChild(document.createElement('br'));
+				count++;
+				if (counter)
+					counter.textContent = count + " / " + len;
+				loop();
+			}, 2);
+		},
+		callback: function() {
+			console.log("done!");
+		}
+	});
+
 });

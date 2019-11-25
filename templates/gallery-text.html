@@ -5,8 +5,6 @@
 {% endblock %}
 {% block content %}
 
-
-
 <div id="gallery-text">
 	<div class="text">
 		{% for line in newtext  %}
@@ -21,8 +19,13 @@
 	</div>
 </div>
 
+{% block script %}
+<script type="text/javascript">
+	Array.from(document.getElementsByClassName('new-word')).forEach(element => {
+		element.style.color = `hsla(${ getRandomInt(30,300) }, ${getRandomInt(60, 90)}%, ${getRandomInt(50, 80)}%, 1)`;
+	});
+</script>
 {% endblock %}
 
-{% block script %}
-<script type="text/javascript" src="{{ url_for('static',filename='js/gallery.js') }}"></script>
 {% endblock %}
+

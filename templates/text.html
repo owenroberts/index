@@ -21,11 +21,9 @@
 <br>
 <button onclick="document.location.reload(true);">Refresh</button>
 
-{% endblock %}
 {% block script %}
-<script>
-$("a[href*='new']").each( function() {
-	$(this).css({color: "hsla("+getRandomInt(0,360)+","+getRandomInt(50,100)+"%,"+getRandomInt(40, 70)+"%,1)" });
-});
-</script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/newWordLinks.js') }}"></script>
 {% endblock %}
+
+{% endblock %}
+

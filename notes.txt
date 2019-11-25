@@ -96,4 +96,4 @@ Description
 - take out 1514 words - just use 37199 and just say "all nouns" or "all non proper nouns" or something
 - underline links?
 - back button on word/text pages
-- 
+- redo text gallery with two random and no ellipses

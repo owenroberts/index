@@ -4,7 +4,6 @@
 	<title>kaf index</title>
 	<link rel='shortcut icon' href="{{ url_for('static',filename='favicon.ico') }}" type='image/x-icon'/ >
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
-	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static',filename='js/cool.js') }}"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
@@ -25,8 +24,4 @@
 			<!-- content goes here -->
 		{% endblock %}
 	</div>
-
-{% block script %}
-<script type="text/javascript" src="{{ url_for('static',filename='js/wordAnimator.js') }}"></script>
-{% endblock %}
 </body>

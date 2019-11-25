@@ -138,7 +138,6 @@ def get_prefix_list(prefix):
 			prefix_list[0]['def'] = "Not found."
 	return prefix_list
 
-
 @app.route('/nouns/<origin>')
 def nouns(origin):
 	prefix_file = open("input/pref.txt")
@@ -152,7 +151,7 @@ def num_nouns(origin, prefix):
 	noun_file = open('input/'+origin+'.txt')
 	print origin
 	nouns = noun_file.read().splitlines()
-	if (origin == "1514"):
+	if (origin == "1,514"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
 	else:
 		alpha = "abcdefghijklmnopqrstuvwxyz"
@@ -179,7 +178,6 @@ def nouns_alpha(origin, prefix, letter):
 		if letter == noun[0]:
 			letternouns.append( noun )
 	return render_template("nouns-pref.html", origin=origin, nouns=letternouns, prefix=prefix, letter=letter )
-
 
 @app.route('/text')
 def gen():
@@ -242,23 +240,29 @@ def paste():
 def gallery_word():
 	import random
 	import csv
-	noun_file = open('input/55,191.txt')
-	nouns = noun_file.read().splitlines()
-	noun = random.choice(nouns).rstrip().lower()
+
+	prefix = request.args.get('prefix')
+	noun = request.args.get('noun')
+
+	if noun == None:
+		noun_file = open('input/37,199.txt')
+		nouns = noun_file.read().splitlines()
+		noun = random.choice(nouns).rstrip().lower()
 	defs = get_noun_defs(noun)
 	
-	prefix_file = open('input/pref.txt')
-	prefixes = prefix_file.read().splitlines()
-	prefix = random.choice(prefixes).rstrip().lower()
+	if prefix == None:
+		prefix_file = open('input/pref.txt')
+		prefixes = prefix_file.read().splitlines()
+		prefix = random.choice(prefixes).rstrip().lower()
 
-	prefixdef = ""
+	prefix_def = ""
 	with open('input/prefix.csv', 'rb') as f:
 		reader = csv.reader(f)
 		for row in reader:
 			if row[0] == prefix:
-				prefixdef = row[1]
+				prefix_def = row[1]
 
-	return render_template("gallery-word.html", prefix=prefix, prefixdef=prefixdef, noun=noun, defs=defs);
+	return render_template("gallery-word.html", prefix=prefix, prefixdef=prefix_def, noun=noun, defs=defs);
 
 
 @app.route('/gallery/text')

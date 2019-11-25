@@ -26,8 +26,15 @@
 
 <div id="words"></div>
 
-{% for noun in nouns %}
-	<a href="/new/{{origin}}/{{noun}}/{{prefix}}" style="display:none;" class="new-word">{{ prefix }}{{ noun }}</a>
-{% endfor %}
+<div style="display: none">
+	{% for noun in nouns %}
+		<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="new-word">{{ prefix }}{{ noun }}</a>
+	{% endfor %}
+</div>
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='js/wordAnimator.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/newWordLinks.js') }}"></script>
+{% endblock %}
 
 {% endblock %}

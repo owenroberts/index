@@ -11,9 +11,18 @@
 </form>
 <p><strong>Choose prefix:</strong></p>
 <div id="words">
+	
+</div>
+
+<div style="display:none;">
 	{% for pref in prefixes %}
 		<a href="/nouns/{{origin}}/{{pref}}" class="new-word">{{ pref }}</a>
 	{% endfor %}
 </div>
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='js/wordAnimator.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/newWordLinks.js') }}"></script>
+{% endblock %}
 
 {% endblock %}

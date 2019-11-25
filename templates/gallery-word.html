@@ -7,19 +7,30 @@
 
 <div id="gallery-word">
 	<p><a class="new-word" href="/new/{{ noun }}/{{ prefix }}">{{ prefix }}{{ noun }}</a></p>
-	<p>{{ prefixdef }}</p>
+	<p>{{ prefix_def }}</p>
 	<p>+</p>
-	<p id="noun-def">
-		<ul>
-			{% for def in defs %}
-			<li>{{ def }}</li>
-			{% endfor %}
-		</ul>
-	</p>
+	<ul>
+		{% for def in defs %}
+		<li>{{ def }}</li>
+		{% endfor %}
+	</ul>
 </div>
 
-{% endblock %}
+<div id="controls">
+	<div id="progress"></div>
+	<button id="pause">Pause</button>
+	<button id="resume">Resume</button>
+	<button id="previous">Previous</button>
+	<button id="next">Next</button>
+</div>
 
 {% block script %}
+<script>
+	const prefix = '{{ prefix }}';
+	const noun =  '{{ noun }}';
+</script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/gallery.js') }}"></script>
 {% endblock %}
+
+{% endblock %}
+
