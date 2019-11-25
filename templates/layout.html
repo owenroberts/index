@@ -1,7 +1,7 @@
 <html>
 <head>
 	{% block head %}
-	<title>kaf index</title>
+	<title>index</title>
 	<link rel='shortcut icon' href="{{ url_for('static',filename='favicon.ico') }}" type='image/x-icon'/ >
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
 	<script type="text/javascript" src="{{ url_for('static',filename='js/cool.js') }}"></script>
@@ -12,13 +12,9 @@
 
 <body>
 	<div id="container">
-		{% block nav %}
-		<p><a href="/"><strong>Kaf Index</strong></a></p>
-		<a href="/">Home</a> \ <a href="/about">About</a>
-		<hr>
-			{% block index1 %}
-			<p><strong><a href="/">Index 1: Geneword</a></strong></strong>
-			{% endblock %}
+
+		{% block index1 %}
+		<p><strong><a href="/">Index 1: Geneword</a></strong></strong>
 		{% endblock %}
 		{% block content %}
 			<!-- content goes here -->
