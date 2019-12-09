@@ -44,11 +44,10 @@ window.addEventListener('load', function() {
 				reload();
 			} else {
 				const pct =  100 - (performance.now() - start) / time * 100;
-				progress.style.background = `linear-gradient(90deg, ${color} ${pct}%, white ${pct}%`;
+				progress.style.background = `linear-gradient(90deg, ${color} ${pct - 10}%, white ${pct + 10}%`;
 			}
 		}
-		
-	}, 1000 / 30);
+	}, 1000 / 60);
 
 	pauseBtn.onclick = function() {
 		timing = false;
