@@ -80,7 +80,8 @@ def crazy_noun(noun):
 @app.route('/noun/<origin>/<noun>')
 def noun(origin, noun):
 	prefix_file = open("input/pref.txt")
-	prefixes = prefix_file.read().splitlines() 
+	prefixes = prefix_file.read().splitlines()
+	print prefixes
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
 @app.route('/new/<origin>/<noun>/<prefix>')
@@ -223,7 +224,6 @@ def from_url():
 			"gen.html",
 			error = "Sorry, that URL did not load correctly.  Try another URL."
 		)
-	
 
 @app.route('/paste', methods=['GET', 'POST'])
 def paste():
@@ -262,8 +262,7 @@ def gallery_word():
 			if row[0] == prefix:
 				prefix_def = row[1]
 
-	return render_template("gallery-word.html", prefix=prefix, prefixdef=prefix_def, noun=noun, defs=defs);
-
+	return render_template("gallery-word.html", prefix=prefix, prefix_def=prefix_def, noun=noun, defs=defs);
 
 @app.route('/gallery/text')
 def gallery_text():
@@ -277,5 +276,5 @@ def gallery_text():
 	)
 
 if __name__ == '__main__':
-	#app.run(debug=True)
-	app.run()
+	app.run(debug=True)
+	#app.run()

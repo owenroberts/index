@@ -7,6 +7,7 @@ window.addEventListener('load', function() {
 	const counter = document.getElementById('counter');
 	const len = words.length;
 
+	console.log(words, container, counter, len);
 
 	asyncLoop({
 		length: len,
@@ -16,8 +17,7 @@ window.addEventListener('load', function() {
 				container.appendChild(words[i])
 				container.appendChild(document.createElement('br'));
 				count++;
-				if (counter)
-					counter.textContent = count + " / " + len;
+				if (counter) counter.textContent = count + " / " + len;
 				loop();
 			}, 2);
 		},
