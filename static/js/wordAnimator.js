@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-	let stop = false;
+	window.stopLoop = false;
 	let count = 0;
 
 	const words = document.getElementsByClassName('new-word');
@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
 	const counter = document.getElementById('counter');
 	const len = words.length;
 
-	console.log(words, container, counter, len);
+	// console.log(words, container, counter, len);
 
 	asyncLoop({
 		length: len,
