@@ -1,4 +1,16 @@
 window.addEventListener('load', function() {
+
+	function inIframe () {
+ 	   try {
+    	    return window.self !== window.top;
+    	} catch (e) {
+        	return true;
+    	}
+	}
+
+	const inIFrame = inIframe();
+	console.log('in iframe?', inFrame);
+
 	const words = document.getElementsByClassName('new-word');
 
 	const gallery = document.getElementById('gallery-word');
@@ -9,7 +21,7 @@ window.addEventListener('load', function() {
 	const nextBtn = document.getElementById('next');
 	const prevBtn = document.getElementById('previous');
 
-	if (!localStorage.getItem('prefix') || !localStorage.getItem('noun'))
+	if (!inIFrame && !localStorage.getItem('prefix') || !localStorage.getItem('noun'))
 		prevBtn.style.display = 'none';
 
 	const color =  `hsla(${ getRandomInt(30,300) }, ${getRandomInt(60, 90)}%, ${getRandomInt(50, 80)}%, 1)`;
