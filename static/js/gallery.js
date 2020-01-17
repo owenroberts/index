@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
 	}
 
 	const inIFrame = inIframe();
-	console.log('in iframe?', inFrame);
+	console.log('in iframe?', inIFrame);
 
 	const words = document.getElementsByClassName('new-word');
 
