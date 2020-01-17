@@ -21,8 +21,12 @@ window.addEventListener('load', function() {
 	const nextBtn = document.getElementById('next');
 	const prevBtn = document.getElementById('previous');
 
-	if (!inIFrame && !localStorage.getItem('prefix') || !localStorage.getItem('noun'))
+	if (!inIFrame) {
+		if (!localStorage.getItem('prefix') || !localStorage.getItem('noun'))
+			prevBtn.style.display = 'none';
+	} else {
 		prevBtn.style.display = 'none';
+	}
 
 	const color =  `hsla(${ getRandomInt(30,300) }, ${getRandomInt(60, 90)}%, ${getRandomInt(50, 80)}%, 1)`;
 	words[0].style.color = color;
@@ -45,9 +49,11 @@ window.addEventListener('load', function() {
 	let offset = 0;
 
 	function reload() {
-		localStorage.setItem('prefix', prefix);
-		localStorage.setItem('noun', noun);
-		window.location = window.location.href.split("?")[0];
+		if (!inIFrame) {
+			localStorage.setItem('prefix', prefix);
+			localStorage.setItem('noun', noun);
+			window.location = window.location.href.split("?")[0];
+		}
 	}
 
 	setInterval(function() {
