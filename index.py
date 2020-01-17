@@ -1,6 +1,11 @@
 from flask import Flask, redirect, url_for, request, render_template
+from flask_sslify import SSLify
+import os
 
 app = Flask(__name__)
+if "DYNO" in os.environ:
+	# Always use SSL if the app is running on Heroku (not locally)
+    sslify = SSLify(app, subdomains=True)
 
 @app.route('/')
 def index():
@@ -276,5 +281,5 @@ def gallery_text():
 	)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=False)
 	#app.run()
