@@ -55,6 +55,10 @@ input.underline:focus {
 	outline:none;
 }
 
+button, input[type="submit"] {
+	cursor: pointer;
+}
+
 .error {
 	color: #ff9b2d;
 }
@@ -83,11 +87,9 @@ input.underline:focus {
 #nouns, #def-wrap, #prefix, #alphabetical { clear:both;}
 
 #text, #markov {
-	line-height:1.6;
-	/*width:460px;*/
+	line-height: 1.6;
+	width: 460px;
 }
-
-#text { border-bottom: 1px solid black; }
 
 #all-prefixes {
 	float:left;

@@ -6,22 +6,46 @@
 	<form method="GET" action="/text">
 		Genesis
 		<input type="hidden" name="title" value="genesis" checked >
-		<input type="submit" value="Generate">
+		<input type="submit" value="Generate" class="generate">
 	</form> 
 	<form method="POST" action="/paste">
 		Enter text
 		<br>
-		<textarea type="text" name="text" style="height:10%;width:40%;min-width:280px;"></textarea>
+		<style>
+			#enter-text {
+				height: 10%;
+				width: 40%;
+				min-width: 280px;
+				margin-bottom: 10px;
+			}
+		</style>
+		<textarea id="enter-text" type="text" name="text" ></textarea>
 		<br>
-		<input type="submit" value="Generate">
+		<input type="submit" value="Generate" class="generate">
 	</form> 
 	<form method="GET" action="/fromurl">
 		From
 		<input type="text" name="url" placeholder="URL" class="underline" />
-		<input type="submit" value="Generate">
+		<input type="submit" value="Generate" class="generate">
 	</form> 
 	{% if error %} 
 		<p class="error">{{ error }}</p>
 	{% endif %}
 </div>
+
+<div id="loading" style="display:none">
+	<p>Loading...</p>
+</div>
+
+
+<script>
+	const btns = document.getElementsByClassName('generate');
+	Array.from(btns).forEach(btn => {
+		btn.onclick = function() {
+			document.getElementById('loading').style.display = 'block';
+		};
+	});
+</script>
+
 {% endblock %}
+
