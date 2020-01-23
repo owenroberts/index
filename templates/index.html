@@ -2,11 +2,22 @@
 {% extends "layout.html" %}
 {% block content %}
 <ul>
-	<li><a href="/word">Word generator</a></li>
-	<li><a href="/text">Text generator</a></li>
-	<li><a href="/gallery/word">Word gallery</a></li>
-	<li><a href="/gallery/text">Text gallery</a></li>
+	<li><a href="/word">Create new words</a></li>
+	<li><a href="/text">Populate texts with new words</a></li>
+	<li><a href="/gallery/word" class="load">Randomized gallery of new words</a></li>
+	<li><a href="/gallery/text" class="load">Curated gallery of text with new words</a></li>
 </ul>
+
+<script>
+	const links = document.getElementsByClassName('load');
+	Array.from(links).forEach(link => {
+		link.onclick = function() {
+			document.getElementById('loading').style.display = 'block';
+		};
+	});
+</script>
+
+<p id="loading" style="display:none;">Loading...</p>
 {% endblock %}
 
 {% block script %}

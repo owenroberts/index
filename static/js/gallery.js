@@ -20,6 +20,8 @@ window.addEventListener('load', function() {
 	const resumeBtn = document.getElementById('resume');
 	const nextBtn = document.getElementById('next');
 	const prevBtn = document.getElementById('previous');
+	const loading = document.getElementById('loading');
+
 
 	if (!inIFrame) {
 		if (!localStorage.getItem('prefix') || !localStorage.getItem('noun'))
@@ -49,20 +51,25 @@ window.addEventListener('load', function() {
 	let offset = 0;
 
 	function reload() {
+		progress.style.background = 'transparent';
+		loading.style.display = 'block';
 		if (!inIFrame) {
 			localStorage.setItem('prefix', prefix);
 			localStorage.setItem('noun', noun);
 			window.location = window.location.href.split("?")[0];
+		} else {
+			location.reload();
 		}
 	}
 
-	setInterval(function() {
+	var wordInterval = setInterval(function() {
 		if (timing) {
 			if (performance.now() > start + time) {
 				reload();
+				clearInterval(wordInterval);
 			} else {
 				const pct =  100 - (performance.now() - start) / time * 100;
-				progress.style.background = `linear-gradient(90deg, ${color} ${pct - 10}%, white ${pct + 10}%`;
+				progress.style.background = `linear-gradient(90deg, ${color} ${pct - 2}%, transparent ${pct + 2}%`;
 			}
 		}
 	}, 1000 / 60);
