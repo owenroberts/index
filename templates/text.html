@@ -9,15 +9,15 @@
 </p>
 
 <div id="text">
-	{% for line in newtext  %}
+	{% for line in new_text  %}
 		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
-<div id="markov">
+<!-- <div id="markov">
 	{% for line in mark  %}
 		<p> {{ line|safe }} </p>
 	{% endfor %}
-</div>
+</div> -->
 <br>
 <button id="refresh">Refresh</button>
 <div id="loading" style="display:none">

@@ -5,7 +5,7 @@
 <div id="input">
 	<form method="GET" action="/text">
 		Genesis
-		<input type="hidden" name="title" value="genesis" checked >
+		<input type="hidden" name="title" value="genesis-beginning" checked >
 		<input type="submit" value="Generate" class="generate">
 	</form> 
 	<form method="POST" action="/paste">
@@ -23,11 +23,11 @@
 		<br>
 		<input type="submit" value="Generate" class="generate">
 	</form> 
-	<form method="GET" action="/fromurl">
+<!-- 	<form method="GET" action="/fromurl">
 		From
 		<input type="text" name="url" placeholder="URL" class="underline" />
 		<input type="submit" value="Generate" class="generate">
-	</form> 
+	</form>  -->
 	{% if error %} 
 		<p class="error">{{ error }}</p>
 	{% endif %}

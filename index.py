@@ -196,12 +196,12 @@ def gen():
 def text(title):
 	import text
 	text_from_file = text.load_text_from_file(title)
-	data = text.generate_text( text_from_file )
+	# data = text.generate_text( text_from_file )
+	new_text = text.generate_text( text_from_file )
 	return render_template(
 		"text.html",
 		title = title,
-		newtext = data['lines'][:10],
-		mark = data['poem']
+		new_text = new_text
 	)
 
 @app.route('/fromurl')
@@ -217,12 +217,14 @@ def from_url():
 		text_from_url = ""
 		for p in soup.find_all('p'):
 			text_from_url += p.get_text()
-		data = text.generate_text( text_from_url )
+		# data = text.generate_text( text_from_url )
+		new_text = text.generate_text( text_from_url )
+
 		return render_template(
 			"text.html",
 			title = soup.title.string,
-			newtext = data['lines'][:10],
-			mark = data['poem']
+			new_text = new_text
+			# mark = data['poem']
 		)
 	except:
 		return render_template(
@@ -233,12 +235,11 @@ def from_url():
 @app.route('/paste', methods=['GET', 'POST'])
 def paste():
 	import text
-	data = text.generate_text( request.form['text'] )
+	new_text = text.generate_text( request.form['text'] )
 	return render_template(
 		"text.html",
-		title = "?",
-		newtext = data['lines'][:10],
-		mark = data['poem']
+		title = "text",
+		new_text = new_text
 	)
 
 @app.route('/gallery/word')
@@ -272,13 +273,15 @@ def gallery_word():
 @app.route('/gallery/text')
 def gallery_text():
 	import text
-	text_from_file = text.load_text_from_file("genesis")
-	data = text.generate_text( text_from_file )
-	return render_template(
-		"gallery-text.html",
-		new_text = data['lines'][:8],
-		mark = data['poem']
-	)
+	text_from_file = text.load_text_from_file("genesis-beginning")
+	new_text = text.generate_text( text_from_file )
+	return render_template("gallery-text.html", new_text = new_text)
+	# data = text.generate_text( text_from_file )
+	# return render_template(
+	# 	"gallery-text.html",
+	# 	new_text = data['lines'][:8],
+	# 	mark = data['poem']
+	# )
 
 if __name__ == '__main__':
 	app.run(debug=True)

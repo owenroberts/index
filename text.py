@@ -35,20 +35,25 @@ def generate_text(text):
 					new_sent = re.sub(r'(?<![>/])\b'+tag[0], '<a class="new-word" href="/new/'+tag[0]+'/'+pref+'">' + new_word + '</a>', new_sent)
 			new_graf += new_sent + " "
 		new_text.append( new_graf )
-	
-	generator = MarkovGenerator(n=2, max=2000)
-	for line in new_text:
-		generator.feed( line )
-	gen_poem = generator.generate()
-	while len( gen_poem ) < 100:
-		gen_poem = generator.generate()
-	
-	poem_sents = nltk.sent_tokenize( gen_poem )
 
-	if len(poem_sents) > 0:
-		return { 'lines': new_text, 'poem': poem_sents }
-	else:
-		return { 'lines': new_text, 'poem': gen_poem }
+
+	return new_text
+
+	# removing 	markov stuff for now 
+	
+	# generator = MarkovGenerator(n=2, max=2000)
+	# for line in new_text:
+	# 	generator.feed( line )
+	# gen_poem = generator.generate()
+	# while len( gen_poem ) < 100:
+	# 	gen_poem = generator.generate()
+	
+	# poem_sents = nltk.sent_tokenize( gen_poem )
+
+	# if len(poem_sents) > 0:
+	# 	return { 'lines': new_text, 'poem': poem_sents }
+	# else:
+	# 	return { 'lines': new_text, 'poem': gen_poem }
 
 if __name__ == '__main__':
 
