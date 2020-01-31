@@ -273,7 +273,9 @@ def gallery_word():
 @app.route('/gallery/text')
 def gallery_text():
 	import text
-	text_from_file = text.load_text_from_file("genesis-beginning")
+	from random import choice
+	file = choice(['genesis-beginning', 'a-day', 'waves-beginning', 'tale-beginning', 'moby-beginning'])
+	text_from_file = text.load_text_from_file( file )
 	new_text = text.generate_text( text_from_file )
 	return render_template("gallery-text.html", new_text = new_text)
 	# data = text.generate_text( text_from_file )

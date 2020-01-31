@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 
-<div id="gallery-word">
+<div id="gallery" class="gallery-word">
 	<p><a class="new-word" href="/new/{{ noun }}/{{ prefix }}">{{ prefix }}{{ noun }}</a></p>
 	<p>{{ prefix_def }}</p>
 	<p>+</p>
@@ -24,16 +24,47 @@
 	<button id="next">Next</button>
 </div>
 
+<div id="social">
+	<button id="twitter">Share on Twitter</button>
+	<button id="instagram">Share on Instagram</button>
+</div>
+
 <div id="loading" style="display:none">
 	<p>Loading...</p>
 </div>
 
 {% block script %}
+<script src="{{ url_for('static',filename='js/html2canvas.min.js') }}"></script>
 <script>
 	const prefix = '{{ prefix }}';
 	const noun =  '{{ noun }}';
+
+	twitter.onclick = function() {
+		const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;
+		window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
+	};
+
+	instagram.onclick = function() {
+		console.log('insta');
+		// const gallery = document.getElementById('gallery');
+		// gallery.style.maxWidth = '600px';
+		// gallery.style.opacity = '0';
+		html2canvas(document.getElementById('gallery')).then(canvas => {
+    		// gallery.style.maxWidth = 'inherit';
+    		// gallery.style.opacity = '1';
+    		const img = canvas.toDataURL("image/png");
+    		const a = document.createElement('a');
+    		a.download = `${prefix}${noun}.png`;
+    		a.href = `data:${img}`;
+    		a.click();
+		});
+	};
 </script>
-<script type="text/javascript" src="{{ url_for('static',filename='js/gallery.js') }}"></script>
+<script>
+	const isWordGallery = true;
+</script>
+<script src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
+<script src="{{ url_for('static',filename='js/gallery.js') }}"></script>
 {% endblock %}
 
 {% endblock %}

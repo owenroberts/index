@@ -57,7 +57,8 @@ def generate_text(text):
 
 if __name__ == '__main__':
 
-	data = generateText(sys.argv[1])
-	for line in data['lines'][:100]:
-		print line
+	text = load_text_from_file( sys.argv[1] )
+	new_text = generate_text( text )
+	# for line in new_text:
+	# 	print line
 

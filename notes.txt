@@ -114,18 +114,24 @@ But I actually don't think its necessary.
 - add some new texts 
 	- 
 	... canonical texts? - 
-		- communist manifesto
-		- moby dick
+		- communist manifesto - fix
+		- *moby dick
 		- frankenstein
-		- tale of two cities
+		- *tale of two cities
 		- beowulf
 		- awakening
-	- death of a salesman
-	- as i lay dying
-	- beloved
-	- lord of flies
-	- the scarlet letter
-	- notes of a native son
-	- emily dickinson
-	- the waves
-	
+		- *the waves
+		- death of a salesman
+		- as i lay dying
+		- beloved
+		- lord of flies
+		- the scarlet letter
+		- notes of a native son
+		- emily dickinson
+		- the waves
+
+- check with tom/eden
+	- which texts?
+	- tweet text?
+	- insta format? - cant just share - can create image but then what does person do with it?
+	- bot

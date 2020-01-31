@@ -152,13 +152,26 @@ table td {
 	font-weight:bold;
 }
 
-#gallery-word {
+.gallery-word {
 	margin: 0 auto;
 	/*margin-top:20%;*/
 	/*margin-left:20%;*/
+	font-size: 1.5em;
+	padding: 1em;
+	max-width: 600px;
 }
 
-#gallery-text {
+.gallery-word .new-word { 
+	font-size: 2em; 
+}
+
+.gallery-word p {
+	margin: 0.5em 0;
+}
+
+
+
+.gallery-text {
 	margin: 0 auto;
 	/*margin-top: 10%;*/
 }
@@ -170,15 +183,18 @@ table td {
 }
 
 
-
 #controls button {
 	font-size: 1em;
 	cursor: pointer;
 	border-radius: 0.25em;
 }
 
-#gallery-word .new-word { font-size: 4em; }
-#gallery-text .text { font-size:2em; }
+.gallery-text .text { 
+	font-size:2em; 
+}
+.gallery-text p {
+	margin: 0.25em 0;
+}
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ 
 	#container	{max-width: 600px}

@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
 	const inIFrame = inIframe();
 	console.log('in iframe?', inIFrame);
 
-	if (inIFrame) {
+	if (inIFrame && isWordGallery) {
 		function resize() {
 			const height = document.getElementsByTagName('html')[0].scrollHeight;
 			window.parent.postMessage(['setHeight', height], "*");
@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
 
 	const words = document.getElementsByClassName('new-word');
 
-	const gallery = document.getElementById('gallery-word');
+	const gallery = document.getElementById('gallery');
 	const progress = document.getElementById('progress');
 
 	const pauseBtn = document.getElementById('pause');
@@ -40,15 +40,12 @@ window.addEventListener('load', function() {
 	const loading = document.getElementById('loading');
 
 
-	if (!inIFrame) {
+	if (!inIFrame && isWordGallery) {
 		if (!localStorage.getItem('prefix') || !localStorage.getItem('noun'))
 			prevBtn.style.display = 'none';
 	} else {
 		prevBtn.style.display = 'none';
 	}
-
-	const color =  `hsla(${ getRandomInt(30,300) }, ${getRandomInt(60, 90)}%, ${getRandomInt(50, 80)}%, 1)`;
-	words[0].style.color = color;
 
 	function getText(element) {
 		if (element.textContent) 
@@ -70,7 +67,7 @@ window.addEventListener('load', function() {
 	function reload() {
 		progress.style.background = 'transparent';
 		loading.style.display = 'block';
-		if (!inIFrame) {
+		if (!inIFrame && isWordGallery) {
 			localStorage.setItem('prefix', prefix);
 			localStorage.setItem('noun', noun);
 			window.location = window.location.href.split("?")[0];
@@ -78,6 +75,8 @@ window.addEventListener('load', function() {
 			location.reload();
 		}
 	}
+
+	const color = document.getElementsByClassName('new-word')[0].style.color;
 
 	var wordInterval = setInterval(function() {
 		if (timing) {
