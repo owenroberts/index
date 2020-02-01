@@ -26,7 +26,7 @@
 
 <div id="social">
 	<button id="twitter">Share on Twitter</button>
-	<button id="instagram">Share on Instagram</button>
+	<!-- <button id="instagram">Share on Instagram</button> -->
 </div>
 
 <div id="loading" style="display:none">
@@ -44,21 +44,16 @@
 		window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
 	};
 
-	instagram.onclick = function() {
-		console.log('insta');
-		// const gallery = document.getElementById('gallery');
-		// gallery.style.maxWidth = '600px';
-		// gallery.style.opacity = '0';
-		html2canvas(document.getElementById('gallery')).then(canvas => {
-    		// gallery.style.maxWidth = 'inherit';
-    		// gallery.style.opacity = '1';
-    		const img = canvas.toDataURL("image/png");
-    		const a = document.createElement('a');
-    		a.download = `${prefix}${noun}.png`;
-    		a.href = `data:${img}`;
-    		a.click();
-		});
-	};
+	// instagram.onclick = function() {
+	// 	html2canvas(document.getElementById('gallery')).then(canvas => {
+	// 		const img = canvas.toDataURL("image/png");
+	// 		const a = document.createElement('a');
+	// 		a.download = `${prefix}${noun}.png`;
+	// 		a.href = `data:${img}`;
+	// 		a.click();
+	// 	});
+	// };
+	
 </script>
 <script>
 	const isWordGallery = true;

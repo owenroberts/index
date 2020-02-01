@@ -270,20 +270,19 @@ def gallery_word():
 
 	return render_template("gallery-word.html", prefix=prefix, prefix_def=prefix_def, noun=noun, defs=defs);
 
-@app.route('/gallery/text')
-def gallery_text():
+
+	
+@app.route('/gallery/text/')
+@app.route('/gallery/text/<title>')
+def gallery_text(title=None):
 	import text
 	from random import choice
-	file = choice(['genesis-beginning', 'a-day', 'waves-beginning', 'tale-beginning', 'moby-beginning'])
-	text_from_file = text.load_text_from_file( file )
+
+	title = title if title else choice(['genesis-beginning', 'a-day', 'waves-beginning', 'tale-beginning', 'moby-beginning', 'red-wheelbarrow'])
+
+	text_from_file = text.load_text_from_file( title )
 	new_text = text.generate_text( text_from_file )
 	return render_template("gallery-text.html", new_text = new_text)
-	# data = text.generate_text( text_from_file )
-	# return render_template(
-	# 	"gallery-text.html",
-	# 	new_text = data['lines'][:8],
-	# 	mark = data['poem']
-	# )
 
 if __name__ == '__main__':
 	app.run(debug=True)
