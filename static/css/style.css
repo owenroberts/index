@@ -153,7 +153,7 @@ table td {
 }
 
 .gallery-word {
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 	/*margin-top:20%;*/
 	/*margin-left:20%;*/
 	font-size: 1.5em;
@@ -169,8 +169,6 @@ table td {
 	margin: 0.5em 0;
 }
 
-
-
 .gallery-text {
 	margin: 0 auto;
 	/*margin-top: 10%;*/
@@ -183,10 +181,19 @@ table td {
 }
 
 
-#controls button {
+#controls button, #twitter {
 	font-size: 1em;
 	cursor: pointer;
 	border-radius: 0.25em;
+}
+
+#social {
+	margin: 1em 0;
+}
+
+#new li {
+	display: inline;
+	margin-right: 1em;
 }
 
 .gallery-text .text { 
