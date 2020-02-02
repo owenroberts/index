@@ -19,7 +19,7 @@ def generate_text(text):
 	lines = text.splitlines()
 	noun_types = ["NN", "NNS"]
 	punc = [".",",",";","?","-",]
-	bad_words = ['thee', 'hath', 'hitherto', 'depends', 'tell', 'Put', 'particular']
+	bad_words = ['thee', 'hath', 'hitherto', 'depends', 'tell', 'Put']
 	print bad_words
 	new_text = []
 	for line in lines:
@@ -34,7 +34,8 @@ def generate_text(text):
 				if any(tag[1] in n for n in noun_types) and tag[0] not in bad_words:
 					pref = random.choice(prefixes).rstrip().lower()
 					new_word = pref + tag[0]
-					new_sent = re.sub(r'(?![^<>]*>)\b'+tag[0], '<a class="new-word" href="/new/'+tag[0]+'/'+pref+'">' + new_word + '</a>', new_sent)
+					r = re.compile(r'(?![^<>]*>)\b%s\b'%tag[0])
+					new_sent = re.sub(r, '<a class="new-word" href="/new/'+tag[0]+'/'+pref+'">' + new_word + '</a>', new_sent)
 			new_graf += new_sent + " "
 		new_text.append( new_graf )
 
