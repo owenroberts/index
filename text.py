@@ -19,7 +19,8 @@ def generate_text(text):
 	lines = text.splitlines()
 	noun_types = ["NN", "NNS"]
 	punc = [".",",",";","?","-",]
-	bad_words = ['thee', 'hath']
+	bad_words = ['thee', 'hath', 'hitherto', 'depends', 'tell', 'Put', 'particular']
+	print bad_words
 	new_text = []
 	for line in lines:
 		sents = nltk.sent_tokenize( line )
@@ -29,14 +30,15 @@ def generate_text(text):
 			tagged = nltk.pos_tag(tokens)
 			new_sent = sent
 			for idx, tag in enumerate(tagged):
-				if any(tag[1] in n for n in noun_types) and any(tag[0] not in b for b in bad_words):
+				print tag[0], tag[0] not in bad_words
+				if any(tag[1] in n for n in noun_types) and tag[0] not in bad_words:
 					pref = random.choice(prefixes).rstrip().lower()
 					new_word = pref + tag[0]
 					new_sent = re.sub(r'(?![^<>]*>)\b'+tag[0], '<a class="new-word" href="/new/'+tag[0]+'/'+pref+'">' + new_word + '</a>', new_sent)
 			new_graf += new_sent + " "
 		new_text.append( new_graf )
 
-
+	print new_text
 	return new_text
 
 	# removing 	markov stuff for now 

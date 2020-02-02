@@ -106,6 +106,10 @@ button, input[type="submit"] {
 	width: 460px;
 }
 
+#text p {
+	margin: 0.5em 0;
+}
+
 #all-prefixes {
 	float:left;
 	position:relative;
@@ -180,7 +184,6 @@ table td {
 	margin: 1em 0;
 }
 
-
 #controls button, #twitter {
 	font-size: 1em;
 	cursor: pointer;
@@ -192,8 +195,8 @@ table td {
 }
 
 #new li {
-	display: inline;
-	margin-right: 1em;
+	/*display: inline;*/
+	/*margin-right: 1em;*/
 }
 
 .gallery-text .text { 

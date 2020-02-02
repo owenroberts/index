@@ -243,12 +243,10 @@ def paste():
 	)
 
 @app.route('/gallery/word')
-def gallery_word():
+@app.route('/gallery/word/<noun>/<prefix>')
+def gallery_word(noun=None, prefix=None):
 	import random
 	import csv
-
-	prefix = request.args.get('prefix')
-	noun = request.args.get('noun')
 
 	if noun == None:
 		noun_file = open('input/37,199.txt')
@@ -270,15 +268,13 @@ def gallery_word():
 
 	return render_template("gallery-word.html", prefix=prefix, prefix_def=prefix_def, noun=noun, defs=defs);
 
-
-	
 @app.route('/gallery/text/')
 @app.route('/gallery/text/<title>')
 def gallery_text(title=None):
 	import text
 	from random import choice
 
-	title = title if title else choice(['genesis-beginning', 'a-day', 'waves-beginning', 'tale-beginning', 'moby-beginning', 'red-wheelbarrow'])
+	title = title if title else choice(['genesis', 'a-day', 'the-waves', 'a-tale-of-two-cities', 'moby-dick', 'the-red-wheelbarrow'])
 
 	text_from_file = text.load_text_from_file( title )
 	new_text = text.generate_text( text_from_file )

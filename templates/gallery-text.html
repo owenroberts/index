@@ -18,7 +18,7 @@
 	</div> -->
 </div>
 
-<div id="new">
+<!-- <div id="new">
 	<p>Generate new text:</p>
 	<ul>
 		<li><a href="/gallery/text/genesis-beginning">Genesis</a></li>
@@ -29,16 +29,17 @@
 		<li><a href="/gallery/text/red-wheelbarrow">The Red Wheelbarrow</a></li>
 		<li><a href="/gallery/text/comm-beginning">The Communist Manifesto</a></li>
 	</ul>
-	
-	
-	
-	
-	
-	
+</div>
+ -->
+
+<button id="refresh" style="font-size:1em" >Refresh</button>
+<div id="loading" style="display:none">
+	<p>Loading...</p>
 </div>
 
 {% block script %}
 <script type="text/javascript" src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/genText.js') }}"></script>
 {% endblock %}
 
 {% endblock %}

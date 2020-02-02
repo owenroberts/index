@@ -3,11 +3,21 @@
 {% block content %}
 <p>text \</p>
 <div id="input">
-<!-- 	<form method="GET" action="/text">
-		Genesis
-		<input type="hidden" name="title" value="genesis-beginning" checked >
-		<input type="submit" value="Generate" class="generate">
-	</form>  -->
+
+	<div id="new">
+		<p>Generate new text:</p>
+		<ul>
+			<li><a href="/text/genesis">Genesis</a></li>
+			<li><a href="/text/a-day">A Day</a></li>
+			<li><a href="/text/the-waves">The Waves</a></li>
+			<li><a href="/text/a-tale-of-two-cities">A Tale of Two Cities</a></li>
+			<li><a href="/text/moby-dick">Moby-Dick</a></li>
+			<li><a href="/text/the-red-wheelbarrow">The Red Wheelbarrow</a></li>
+			<li><a href="/text/communist-manifesto">The Communist Manifesto</a></li>
+		</ul>
+	</div>
+
+
 	<form method="POST" action="/paste">
 		Enter text
 		<br>
