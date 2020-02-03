@@ -201,6 +201,7 @@ def text(title):
 		title = title,
 		new_text = new_text
 	)
+	
 
 @app.route('/fromurl')
 def from_url():
@@ -233,12 +234,18 @@ def from_url():
 @app.route('/paste', methods=['GET', 'POST'])
 def paste():
 	import text
-	new_text = text.generate_text( request.form['text'] )
-	return render_template(
-		"text.html",
-		title = "text",
-		new_text = new_text
-	)
+	try:
+		new_text = text.generate_text( request.form['text'] )
+		return render_template(
+			"text.html",
+			title = "text",
+			new_text = new_text
+		)
+	except:
+		return render_template(
+			"gen.html",
+			error = "Sorry, we encountered an Error.  Try another text."
+		)
 
 @app.route('/gallery/word')
 @app.route('/gallery/word/<noun>/<prefix>')
@@ -275,15 +282,16 @@ def gallery_text(title=None):
 	title = title if title else choice(['genesis', 'a-day', 'the-waves', 'a-tale-of-two-cities', 'moby-dick', 'the-red-wheelbarrow'])
 
 	text_from_file = text.load_text_from_file( title )
+
 	new_text = text.generate_text( text_from_file )
 	return render_template("gallery-text.html", new_text = new_text)
+
 
 # @app.errorhandler(Exception)
 # def handle_500(e):
 # 	print(e)
 # 	return render_template("500.html", referrer = request.headers.get('Referer')), 500
 	
-
 
 if __name__ == '__main__':
 	app.run(debug=True)
