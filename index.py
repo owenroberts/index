@@ -98,7 +98,7 @@ def new_word(origin, noun, prefix):
 def new_word_orphan(noun, prefix):
 	defs = get_noun_defs(noun)
 	prefix_list = get_prefix_list(prefix)
- 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
+	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
 def get_noun_defs(noun):
 	from nltk.corpus import wordnet as wn
