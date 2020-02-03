@@ -4,11 +4,9 @@ import re
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 from nltk.tokenize import word_tokenize
-from markov import MarkovGenerator
+# from markov import MarkovGenerator
 
 import sys  
-reload(sys)  
-sys.setdefaultencoding('utf8')
 
 def load_text_from_file(title):
 	return open("input/"+title+".txt").read()

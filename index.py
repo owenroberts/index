@@ -108,7 +108,7 @@ def get_noun_defs(noun):
 		defs.append(s.definition())
 	if len(sets) == 0:
 		import csv
-		with open('input/defs.csv', 'rb') as f:
+		with open('input/defs.csv', 'rt') as f:
 			reader = csv.reader(f)
 			for row in reader:
 				if row[0] == noun:
@@ -126,7 +126,7 @@ def get_prefix_list(prefix):
 		prefixes = [prefix]
 	for pref in prefixes:
 			prefix_list.append({"word":pref, "def":""})
-	with open('input/prefix.csv', 'rb') as f:
+	with open('input/prefix.csv', 'rt') as f:
 		reader = csv.reader(f)
 		for row in reader:
 			for pref in prefix_list:
@@ -258,7 +258,7 @@ def gallery_word(noun=None, prefix=None):
 		prefix = random.choice(prefixes).rstrip().lower()
 
 	prefix_def = ""
-	with open('input/prefix.csv', 'rb') as f:
+	with open('input/prefix.csv', 'rt') as f:
 		reader = csv.reader(f)
 		for row in reader:
 			if row[0] == prefix:
@@ -278,13 +278,13 @@ def gallery_text(title=None):
 	new_text = text.generate_text( text_from_file )
 	return render_template("gallery-text.html", new_text = new_text)
 
-@app.errorhandler(Exception)
-def handle_500(e):
-	#print(e)
-	return render_template("500.html", referrer = request.headers.get('Referer')), 500
+# @app.errorhandler(Exception)
+# def handle_500(e):
+# 	print(e)
+# 	return render_template("500.html", referrer = request.headers.get('Referer')), 500
 	
 
 
 if __name__ == '__main__':
-	# app.run(debug=True)
-	app.run()
+	app.run(debug=True)
+	# app.run()
