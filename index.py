@@ -86,7 +86,6 @@ def crazy_noun(noun):
 def noun(origin, noun):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.read().splitlines()
-	print prefixes
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
 @app.route('/new/<origin>/<noun>/<prefix>')
@@ -155,7 +154,6 @@ def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
 	noun_file = open('input/'+origin+'.txt')
-	print origin
 	nouns = noun_file.read().splitlines()
 	if (origin == "1,514"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
