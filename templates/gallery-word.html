@@ -24,17 +24,17 @@
 	<button id="next">Next</button>
 </div>
 
-<!-- <div id="social"> -->
-	<!-- <button id="twitter">Share on Twitter</button> -->
-	<!-- <button id="instagram">Share on Instagram</button> -->
-<!-- </div> -->
+<!-- <div id="social">
+	<button id="twitter">Share on Twitter</button>
+	<button id="instagram">Share on Instagram</button>
+</div> -->
 
 <div id="loading" style="display:none">
 	<p>Loading...</p>
 </div>
 
 {% block script %}
-<!-- <script src="{{ url_for('static',filename='js/html2canvas.min.js') }}"></script> -->
+<script src="{{ url_for('static',filename='js/html2canvas.min.js') }}"></script>
 <script>
 	const prefix = '{{ prefix }}';
 	const noun =  '{{ noun }}';
