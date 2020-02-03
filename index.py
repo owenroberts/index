@@ -280,6 +280,13 @@ def gallery_text(title=None):
 	new_text = text.generate_text( text_from_file )
 	return render_template("gallery-text.html", new_text = new_text)
 
+@app.errorhandler(Exception)
+def handle_500(e):
+	#print(e)
+	return render_template("500.html", referrer = request.headers.get('Referer')), 500
+	
+
+
 if __name__ == '__main__':
-	app.run(debug=True)
-	#app.run()
+	# app.run(debug=True)
+	app.run()

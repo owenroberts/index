@@ -18,9 +18,8 @@ def generate_text(text):
 	prefixes = prefix_file.readlines()
 	lines = text.splitlines()
 	noun_types = ["NN", "NNS"]
-	punc = [".",",",";","?","-",]
+	punc = [".",",",";","?","-"]
 	bad_words = ['thee', 'hath', 'hitherto', 'depends', 'tell', 'Put']
-	print bad_words
 	new_text = []
 	for line in lines:
 		sents = nltk.sent_tokenize( line )
@@ -30,7 +29,6 @@ def generate_text(text):
 			tagged = nltk.pos_tag(tokens)
 			new_sent = sent
 			for idx, tag in enumerate(tagged):
-				print tag[0], tag[0] not in bad_words
 				if any(tag[1] in n for n in noun_types) and tag[0] not in bad_words:
 					pref = random.choice(prefixes).rstrip().lower()
 					new_word = pref + tag[0]
