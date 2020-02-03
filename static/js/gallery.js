@@ -14,11 +14,11 @@ window.addEventListener('load', function() {
 	if (inIFrame && isWordGallery) {
 		function resize() {
 			const height = document.getElementsByTagName('html')[0].scrollHeight;
-			window.parent.postMessage(['setHeight', height], "*");
+			// window.parent.postMessage(['setHeight', height], "*");
 		}
 		window.onresize = function() {
 			const height = document.getElementsByTagName('html')[0].scrollHeight;
-			window.parent.postMessage(['setHeight', height], "*");
+			// window.parent.postMessage(['setHeight', height], "*");
 		};
 		// For a full list of event types: https://developer.mozilla.org/en-US/docs/Web/API/document.createEvent
 		const el = document; // This can be your element on which to trigger the event
