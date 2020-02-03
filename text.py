@@ -37,7 +37,6 @@ def generate_text(text):
 			new_graf += new_sent + " "
 		new_text.append( new_graf )
 
-	print new_text
 	return new_text
 
 	# removing 	markov stuff for now 
