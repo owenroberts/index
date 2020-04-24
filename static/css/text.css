@@ -1,0 +1,8 @@
+#text, #markov {
+	line-height: 1.6;
+	width: 460px;
+}
+
+#text p {
+	margin: 0.5em 0;
+}

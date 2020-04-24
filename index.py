@@ -21,6 +21,7 @@ def word():
 
 @app.route('/input')
 def input():
+	print('input')
 	return render_template("input.html")
 
 @app.route('/noun')
@@ -86,6 +87,7 @@ def crazy_noun(noun):
 def noun(origin, noun):
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.read().splitlines()
+	print('orogin, noun', origin, noun)
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
 @app.route('/new/<origin>/<noun>/<prefix>')
@@ -286,6 +288,10 @@ def gallery_text(title=None):
 	new_text = text.generate_text( text_from_file )
 	return render_template("gallery-text.html", new_text = new_text)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
 
 # @app.errorhandler(Exception)
 # def handle_500(e):

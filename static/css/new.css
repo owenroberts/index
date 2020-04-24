@@ -1,0 +1,28 @@
+table {
+	font: inherit
+}
+
+table td {
+	vertical-align: top;
+	padding: 0 0.25em;
+	margin: 0;
+}
+
+#input-noun { 
+	padding: 1em 0; 
+}
+
+#nouns, #def-wrap, #prefix, #alphabetical { 
+	clear:both;
+}
+
+#prefix-word, #noun-word {
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+#noun-def ul {
+	padding-left:6px;
+	list-style:none;
+	margin:0;
+}

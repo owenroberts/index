@@ -61,7 +61,7 @@ window.addEventListener('load', function() {
 	getText(gallery);
 	let time = text.split(' ').length * 0.3 * 1000;
 	let start = performance.now();
-	let timing = true;
+	let timing = false; // true; // if true this counts down and updates the timiing
 	let offset = 0;
 
 	function reload() {
