@@ -250,6 +250,7 @@ def paste():
 		)
 
 @app.route('/gallery/word')
+@app.route('/gallery/word/')
 @app.route('/gallery/word/<noun>/<prefix>')
 def gallery_word(noun=None, prefix=None):
 	import random
@@ -275,6 +276,7 @@ def gallery_word(noun=None, prefix=None):
 
 	return render_template("gallery-word.html", prefix=prefix, prefix_def=prefix_def, noun=noun, defs=defs);
 
+@app.route('/gallery/text')
 @app.route('/gallery/text/')
 @app.route('/gallery/text/<title>')
 def gallery_text(title=None):

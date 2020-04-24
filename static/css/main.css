@@ -5,11 +5,11 @@ body {
 	--ui-color: black;
 	--highlight-color: #46FDFD; /* turqoise */
 
-	padding: 0; 
+	--column-width: 150px;
+
+	padding: 0 1em; 
 	margin: 0; 
 	font: 12pt/1.4 Arial, sans-serif; 
-	padding-left: 1em; 
-	padding-right: 1em; 
 	-webkit-text-size-adjust: 95%; 
 	min-width: 320px;
 
@@ -26,6 +26,10 @@ hr {
 	border-top: 1px solid black; 
 	margin-top:1em;
 	margin-bottom:1em;
+}
+
+h1 {
+	font-size: 1.25em;
 }
 
 h2 { 
@@ -85,10 +89,6 @@ input.underline {
 	border-bottom: 1px solid black;
 	font-size: 1em;
 }
-
-button {
-	
-
 
 .error {
 	color: #ff9b2d;

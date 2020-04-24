@@ -2,18 +2,17 @@
 	text-align: left; 
 	margin-left: auto; 
 	margin-right: auto; 
-	/*margin-bottom:-4em; */
-	margin-top:1em;
-	padding: 0;s
+	margin-top: 1em;
+	padding: 0;
+
 }
 
 #nouns, #prefixes, .prefix, #words, .column {
-	-webkit-columns: 150px;
-	-moz-columns: 150px;
-	columns: 150px;
+	-webkit-columns: var(--column-width);
+	-moz-columns: var(--column-width);
+	columns: var(--column-width);
 	-webkit-column-gap: 1em;
 	-moz-column-gap: 1em;
 	column-gap: 1em;
 	margin-top: 1em;
 }
-

@@ -8,6 +8,10 @@ table td {
 	margin: 0;
 }
 
+table td:first-child {
+	padding-left: 0;
+}
+
 #input-noun { 
 	padding: 1em 0; 
 }

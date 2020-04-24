@@ -39,12 +39,15 @@ window.addEventListener('load', function() {
 	const prevBtn = document.getElementById('previous');
 	const loading = document.getElementById('loading');
 
+	const storedNoun = localStorage.getItem('noun');
+	const storedPrefix = localStorage.getItem('prefix');
 
-	if (!inIFrame && isWordGallery) {
-		if (!localStorage.getItem('prefix') || !localStorage.getItem('noun'))
-			prevBtn.style.display = 'none';
-	} else {
-		prevBtn.style.display = 'none';
+	console.log(storedNoun, storedPrefix);
+
+
+	if (storedPrefix && storedNoun && isWordGallery && !inIFrame &&
+		storedPrefix != prefix && storedNoun != noun) {
+		prevBtn.style.display = 'block';
 	}
 
 	function getText(element) {
@@ -61,7 +64,7 @@ window.addEventListener('load', function() {
 	getText(gallery);
 	let time = text.split(' ').length * 0.3 * 1000;
 	let start = performance.now();
-	let timing = false; // true; // if true this counts down and updates the timiing
+	let timing = true; // if true this counts down and updates the timiing
 	let offset = 0;
 
 	function reload() {
@@ -70,7 +73,8 @@ window.addEventListener('load', function() {
 		if (!inIFrame && isWordGallery) {
 			localStorage.setItem('prefix', prefix);
 			localStorage.setItem('noun', noun);
-			window.location = window.location.href.split("?")[0];
+			// window.location = window.location.href.split("?")[0];
+			location.href = `${location.origin}/gallery/word`;
 		} else {
 			location.reload();
 		}
@@ -101,10 +105,11 @@ window.addEventListener('load', function() {
 	};
 
 	prevBtn.onclick = function() {
-		location.href = `${location.href}?noun=${localStorage.getItem('noun')}&prefix=${localStorage.getItem('prefix')}`;
+		location.href = `${location.origin}/gallery/word/${storedNoun}/${storedPrefix}`;
 	};
 
 	nextBtn.onclick = function() {
 		reload();
+		
 	};
 });
