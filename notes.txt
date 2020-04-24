@@ -141,4 +141,9 @@ But I actually don't think its necessary.
 	- should /new page resolve in the gallery style page?
 	- permalinks to the ayin site?
 	- share 
+		- downloads a weird .txt file on safari mobile, any way to get it to instagram?
+		- twitter link just works on mobile ... prob do more testing
+	- general layout looks like shit on mobile - update that regardless of other stuff
+	- phonemes
+		- example with genesis in english, then ipa, hebrew then ipa, map videos if possible
 		

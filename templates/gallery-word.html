@@ -46,11 +46,28 @@
 
 	instagram.onclick = function() {
 		html2canvas(document.getElementById('gallery')).then(canvas => {
-			const img = canvas.toDataURL("image/png");
+			const image = canvas.toDataURL("image/png");
+			/* worked on desktop 
 			const a = document.createElement('a');
 			a.download = `${prefix}${noun}.png`;
 			a.href = `data:${img}`;
 			a.click();
+			*/
+
+			// for ios 
+			const img = new Image();
+			img.crossOrigin = "Anonymous";
+			img.id = 'downloadImage';
+			img.src = image;
+			document.body.appendChild(img);
+
+			const a = document.createElement('a');
+			a.href = downloadImage.src; // id ?
+			a.download = `${prefix}${noun}.png`;
+			a.click();
+			document.body.removeChild(img);
+
+
 		});
 	};
 	
