@@ -42,9 +42,6 @@ window.addEventListener('load', function() {
 	const storedNoun = localStorage.getItem('noun');
 	const storedPrefix = localStorage.getItem('prefix');
 
-	console.log(storedNoun, storedPrefix);
-
-
 	if (storedPrefix && storedNoun && isWordGallery && !inIFrame &&
 		storedPrefix != prefix && storedNoun != noun) {
 		prevBtn.style.display = 'block';
