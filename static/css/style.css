@@ -5,7 +5,9 @@ body {
 	padding-left: 1em; 
 	padding-right: 1em; 
 	-webkit-text-size-adjust: 95%; 
-	min-width: 320px;}
+	min-width: 320px;
+
+	--ui-color: black;
 }
 
 div {
@@ -57,6 +59,23 @@ li:before {
 
 input {
 	background: transparent;
+}
+
+button {
+	margin-right: 0.5em;
+	font-size: 1em;
+	border: 1px solid var(--ui-color);
+	border-radius: 0.25em;
+}
+
+button:hover {
+	background-color: var(--ui-color);
+	color: white;
+}
+
+button:focus {
+	outline: 0;
+	box-shadow: 0 0 0 0.25em lightblue;
 }
 
 input.underline {
@@ -199,8 +218,9 @@ table td {
 	/*margin-right: 1em;*/
 }
 
+.gallery-text button,
 .gallery-text .text { 
-	font-size:2em; 
+	font-size: 1.5em; 
 }
 .gallery-text p {
 	margin: 0.25em 0;
@@ -208,7 +228,6 @@ table td {
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ 
 	#container	{max-width: 600px}
-
 }
 
 @media (min-width:620px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 

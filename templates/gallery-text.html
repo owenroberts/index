@@ -11,12 +11,29 @@
 			<p> {{ line|safe }} </p>
 		{% endfor %}
 	</div>
+
+	<button id="refresh"  >Refresh</button>
+	<div id="loading" style="display:none">
+		<p>Loading...</p>
+	</div>
+</div>
+
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/genText.js') }}"></script>
+{% endblock %}
+
+{% endblock %}
+
+
+
 <!-- 	<div class="text">
 		{% for line in mark  %}
 			<p> {{ line|safe }} </p>
 		{% endfor %}
 	</div> -->
-</div>
+
 
 <!-- <div id="new">
 	<p>Generate new text:</p>
@@ -31,16 +48,3 @@
 	</ul>
 </div>
  -->
-
-<button id="refresh" style="font-size:1em" >Refresh</button>
-<div id="loading" style="display:none">
-	<p>Loading...</p>
-</div>
-
-{% block script %}
-<script type="text/javascript" src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static',filename='js/genText.js') }}"></script>
-{% endblock %}
-
-{% endblock %}
-

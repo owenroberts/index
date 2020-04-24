@@ -24,10 +24,10 @@
 	<button id="next">Next</button>
 </div>
 
-<!-- <div id="social">
+<div id="social">
 	<button id="twitter">Share on Twitter</button>
 	<button id="instagram">Share on Instagram</button>
-</div> -->
+</div>
 
 <div id="loading" style="display:none">
 	<p>Loading...</p>
@@ -39,20 +39,20 @@
 	const prefix = '{{ prefix }}';
 	const noun =  '{{ noun }}';
 
-	// twitter.onclick = function() {
-	// 	const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;
-	// 	window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
-	// };
+	twitter.onclick = function() {
+		const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;
+		window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
+	};
 
-	// instagram.onclick = function() {
-	// 	html2canvas(document.getElementById('gallery')).then(canvas => {
-	// 		const img = canvas.toDataURL("image/png");
-	// 		const a = document.createElement('a');
-	// 		a.download = `${prefix}${noun}.png`;
-	// 		a.href = `data:${img}`;
-	// 		a.click();
-	// 	});
-	// };
+	instagram.onclick = function() {
+		html2canvas(document.getElementById('gallery')).then(canvas => {
+			const img = canvas.toDataURL("image/png");
+			const a = document.createElement('a');
+			a.download = `${prefix}${noun}.png`;
+			a.href = `data:${img}`;
+			a.click();
+		});
+	};
 	
 </script>
 <script>
@@ -60,6 +60,10 @@
 </script>
 <script src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
 <script src="{{ url_for('static',filename='js/gallery.js') }}"></script>
+<script>
+	const color = document.getElementsByClassName('new-word')[0].style.color;
+	document.body.style.setProperty('--ui-color', color);
+</script>
 {% endblock %}
 
 {% endblock %}

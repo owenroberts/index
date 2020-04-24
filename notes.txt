@@ -135,3 +135,10 @@ But I actually don't think its necessary.
 	- tweet text?
 	- insta format? - cant just share - can create image but then what does person do with it?
 	- bot
+
+4.24.2020
+- new update
+	- should /new page resolve in the gallery style page?
+	- permalinks to the ayin site?
+	- share 
+		
