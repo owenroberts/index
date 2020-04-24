@@ -93,7 +93,7 @@ def newword(origin, noun, prefix):
 def newword_orphan(noun, prefix):
 	defs = get_noun_defs(noun)
 	prefix_list = get_prefix_list(prefix)
- 	return render_template("newword.html", noun=noun, defs=defs, prefix_list = prefix_list)
+	return render_template("newword.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
 def get_noun_defs(noun):
 	from nltk.corpus import wordnet as wn
@@ -150,7 +150,7 @@ def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
 	noun_file = open('input/'+origin+'.txt')
-	print origin
+	print(origin)
 	nouns = noun_file.read().splitlines()
 	if (origin == "1514"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
@@ -282,11 +282,11 @@ def phon():
 	files = [f1, f2]
 	lineNum = min(len(f1), len(f2)) # get the lower text line num
 	gen = Mark(n=3, max=20)
-	print lineNum
+	print(lineNum)
 	for index, file in enumerate(files):
 		for line in file[:lineNum]:
 			line = line.strip()
-			line = re.sub('[\p{P}\p{Sm}]+', '', line)
+			line = re.sub(r'[\\p{P}\\p{Sm}]+', '', line) # match punctuation or math symbol
 			words = line.split(" ")
 			for word in words:
 				gen.feed(word, index)
@@ -296,6 +296,7 @@ def phon():
 		for j in range(10):
 			new = gen.generate()
 			words.append(new)
+		# also include transliterated sentence ...
 		sentences.append({
 			"sentence": " ".join(words),
 			"words": words
