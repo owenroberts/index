@@ -11,8 +11,6 @@
 		padding-right: 0;
 	}
 
-	
-
 	#controls button {
 		margin-top: 1em;
 	}
@@ -23,7 +21,6 @@
 	body {
 		font-size: 4vw;
 	}
-
 
 	#container	{
 		max-width: 760px;
