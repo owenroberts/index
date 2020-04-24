@@ -146,4 +146,4 @@ But I actually don't think its necessary.
 	- general layout looks like shit on mobile - update that regardless of other stuff
 	- phonemes
 		- example with genesis in english, then ipa, hebrew then ipa, map videos if possible
-		
+	- share looks fucked up bc canvas needs padding - fucked on mobile

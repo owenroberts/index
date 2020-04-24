@@ -1,4 +1,4 @@
-<!-- gallery-word.html {{ prefix }} {{ noun }}-->
+<!-- gallery-word.html {{ prefix }} {{ noun }} -->
 {% extends "layout.html" %}
 {% block nav %}
 <a href="/">< index home</a>
@@ -16,11 +16,11 @@
 	</ul>
 </div>
 
+<div id="progress"></div>
 <div id="controls">
-	<div id="progress"></div>
 	<button id="pause">Pause</button>
 	<button id="resume">Resume</button>
-	<button id="previous">Previous</button>
+	<button id="previous" style="display:none;">Previous</button>
 	<button id="next">Next</button>
 </div>
 
@@ -45,7 +45,13 @@
 	};
 
 	instagram.onclick = function() {
-		html2canvas(document.getElementById('gallery')).then(canvas => {
+		html2canvas(document.getElementById('gallery'), {
+			scale: 2,
+			x: -128,
+			y: -128,
+			width: 1024,
+			height: 1024
+		}).then(canvas => {
 			const image = canvas.toDataURL("image/png");
 			
 			/* worked only on desktop 
