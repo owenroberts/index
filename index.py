@@ -272,6 +272,69 @@ def gallery_text():
 		mark = data['poem']
 	)
 
+@app.route('/phon_input')
+def phone_input():
+	return render_template(
+		'phon_input.html'
+	)
+
+@app.route('/phon_string')
+def phon_trans():
+	string = request.args['string']
+	language = request.args['language']
+	
+	import re
+	import epitran
+	epi = epitran.Epitran(language)
+
+	trans = epi.transliterate(string)
+	line = trans.strip()
+	line = re.sub(r'[\\p{P}\\p{Sm}]+', '', line) # match punctuation or math symbol
+	words = line.split(" ")
+	sentence = []
+	for word in words:
+		sentence.append(word)
+
+	return render_template(
+		'phon_string.html',
+		string = string,
+		sentence = trans,
+		words = words
+	)
+
+@app.route('/phon/test')
+def phon_test():
+	import codecs
+	import re
+	gen_heb = codecs.open('phon/input/genesis_heb.txt', encoding="utf-8").readlines()
+	gen_eng = codecs.open('phon/input/genesis.txt', encoding="utf-8").readlines()
+	gen_heb_ipa = codecs.open('phon/input/genesis_heb_ipa.txt', encoding="utf-8").readlines()
+	gen_eng_ipa = codecs.open('phon/input/genesis_ipa.txt', encoding="utf-8").readlines()
+
+	first_sents = []
+	first_sents.append( gen_eng[0] )
+	first_sents.append( gen_eng_ipa[0] )
+	first_sents.append( gen_heb[0] )
+	first_sents.append( gen_heb_ipa[0] )
+	
+	sentences = []
+
+	for sent in first_sents:
+		_sent = sent.strip()
+		_sent = re.sub(r'[\\p{P}\\p{Sm}]+', '', sent)
+		words = _sent.split(' ')
+		sentences.append({
+			"sentence": sent,
+			"words": words
+		})
+
+
+	return render_template(
+		'phon.html',
+		sentences = sentences
+	)
+
+
 @app.route('/phon')
 def phon():
 	from phon.mark_letter_switch import MarkovGenerator as Mark

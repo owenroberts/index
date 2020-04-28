@@ -120,3 +120,18 @@ skype call with luke
 - https://github.com/dmort27/epitran // seems good so far
 - http://upodn.com/phon.php // english to IPA
 - english to IPA // https://github.com/mphilli/English_to_IPA
+
+4.24.2020
+- look at what's new?
+- https://www.ipachart.com/
+- need to map the ipa character from the text (transliterated by epitran) to the videos
+	- can manually name videos or map characters in json chart
+	- how do i know its accurate?
+	- voicing and mapping videos is different
+
+4.27.2020
+- trying to make input for phonetics
+	- epitran requires cmu flite, not sure how to include that on heroku
+
+4.28.2020
+- where did hebrew ipa come from?

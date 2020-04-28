@@ -3,13 +3,13 @@ import codecs
 
 epi = epitran.Epitran('spa-Latn')
 
-f = codecs.open('input/genesis_esp.txt', encoding="utf-8")
-o = open('input/genesis_esp_ipa.txt', 'w')
+f = codecs.open('input/genesis.txt', encoding="utf-8")
+# o = open('input/genesis_ipa.txt', 'w')
 
-for line in f:
-	#print line
-	#print 
+for line in f[:10]:
+	print(line) 
 	t = epi.transliterate(line)
-	o.write(t.encode('utf8'))
+	print(t)
+	# o.write(t.encode('utf8'))
 
-o.close()
+# o.close()

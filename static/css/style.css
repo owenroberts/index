@@ -43,6 +43,38 @@ input.underline:focus {
 	outline:none;
 }
 
+label, textarea {
+	display: block;
+}
+
+button, label, input {
+	font: inherit;
+}
+
+button, input[type="submit"] {
+	background: inherit;
+	border: inherit;
+	border-radius: 0.25em;
+	border: 1px solid black;
+	margin: 3px;
+	margin-left: 0;
+	cursor: pointer;
+}
+
+#genesis input[type="text"] {
+	display: block;
+	width: 100%;
+	border: 0;
+}
+
+#genesis input[type="text"]:focus {
+	outline: none;
+}
+
+#transliteration {
+	font-size: 20px;
+}
+
 .error {
 	color: #ff9b2d;
 }
@@ -158,14 +190,14 @@ table td {
 	display: inline-block;
 }
 
-.phon_word span:nth-child(odd) {
+/*.phon_word span:nth-child(odd) {
 	color:green;
 }
 
 .phon_word span:first-child, .phon_word span:nth-child(even) {
 	color:blue;
 }
-
+*/
 
 .orig, .subs {
 	display:inline-block;
@@ -173,8 +205,6 @@ table td {
 	padding: 3px;
 	cursor: pointer;
 }
-
-
 
 .orig {
 	color: blue;

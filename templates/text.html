@@ -5,7 +5,6 @@
 <p>
 	<a href="/text">text</a> \
 	<a href="/text/{{title}}">{{title}}</a> \
-
 </p>
 
 <div id="text" style="border-bottom: 1px solid black;">
@@ -13,6 +12,7 @@
 		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
+
 <div id="markov">
 	{% for line in mark  %}
 		<p> {{ line|safe }} </p>

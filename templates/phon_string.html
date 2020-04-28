@@ -1,0 +1,31 @@
+<!-- phon_input.html -->
+{% extends "layout.html" %}
+{% block index1 %}
+{% endblock %}
+{% block content %}
+
+	<div id="transliteration">
+		<div class="crumbs"><a href="/phon_input">Back</a></div>
+
+		<div id="original">{{ string }}</div>
+
+		<div class="phon_sentence" data-sentence="{{ sentence }}">
+			{% for word in words %}
+			<div class="phon_word" data-word="{{ word }}">
+				{% for letter in word %}<span data-letter="{{ letter }}">{{ letter }}</span>{% endfor %}
+			</div>
+			{% endfor %}
+			<button class="play">Listen</button>
+		</div>
+
+		<video id="video" mute width="640" height="640"></video>
+	</div>
+
+	<script type="text/javascript" src="{{ url_for('static',filename='js/synth/mespeak.js') }}"></script>
+  	<script type="text/javascript" src="{{ url_for('static',filename='js/phon.js') }}"></script>
+
+{% endblock %}
+{% block script %}
+{% endblock %}
+{% block index2 %}
+{% endblock %}

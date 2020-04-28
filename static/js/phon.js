@@ -143,12 +143,152 @@ function process(uipa) {
 	meSpeak.play(spoken);
 }
 
+const videoMap = {
+	// https://www.seeingspeech.ac.uk/ipa-charts/
+	// consonants (pulmonic) left to right, top to bottom
+	'p': 'MRI_vl_bilabial_plosive',
+	'b': 'MRI_vd_bilabial_plosive',
+	't': 'MRI_vl_alveolar_plosive',
+	'd': 'MRI_vd_alveolar_plosive',
+	'ʈ': 'MRI_vl_retroflex_plosive',
+	'ɖ': 'MRI_vd_retroflex_plosive',
+	'c': 'MRI_vl_palatal_plosive',
+	'ɟ': 'MRI_vd_palatal_plosive',
+	'k': 'MRI_vl_velar_plosive',
+	'g': 'MRI_vd_velar_plosive',
+	'q': 'MRI_vl_uvular_plosive',
+	'ɢ': 'MRI_vd_uvular_plosive',
+	'ʔ': 'MRI_vl_glottal_plosive',
+	'm': 'MRI_vd_bilabial_nasal',
+	'ɱ': 'MRI_vd_labiodental_nasal',
+	'n': 'MRI_vd_alveolar_nasal',
+	'ɳ': 'MRI_vd_retroflex_nasal',
+	'ɲ': 'MRI_vd_palatal_nasal',
+	'ŋ': 'MRI_vd_velar_nasal',
+	'ɴ': 'MRI_vd_uvular_nasal',
+	'ʙ': 'MRI_vd_bilabial_trill',
+	'r': 'MRI_vd_alveolar_trill',
+	'ʀ': 'MRI_vd_uvular_trill',
+	'ⱱ': 'MRI_vd_labiodental_flap',
+	'ɾ': 'MRI_vd_alveolar_tap',
+	'ɽ': 'MRI_vd_retroflex_flap',
+	'ɸ': 'MRI_vl_bilabial_fricative', 
+	'β': 'MRI_vd_bilabial_fricative',
+	'f': 'MRI_vl_labiodental_fricative',
+	'v': 'MRI_vd_labiodental_fricative',
+	'θ': 'MRI_vl_dental_fricative',
+	'ð': 'MRI_vd_dental_fricative',	
+	's': 'MRI_vl_alveolar_fricative',
+	'z': 'MRI_vd_alveolar_fricative',
+	'ʃ': 'MRI_vl_postalveolar_fricative',
+	'ʒ': 'MRI_vd_postalveolar_fricative',	
+	'ʂ': 'MRI_vl_retroflex_fricative',
+	'ʐ': 'MRI_vd_retroflex_fricative',	
+	'ç': 'MRI_vl_palatal_fricative',
+	'ʝ': 'MRI_vd_palatal_fricative',	
+	'x': 'MRI_vl_velar_fricative',
+	'ɣ': 'MRI_vd_velar_fricative',	
+	'χ': 'MRI_vl_uvular_fricative',
+	'ʁ': 'MRI_vd_uvular_fricative',	
+	'ħ': 'MRI_vl_pharyngeal_fricative',
+	'ʕ': 'MRI_vd_pharyngeal_fricative',	
+	'h': 'MRI_vl_glottal_fricative',
+	'ɦ': 'MRI_vd_glottal_fricative',
+	'ɬ': 'MRI_vl_alveolar-lateral_fricative',
+	'ɮ': 'MRI_vd_alveolar_approximant',
+	'ʋ': 'MRI_vd_labiodental_approximant',
+	'ɹ': 'MRI_vd_alveolar_approximant',
+	'ɻ': 'MRI_vd_retroflex_approximant',
+	'j': 'MRI_vd_palatal_approximant',
+	'ɰ': '', // impossible
+	'l': 'MRI_vd_alveolar-lateral_approximant',
+	'ɭ': 'MRI_vd_retroflex-lateral_approximant',
+	'ʎ': 'MRI_vd_palatal-lateral_approximant',
+	'ʟ': 'MRI_vd_velar_approximant',
+
+	// Consonants (Non-Pulmonic)
+	//  left to right, top to bottom
+
+	'ʘ': 'MRI_bilabial_click',
+	'ɓ': 'MRI_vd_bilabial_implosive',		 	 
+	'ǀ': 'MRI_dental_click',
+	'ɗ': 'MRI_vd_alveolar_implosive',
+	'pʼ': 'MRI_vl_bilabial_ejective',	
+	'ǃ': 'MRI_postalveolar_click',
+	'ʄ': 'MRI_vd_palatal_implosive_non',
+	'tʼ': 'MRI_vl_alveolar_ejective',
+	'ǂ': 'MRI_palato-alveolar_click',
+	'ɠ': 'MRI_vd_velar_implosive',
+	'kʼ': 'MRI_vl_velar_ejective',	
+	'ǁ': 'MRI_alveolar-lateral_click',
+	'ʛ': 'MRI_vd_uvular_implosive',
+	'sʼ': 'MRI_vl_alveolar_fricative_ejective',
+
+	// Vowels
+	'i': 'MRI_cardinal_1_vowel',
+	'y': 'MRI_cardinal_9_vowel',
+	'ɨ': 'MRI6-58_03_cls_cnt_new',
+	'ʉ': 'MRI6-58_06_cls_cnt_rnd_new',
+	'ɯ': 'MRI_cardinal_16_vowel',
+	'u': 'MRI_cardinal_8_vowel',
+	'ɪ': 'MRI_front_close_float_vowel',
+	// 'ʏ': '', // wiki only? https://en.wikipedia.org/wiki/International_Phonetic_Alphabet_chart
+	'ʊ': 'MRI_close_back_float_vowel',
+	'e': 'MRI_cardinal_2_vowel',
+	'ø': 'MRI_cardinal_10_vowel',
+	// 'ɘ': '', wiki only
+	// 'ɵ': '', wiki only
+	'ɤ': 'MRI_cardinal_15_vowel',
+	'o': 'MRI_cardinal_7_vowel',
+	// 'ø̞': '',
+	'ə': 'MRI_central_schwa_float_vowel',
+	// 'o̞': '',
+	'ɛ': 'MRI_cardinal_3_vowel',
+	'œ': 'MRI_cardinal_11_vowel',
+	// 'ɜ': '',
+	// 'ɞ': '',
+	'ʌ': 'MRI_cardinal_14_vowel',
+	'ɔ': 'MRI_cardinal_6_vowel',
+	// 'æ': '',
+	// 'ɐ': '',
+	'a': 'MRI_cardinal_4_vowel',
+	'ɶ': 'MRI_cardinal_12_vowel',
+	// 'ä': '',
+	'ɑ': 'MRI_cardinal_5_vowel',
+	'ɒ': 'MRI_cardinal_13_vowel'
+};
+
+const videoPlayer = document.getElementById('video');
+videoPlayer.volume = 0;
+let playPromise;
+let playWaiting = false;
 
 var words = document.getElementsByClassName("phon_word");
 for (let i = 0; i < words.length; i++) {
 	words[i].addEventListener("click", function() {
 		process(this.dataset.word);
 	});
+
+	words[i].style.color = `hsla(${ getRandomInt(120, 350) }, ${getRandomInt(50, 90)}%, ${getRandomInt(50, 70)}%, 1)`;
+
+	const letters = words[i].children; 
+	for (let j = 0; j < letters.length; j++) {
+		letters[j].addEventListener('mouseover', ev => {
+			const letter = letters[j].dataset.letter;
+			const src = `/static/seeing_videos/${videoMap[letter]}.mp4`;
+			if (videoMap[letter] && src != videoPlayer.src.split('/').pop()) {
+				if (!playWaiting) {
+					videoPlayer.src = src;
+					playWaiting = true;
+					playPromise = videoPlayer.play();
+					playPromise.then(() => {
+						playWaiting = false;
+					});
+				} 
+				
+			}
+		});
+	}
 }
 
 var playButtons = document.getElementsByClassName('play');
@@ -158,3 +298,4 @@ for (let i = 0; i < playButtons.length; i++) {
 		process(sentence);
 	});
 }
+
