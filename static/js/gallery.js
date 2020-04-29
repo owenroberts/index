@@ -1,33 +1,5 @@
 window.addEventListener('load', function() {
 
-	function inIframe () {
- 	   try {
-    	    return window.self !== window.top;
-    	} catch (e) {
-        	return true;
-    	}
-	}
-
-	const inIFrame = inIframe();
-	console.log('in iframe?', inIFrame);
-
-	if (inIFrame && isWordGallery) {
-		function resize() {
-			const height = document.getElementsByTagName('html')[0].scrollHeight;
-			// window.parent.postMessage(['setHeight', height], "*");
-		}
-		window.onresize = function() {
-			const height = document.getElementsByTagName('html')[0].scrollHeight;
-			// window.parent.postMessage(['setHeight', height], "*");
-		};
-		// For a full list of event types: https://developer.mozilla.org/en-US/docs/Web/API/document.createEvent
-		const el = document; // This can be your element on which to trigger the event
-		const event = document.createEvent('HTMLEvents');
-		event.initEvent('resize', true, false);
-		el.dispatchEvent(event);
-		// https://stackoverflow.com/questions/39237485/how-to-trigger-window-resize-event-using-vanilla-javascript/39237538
-	}
-
 	const words = document.getElementsByClassName('new-word');
 
 	const gallery = document.getElementById('gallery');

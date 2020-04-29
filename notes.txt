@@ -135,3 +135,15 @@ But I actually don't think its necessary.
 	- tweet text?
 	- insta format? - cant just share - can create image but then what does person do with it?
 	- bot
+
+4.24.2020
+- new update
+	- should /new page resolve in the gallery style page?
+	- permalinks to the ayin site?
+	- share 
+		- downloads a weird .txt file on safari mobile, any way to get it to instagram?
+		- twitter link just works on mobile ... prob do more testing
+	- general layout looks like shit on mobile - update that regardless of other stuff
+	- phonemes
+		- example with genesis in english, then ipa, hebrew then ipa, map videos if possible
+	- share looks fucked up bc canvas needs padding - fucked on mobile
