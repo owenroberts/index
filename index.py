@@ -6,8 +6,6 @@ import geneword
 app = Flask(__name__)
 gen = geneword.Geneword()
 
-print(gen)
-
 if "DYNO" in os.environ:
 	# Always use SSL if the app is running on Heroku (not locally)
     sslify = SSLify(app, subdomains=True)
@@ -266,14 +264,17 @@ def random_gallery_word():
 def gallery_word(noun=None, prefix=None):
 
 	referer = request.headers.get('Referer')
+	print(referer)
 
-	from_input = True # pause gallery if linked 
+	#from_input = True # pause gallery if linked 
 	# needs to look at referer
+	start_slideshow = 'noun' not in referer
+	# don't start slide show if it comes from the noun create page
+	print('start_slideshow', start_slideshow)
 
 	if noun == None:
 		noun, prefix = gen.random_gallery_word()
-	print(gen)
-	print(noun, prefix)
+
 	defs = gen.get_noun_defs(noun)
 	prefix_def = gen.get_prefix_def(prefix)
 
@@ -282,7 +283,7 @@ def gallery_word(noun=None, prefix=None):
 		prefix_def = prefix_def, 
 		noun = noun, 
 		defs = defs,
-		from_input = from_input,
+		start_slideshow = start_slideshow,
 		referer = referer
 	)
 

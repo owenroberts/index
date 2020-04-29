@@ -61,11 +61,12 @@ window.addEventListener('load', function() {
 	getText(gallery);
 	let time = text.split(' ').length * 0.3 * 1000;
 	let start = performance.now();
-	let timing = !fromInput; // if true this counts down and updates the timiing
+	let timing = startSlideshow; // if true this counts down and updates the timiing
 	let offset = 0;
 
-	if (fromInput) {
+	if (!startSlideshow) {
 		document.getElementById('slideshow').onclick = function() {
+			start = performance.now();
 			timing = true;
 			this.remove();
 		};

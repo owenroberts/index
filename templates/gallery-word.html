@@ -22,7 +22,7 @@
 
 <div id="progress"></div>
 <div id="controls">
-	{% if from_input %} 
+	{% if start_slideshow == False %} 
 		<button id="slideshow">Begin Gallery Slideshow</button> 
 	{% endif %}
 	<button id="pause">Pause</button>
@@ -45,7 +45,7 @@
 <script>
 	const prefix = '{{ prefix }}';
 	const noun =  '{{ noun }}';
-	const fromInput = '{{ from_input }}' == 'True';
+	const startSlideshow = '{{ start_slideshow }}' == 'True';
 
 	// twitter.onclick = function() {
 	// 	const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;

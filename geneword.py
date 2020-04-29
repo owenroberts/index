@@ -13,8 +13,6 @@ class Geneword():
 		prefixes = prefix_file.read().splitlines()
 		prefix = random.choice(prefixes).rstrip().lower()
 
-		
-
 		return noun, prefix
 
 	def get_prefix_def(self, prefix):
