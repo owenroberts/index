@@ -132,6 +132,7 @@ skype call with luke
 4.27.2020
 - trying to make input for phonetics
 	- epitran requires cmu flite, not sure how to include that on heroku
+	- worry about this after we actually decide this is worth pursuing
 
 4.28.2020
 - where did hebrew ipa come from?
