@@ -1,6 +1,11 @@
 from flask import Flask, redirect, url_for, request, render_template
+from flask_sslify import SSLify
+import os
 
 app = Flask(__name__)
+if "DYNO" in os.environ:
+	# Always use SSL if the app is running on Heroku (not locally)
+    sslify = SSLify(app, subdomains=True)
 
 @app.route('/')
 def index():
@@ -16,6 +21,7 @@ def word():
 
 @app.route('/input')
 def input():
+	print('input')
 	return render_template("input.html")
 
 @app.route('/noun')
@@ -80,7 +86,8 @@ def crazy_noun(noun):
 @app.route('/noun/<origin>/<noun>')
 def noun(origin, noun):
 	prefix_file = open("input/pref.txt")
-	prefixes = prefix_file.read().splitlines() 
+	prefixes = prefix_file.read().splitlines()
+	print('orogin, noun', origin, noun)
 	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
 
 @app.route('/new/<origin>/<noun>/<prefix>')
@@ -93,7 +100,7 @@ def new_word(origin, noun, prefix):
 def new_word_orphan(noun, prefix):
 	defs = get_noun_defs(noun)
 	prefix_list = get_prefix_list(prefix)
- 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
+	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
 def get_noun_defs(noun):
 	from nltk.corpus import wordnet as wn
@@ -103,7 +110,7 @@ def get_noun_defs(noun):
 		defs.append(s.definition())
 	if len(sets) == 0:
 		import csv
-		with open('input/defs.csv', 'rb') as f:
+		with open('input/defs.csv', 'rt') as f:
 			reader = csv.reader(f)
 			for row in reader:
 				if row[0] == noun:
@@ -121,7 +128,7 @@ def get_prefix_list(prefix):
 		prefixes = [prefix]
 	for pref in prefixes:
 			prefix_list.append({"word":pref, "def":""})
-	with open('input/prefix.csv', 'rb') as f:
+	with open('input/prefix.csv', 'rt') as f:
 		reader = csv.reader(f)
 		for row in reader:
 			for pref in prefix_list:
@@ -138,7 +145,6 @@ def get_prefix_list(prefix):
 			prefix_list[0]['def'] = "Not found."
 	return prefix_list
 
-
 @app.route('/nouns/<origin>')
 def nouns(origin):
 	prefix_file = open("input/pref.txt")
@@ -150,9 +156,8 @@ def num_nouns(origin, prefix):
 	if prefix == "input":
 		prefix = request.args['prefix']
 	noun_file = open('input/'+origin+'.txt')
-	print origin
 	nouns = noun_file.read().splitlines()
-	if (origin == "1514"):
+	if (origin == "1,514"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
 	else:
 		alpha = "abcdefghijklmnopqrstuvwxyz"
@@ -180,7 +185,6 @@ def nouns_alpha(origin, prefix, letter):
 			letternouns.append( noun )
 	return render_template("nouns-pref.html", origin=origin, nouns=letternouns, prefix=prefix, letter=letter )
 
-
 @app.route('/text')
 def gen():
 	if request.method == 'GET' and 'title' in request.args:
@@ -192,13 +196,14 @@ def gen():
 def text(title):
 	import text
 	text_from_file = text.load_text_from_file(title)
-	data = text.generate_text( text_from_file )
+	# data = text.generate_text( text_from_file )
+	new_text = text.generate_text( text_from_file )
 	return render_template(
 		"text.html",
 		title = title,
-		newtext = data['lines'][:10],
-		mark = data['poem']
+		new_text = new_text
 	)
+	
 
 @app.route('/fromurl')
 def from_url():
@@ -213,65 +218,89 @@ def from_url():
 		text_from_url = ""
 		for p in soup.find_all('p'):
 			text_from_url += p.get_text()
-		data = text.generate_text( text_from_url )
+		# data = text.generate_text( text_from_url )
+		new_text = text.generate_text( text_from_url )
+
 		return render_template(
 			"text.html",
 			title = soup.title.string,
-			newtext = data['lines'][:10],
-			mark = data['poem']
+			new_text = new_text
+			# mark = data['poem']
 		)
 	except:
 		return render_template(
 			"gen.html",
 			error = "Sorry, that URL did not load correctly.  Try another URL."
 		)
-	
 
 @app.route('/paste', methods=['GET', 'POST'])
 def paste():
 	import text
-	data = text.generate_text( request.form['text'] )
-	return render_template(
-		"text.html",
-		title = "?",
-		newtext = data['lines'][:10],
-		mark = data['poem']
-	)
+	try:
+		new_text = text.generate_text( request.form['text'] )
+		return render_template(
+			"text.html",
+			title = "text",
+			new_text = new_text
+		)
+	except:
+		return render_template(
+			"gen.html",
+			error = "Sorry, we encountered an Error.  Try another text."
+		)
 
 @app.route('/gallery/word')
-def gallery_word():
+@app.route('/gallery/word/')
+@app.route('/gallery/word/<noun>/<prefix>')
+def gallery_word(noun=None, prefix=None):
 	import random
 	import csv
-	noun_file = open('input/55,191.txt')
-	nouns = noun_file.read().splitlines()
-	noun = random.choice(nouns).rstrip().lower()
+
+	if noun == None:
+		noun_file = open('input/37,199.txt')
+		nouns = noun_file.read().splitlines()
+		noun = random.choice(nouns).rstrip().lower()
 	defs = get_noun_defs(noun)
 	
-	prefix_file = open('input/pref.txt')
-	prefixes = prefix_file.read().splitlines()
-	prefix = random.choice(prefixes).rstrip().lower()
+	if prefix == None:
+		prefix_file = open('input/pref.txt')
+		prefixes = prefix_file.read().splitlines()
+		prefix = random.choice(prefixes).rstrip().lower()
 
-	prefixdef = ""
-	with open('input/prefix.csv', 'rb') as f:
+	prefix_def = ""
+	with open('input/prefix.csv', 'rt') as f:
 		reader = csv.reader(f)
 		for row in reader:
 			if row[0] == prefix:
-				prefixdef = row[1]
+				prefix_def = row[1]
 
-	return render_template("gallery-word.html", prefix=prefix, prefixdef=prefixdef, noun=noun, defs=defs);
-
+	return render_template("gallery-word.html", prefix=prefix, prefix_def=prefix_def, noun=noun, defs=defs);
 
 @app.route('/gallery/text')
-def gallery_text():
+@app.route('/gallery/text/')
+@app.route('/gallery/text/<title>')
+def gallery_text(title=None):
 	import text
-	text_from_file = text.load_text_from_file("genesis")
-	data = text.generate_text( text_from_file )
-	return render_template(
-		"gallery-text.html",
-		newtext = data['lines'][:8],
-		mark = data['poem']
-	)
+	from random import choice
+
+	title = title if title else choice(['genesis', 'a-day', 'the-waves', 'a-tale-of-two-cities', 'moby-dick', 'the-red-wheelbarrow'])
+
+	text_from_file = text.load_text_from_file( title )
+
+	new_text = text.generate_text( text_from_file )
+	return render_template("gallery-text.html", new_text = new_text)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
+# @app.errorhandler(Exception)
+# def handle_500(e):
+# 	print(e)
+# 	return render_template("500.html", referrer = request.headers.get('Referer')), 500
+	
 
 if __name__ == '__main__':
-	#app.run(debug=True)
+	# app.run(debug=True)
 	app.run()

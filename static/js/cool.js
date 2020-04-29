@@ -5,7 +5,7 @@ function getRandomInt(min, max) {
 var asyncLoop = function(o) {
 	var i = -1;
 	var loop = function() {
-		if (stop) return;
+		if (window.stopLoop) return;
 		i++;
 		if (i == o.length) { 
 			o.callback(); 

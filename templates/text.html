@@ -4,28 +4,30 @@
 
 <p>
 	<a href="/text">text</a> \
-	<a href="/text/{{title}}">{{title}}</a> \
+	<a href="/text/{{title}}">{{ title }}</a> \
 
 </p>
 
-<div id="text" style="border-bottom: 1px solid black;">
-	{% for line in newtext  %}
+<div id="text">
+	{% for line in new_text  %}
 		<p> {{ line|safe }} </p>
 	{% endfor %}
 </div>
-<div id="markov">
+<!-- <div id="markov">
 	{% for line in mark  %}
 		<p> {{ line|safe }} </p>
 	{% endfor %}
-</div>
+</div> -->
 <br>
-<button onclick="document.location.reload(true);">Refresh</button>
+<button id="refresh">Refresh</button>
+<div id="loading" style="display:none">
+	<p>Loading...</p>
+</div>
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='js/newWordLinks.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/genText.js') }}"></script>
+{% endblock %}
 
 {% endblock %}
-{% block script %}
-<script>
-$("a[href*='new']").each( function() {
-	$(this).css({color: "hsla("+getRandomInt(0,360)+","+getRandomInt(50,100)+"%,"+getRandomInt(40, 70)+"%,1)" });
-});
-</script>
-{% endblock %}
+

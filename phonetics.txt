@@ -28,3 +28,11 @@ https://pypi.python.org/pypi/dragonmapper
 
 http://texttophonetic.appspot.com/
 - api version
+
+4.20.2020
+- revisiting phonetics stuff with tom
+	- original ideas for generating speech were very ambitious, the theory is simple but the output is ridiculously complex
+	- nltk is good at analysis, doesn't do generation
+	- markov, cfg or neural net for generation, but we don't have good input 
+	- start with proof of concept approach, take on poem/translation and map phonetic changes/similarities
+	- think about source languages and output goals

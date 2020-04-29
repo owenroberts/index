@@ -96,4 +96,42 @@ Description
 - take out 1514 words - just use 37199 and just say "all nouns" or "all non proper nouns" or something
 - underline links?
 - back button on word/text pages
-- 
+- redo text gallery with two random and no ellipses
+
+1.24.2020
+This is actually 1514. And I kind of want to take that whole section out. This may be a bigger discussion but that 1514 list is weird to me, I don't know where it came from but it looks pretty similar to this: https://www.talkenglish.com/vocabulary/top-1500-nouns.aspx
+
+If we want to continue using a smaller list of "common" nouns I would prefer something like this:
+http://www.desiquintans.com/nounlist
+
+But I actually don't think its necessary.
+
+- about page
+- Geneword: Index 1
+- relaunch bot
+- take out markov from text generation
+	- add in controls 
+- add some new texts 
+	- 
+	... canonical texts? - 
+		- communist manifesto - fix
+		- *moby dick
+		- frankenstein
+		- *tale of two cities
+		- beowulf
+		- awakening
+		- *the waves
+		- death of a salesman
+		- as i lay dying
+		- beloved
+		- lord of flies
+		- the scarlet letter
+		- notes of a native son
+		- emily dickinson
+		- the waves
+
+- check with tom/eden
+	- which texts?
+	- tweet text?
+	- insta format? - cant just share - can create image but then what does person do with it?
+	- bot

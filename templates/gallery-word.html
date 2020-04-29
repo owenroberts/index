@@ -1,25 +1,66 @@
-<!-- gallery-word.html {{ prefix }} {{ noun }}-->
+<!-- gallery-word.html {{ prefix }} {{ noun }} -->
 {% extends "layout.html" %}
 {% block nav %}
 <a href="/">< index home</a>
 {% endblock %}
 {% block content %}
 
-<div id="gallery-word">
-	<p><a class="new-word" href="/new/{{ noun }}/{{ prefix }}">{{ prefix }}{{ noun }}</a></p>
-	<p>{{ prefixdef }}</p>
+<div id="gallery" class="gallery-word">
+	<p><a class="new-word" href="#">{{ prefix }}{{ noun }}</a></p>
+	<p>{{ prefix_def }}</p>
 	<p>+</p>
-	<p id="noun-def">
-		<ul>
-			{% for def in defs %}
-			<li>{{ def }}</li>
-			{% endfor %}
-		</ul>
-	</p>
+	<ul>
+		{% for def in defs %}
+		<li>{{ def }}</li>
+		{% endfor %}
+	</ul>
 </div>
 
-{% endblock %}
+<div id="progress"></div>
+<div id="controls">
+	<button id="pause">Pause</button>
+	<button id="resume">Resume</button>
+	<button id="previous" style="display:none;">Previous</button>
+	<button id="next">Next</button>
+</div>
+
+<!-- <div id="social">
+	<button id="twitter">Share on Twitter</button>
+	<button id="instagram">Share on Instagram</button>
+</div> -->
+
+<div id="loading" style="display:none">
+	<p>Loading...</p>
+</div>
 
 {% block script %}
-<script type="text/javascript" src="{{ url_for('static',filename='js/gallery.js') }}"></script>
+<script src="{{ url_for('static',filename='js/html2canvas.min.js') }}"></script>
+<script>
+	const prefix = '{{ prefix }}';
+	const noun =  '{{ noun }}';
+
+	// twitter.onclick = function() {
+	// 	const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;
+	// 	window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
+	// };
+
+	// instagram.onclick = function() {
+	// 	html2canvas(document.getElementById('gallery')).then(canvas => {
+	// 		const img = canvas.toDataURL("image/png");
+	// 		const a = document.createElement('a');
+	// 		a.download = `${prefix}${noun}.png`;
+	// 		a.href = `data:${img}`;
+	// 		a.click();
+	// 	});
+	// };
+	
+</script>
+<script>
+	const isWordGallery = true;
+</script>
+<script src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
+<script src="{{ url_for('static',filename='js/gallery.js') }}"></script>
 {% endblock %}
+
+{% endblock %}
+

@@ -1,12 +1,13 @@
 <!-- noun.html -->
 {% extends "layout.html" %}
 {% block content %}
+{{ prefixed }}
 <p class="crumbs">
 	<a href="/word">word</a> \ 
 	{% if origin == "1480" or origin == "55,191" %}
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
 	{% else %}
-	<a href="/{{origin}}">{{origin}}</a> \ 
+	<a href="/{{origin}}">{{ origin }}</a> \ 
 	{% endif %}
 	{{ noun }}
 </p>
@@ -18,5 +19,10 @@
 		<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="new-word">{{prefix}}{{noun}}</a>
 	{% endfor %}
 </div>
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='js/wordAnimator.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/newWordLinks.js') }}"></script>
+{% endblock %}
 
 {% endblock %}

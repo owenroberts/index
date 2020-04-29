@@ -4,7 +4,7 @@
 <p class="crumbs">
 	<a href="/word">word</a> \
 	
-	{% if origin == "1514" or origin == "55,191" %}
+	{% if origin == "1,514" or origin == "37,199" %}
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
 	{% else %}
 	<a href="/{{origin}}">{{origin}}</a> \ 
@@ -21,13 +21,20 @@
 
 <div>
 	<span id="counter"></span> <br>
-	<a onclick="stop=true;">stop loading</a> <br>
+	<a onclick="stopLoop=true;">stop loading</a> <br>
 </div>
 
 <div id="words"></div>
 
-{% for noun in nouns %}
-	<a href="/new/{{origin}}/{{noun}}/{{prefix}}" style="display:none;" class="new-word">{{ prefix }}{{ noun }}</a>
-{% endfor %}
+<div style="display: none">
+	{% for noun in nouns %}
+		<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="new-word">{{ prefix }}{{ noun }}</a>
+	{% endfor %}
+</div>
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='js/wordAnimator.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/newWordLinks.js') }}"></script>
+{% endblock %}
 
 {% endblock %}

@@ -1,0 +1,105 @@
+* { box-sizing: border-box; }
+
+body {
+
+	--ui-color: black;
+	--highlight-color: #46FDFD; /* turqoise */
+
+	--column-width: 150px;
+
+	padding: 0 1em; 
+	margin: 0; 
+	font: 12pt/1.4 Arial, sans-serif; 
+	-webkit-text-size-adjust: 95%; 
+	min-width: 320px;
+
+}
+
+div {
+	margin: 1em 0;
+}
+
+hr { 
+	width: auto; 
+	height: 1px; 
+	border: 0; 
+	border-top: 1px solid black; 
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
+h1 {
+	font-size: 1.25em;
+}
+
+h2 { 
+	font-size: 1.4em; 
+	margin: 0.1em 0;
+}
+
+a {
+	text-decoration: none;
+	color:black;
+	cursor:pointer;
+}
+
+a:hover { 
+	color: var(--highlight-color); 
+}
+
+ul { 
+	list-style: none; 
+	padding: 0; 
+	margin-left: 8px; 
+}
+
+li:before { 
+	content: "—"; 
+	position:relative; 
+	left: -6px;
+}
+
+button, input {
+	font-size: inherit;
+	background: transparent;
+	margin-right: 0.5em;
+}
+
+input[type="submit"],
+button {
+	font-size: 1em;
+	border: 1px solid var(--ui-color);
+	border-radius: 0.25em;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: var(--ui-color);
+	color: white;
+}
+
+input:focus,
+button:focus {
+	outline: 0;
+	box-shadow: 0 0 0 0.25em var(--highlight-color);
+}
+
+input.underline {
+	border: none;
+	border-bottom: 1px solid black;
+	font-size: 1em;
+}
+
+.error {
+	color: #ff9b2d;
+}
+
+.crumbs a {
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+}
+
+#about a {
+	text-decoration: underline;
+}
+.active { font-weight: bold; }
