@@ -5,6 +5,10 @@
 {% endblock %}
 {% block content %}
 
+{% if from_input %} 
+	<a id="referer" href="{{ referer }}">Back</a> 
+{% endif %}
+
 <div id="gallery" class="gallery-word">
 	<p><a class="new-word" href="#">{{ prefix }}{{ noun }}</a></p>
 	<p>{{ prefix_def }}</p>
@@ -18,6 +22,9 @@
 
 <div id="progress"></div>
 <div id="controls">
+	{% if from_input %} 
+		<button id="slideshow">Begin Gallery Slideshow</button> 
+	{% endif %}
 	<button id="pause">Pause</button>
 	<button id="resume">Resume</button>
 	<button id="previous" style="display:none;">Previous</button>
@@ -38,6 +45,7 @@
 <script>
 	const prefix = '{{ prefix }}';
 	const noun =  '{{ noun }}';
+	const fromInput = '{{ from_input }}' == 'True';
 
 	// twitter.onclick = function() {
 	// 	const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;

@@ -71,5 +71,5 @@ if __name__ == '__main__':
 		generator.feed(line)
 
 	for i in range(14):
-		print generator.generate()
+		print( generator.generate() )
 

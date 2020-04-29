@@ -61,8 +61,15 @@ window.addEventListener('load', function() {
 	getText(gallery);
 	let time = text.split(' ').length * 0.3 * 1000;
 	let start = performance.now();
-	let timing = true; // if true this counts down and updates the timiing
+	let timing = !fromInput; // if true this counts down and updates the timiing
 	let offset = 0;
+
+	if (fromInput) {
+		document.getElementById('slideshow').onclick = function() {
+			timing = true;
+			this.remove();
+		};
+	}
 
 	function reload() {
 		progress.style.background = 'transparent';

@@ -4,7 +4,7 @@
 {{ prefixed }}
 <p class="crumbs">
 	<a href="/word">word</a> \ 
-	{% if origin == "1480" or origin == "55,191" %}
+	{% if origin == "1,514" or origin == "37,199" %}
 	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
 	{% else %}
 	<a href="/{{origin}}">{{ origin }}</a> \ 
@@ -16,7 +16,7 @@
 
 <div style="display:none;">
 	{% for prefix in prefixes %}
-		<a href="/new/{{origin}}/{{noun}}/{{prefix}}" class="new-word">{{prefix}}{{noun}}</a>
+		<a href="/gallery/word/{{noun}}/{{prefix}}" class="new-word">{{prefix}}{{noun}}</a>
 	{% endfor %}
 </div>
 

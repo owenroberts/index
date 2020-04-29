@@ -1,8 +1,13 @@
 from flask import Flask, redirect, url_for, request, render_template
 from flask_sslify import SSLify
 import os
+import geneword
 
 app = Flask(__name__)
+gen = geneword.Geneword()
+
+print(gen)
+
 if "DYNO" in os.environ:
 	# Always use SSL if the app is running on Heroku (not locally)
     sslify = SSLify(app, subdomains=True)
@@ -185,19 +190,20 @@ def nouns_alpha(origin, prefix, letter):
 			letternouns.append( noun )
 	return render_template("nouns-pref.html", origin=origin, nouns=letternouns, prefix=prefix, letter=letter )
 
-@app.route('/text')
-def gen():
-	if request.method == 'GET' and 'title' in request.args:
-		return redirect( url_for('text', title = request.args['title'] ) )
-	else:
-		return render_template("gen.html")
 
+@app.route('/text')
 @app.route('/text/<title>')
-def text(title):
+def text(title=None):
 	import text
+
+	if title == None:
+		title = request.args['title']
+	
 	text_from_file = text.load_text_from_file(title)
 	# data = text.generate_text( text_from_file )
 	new_text = text.generate_text( text_from_file )
+
+
 	return render_template(
 		"text.html",
 		title = title,
@@ -249,32 +255,36 @@ def paste():
 			error = "Sorry, we encountered an Error.  Try another text."
 		)
 
+@app.route('/random_gallery_word')
+def random_gallery_word():
+	from flask import jsonify
+	return jsonify(gen.random_gallery_word())
+
 @app.route('/gallery/word')
 @app.route('/gallery/word/')
 @app.route('/gallery/word/<noun>/<prefix>')
 def gallery_word(noun=None, prefix=None):
-	import random
-	import csv
+
+	referer = request.headers.get('Referer')
+
+	from_input = True # pause gallery if linked 
+	# needs to look at referer
 
 	if noun == None:
-		noun_file = open('input/37,199.txt')
-		nouns = noun_file.read().splitlines()
-		noun = random.choice(nouns).rstrip().lower()
-	defs = get_noun_defs(noun)
-	
-	if prefix == None:
-		prefix_file = open('input/pref.txt')
-		prefixes = prefix_file.read().splitlines()
-		prefix = random.choice(prefixes).rstrip().lower()
+		noun, prefix = gen.random_gallery_word()
+	print(gen)
+	print(noun, prefix)
+	defs = gen.get_noun_defs(noun)
+	prefix_def = gen.get_prefix_def(prefix)
 
-	prefix_def = ""
-	with open('input/prefix.csv', 'rt') as f:
-		reader = csv.reader(f)
-		for row in reader:
-			if row[0] == prefix:
-				prefix_def = row[1]
-
-	return render_template("gallery-word.html", prefix=prefix, prefix_def=prefix_def, noun=noun, defs=defs);
+	return render_template("gallery-word.html", 
+		prefix = prefix, 
+		prefix_def = prefix_def, 
+		noun = noun, 
+		defs = defs,
+		from_input = from_input,
+		referer = referer
+	)
 
 @app.route('/gallery/text')
 @app.route('/gallery/text/')
@@ -302,5 +312,5 @@ def page_not_found(e):
 	
 
 if __name__ == '__main__':
-	# app.run(debug=True)
-	app.run()
+	app.run(debug=True)
+	# app.run()
