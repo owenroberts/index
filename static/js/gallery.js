@@ -66,11 +66,10 @@ window.addEventListener('load', function() {
 		fetch('/random_gallery_word')
 			.then(response => { return response.json(); })
 			.then(json => {
-				const origin = inIFrame ? 'http://www.indexindexindex.com' : location.origin;
 				if (inIFrame && !reload) 
-					window.open(`${origin}/gallery/word/${json[0]}/${json[1]}`, "_blank");
+					window.open(`http://www.indexindexindex.com/gallery/word/${json[0]}/${json[1]}`, "_blank");
 				else 
-					location.href = `${origin}/gallery/word/${json[0]}/${json[1]}`;
+					location.href = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
 			});
 	}
 
