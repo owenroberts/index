@@ -1,5 +1,15 @@
 window.addEventListener('load', function() {
 
+
+	const inIFrame = function() {
+		try {
+			return window.self !== window.top;
+		} catch (e) {
+			return true;
+		}
+	}();
+	console.log('in iframe?', inIFrame);
+
 	const words = document.getElementsByClassName('new-word');
 
 	const gallery = document.getElementById('gallery');
@@ -56,6 +66,7 @@ window.addEventListener('load', function() {
 		fetch('/random_gallery_word')
 			.then(response => { return response.json(); })
 			.then(json => {
+				const host = inIFrame ? 
 				location.href = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
 			});
 	}

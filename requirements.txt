@@ -4,12 +4,8 @@ MarkupSafe==1.1.1
 Werkzeug==0.16.1
 click==7.0
 gunicorn==19.6.0
-<<<<<<< HEAD
 itsdangerous==0.24
 wsgiref==0.1.2
-=======
-itsdangerous==1.1.0
->>>>>>> ui
 beautifulsoup4
 nltk==3.4.5
 Flask-SSLify==0.1.5
