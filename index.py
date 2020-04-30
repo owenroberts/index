@@ -218,10 +218,10 @@ def page_not_found(e):
     # note that we set the 404 status explicitly
     return render_template('404.html'), 404
 
-# @app.errorhandler(Exception)
-# def handle_500(e):
-# 	print(e)
-# 	return render_template("500.html", referrer = request.headers.get('Referer')), 500
+@app.errorhandler(Exception)
+def handle_500(e):
+	print(e)
+	return render_template("500.html", referrer = request.headers.get('Referer')), 500
 	
 
 if __name__ == '__main__':
