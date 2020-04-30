@@ -5,9 +5,11 @@
 <p class="crumbs">
 	<a href="/word">word</a> \ 
 	{% if origin == "1,514" or origin == "37,199" %}
-	<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+		<a href="/nouns/{{origin}}">{{ origin }} nouns</a> \
+	{% elif origin == 'random' %}
+		<a href="/noun/random">{{ origin }}</a> \
 	{% else %}
-	<a href="/{{origin}}">{{ origin }}</a> \ 
+		<a href="/{{origin}}">{{ origin }}</a> \ 
 	{% endif %}
 	{{ noun }}
 </p>

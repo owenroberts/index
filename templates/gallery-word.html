@@ -5,8 +5,8 @@
 {% endblock %}
 {% block content %}
 
-{% if from_input %} 
-	<a id="referer" href="{{ referer }}">Back</a> 
+{% if referer %} 
+	<a id="referer" href="{{ referer }}">back</a> 
 {% endif %}
 
 <div id="gallery" class="gallery-word">
@@ -23,17 +23,19 @@
 <div id="progress"></div>
 <div id="controls">
 	{% if start_slideshow == False %} 
-		<button id="slideshow">Begin Gallery Slideshow</button> 
+		<button id="slideshow">Start Slideshow</button> 
 	{% endif %}
 	<button id="pause">Pause</button>
 	<button id="resume">Resume</button>
 	<button id="previous" style="display:none;">Previous</button>
 	<button id="next">Next</button>
+	<button id="share-button">Share</button>
+	<button id="download">Download Image</button>
 </div>
 
-<div id="social">
+<div id="share">
 	<button id="twitter">Share on Twitter</button>
-	<button id="instagram">Share on Instagram</button>
+	<button id="copy-url">Copy URL</button>
 </div>
 
 <div id="loading" style="display:none">
@@ -47,12 +49,31 @@
 	const noun =  '{{ noun }}';
 	const startSlideshow = '{{ start_slideshow }}' == 'True';
 
+	const shareButton = document.getElementById('share-button');
+	const share = document.getElementById('share');
+	const download = document.getElementById('download');
+	const copyURL = document.getElementById('copy-url');
+
+	shareButton.onclick = function() {
+		if (share.style.display != 'flex') share.style.display = 'flex';
+		else share.style.display = 'none';
+	};
+
 	twitter.onclick = function() {
 		const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;
 		window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
 	};
 
-	instagram.onclick = function() {
+	copyURL.onclick = function() {
+		const el = document.createElement('textarea');
+		el.value = location.href;
+		document.body.appendChild(el);
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
+	};
+
+	download.onclick = function() {
 		html2canvas(document.getElementById('gallery'), {
 			scale: 2,
 			x: -128,
@@ -62,13 +83,6 @@
 		}).then(canvas => {
 			const image = canvas.toDataURL("image/png");
 			
-			/* worked only on desktop 
-				const a = document.createElement('a');
-				a.download = `${prefix}${noun}.png`;
-				a.href = `data:${img}`;
-				a.click();
-			*/
-
 			// for ios 
 			// https://stackoverflow.com/a/57896728
 			const img = new Image();
@@ -86,7 +100,6 @@
 			// this works for desktop
 			// seems to work on ios, creates the image (style needs to be fixed)
 			// possible to open instagram?
-
 
 		});
 	};

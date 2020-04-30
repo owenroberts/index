@@ -24,11 +24,7 @@
 	margin: 1em 0;
 }
 
-<<<<<<< HEAD
-#controls {
-=======
-#controls, #social {
->>>>>>> share
+#controls, #share {
 	display: flex;
 }
 
@@ -38,8 +34,9 @@
 	border-radius: 0.25em;
 }
 
-#social {
+#share {
 	margin: 1em 0;
+	display: none;
 }
 
 /* text gallery */

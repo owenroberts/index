@@ -24,61 +24,27 @@ def word():
 
 @app.route('/input')
 def input():
-	print('input')
 	return render_template("input.html")
 
-@app.route('/noun')
-def word_noun():
-	return redirect( url_for('noun',  origin = request.args['origin'], noun = request.args['noun'] ) )
-
-@app.route('/random')
-def random():
-	import random
-	noun_file = open('input/37,199.txt')
-	nouns = noun_file.read().splitlines()
-	noun = random.choice(nouns).rstrip().lower()
-	return redirect( url_for('noun', origin = "random", noun = noun ) )
-
 @app.route('/multi')
-def crazy():
-	import random
-	from random import randint
-	import csv
-	noun_file = open('input/37,199.txt')
-	nouns = noun_file.read().splitlines()
-	prefix_file = open("input/pref.txt")
-	prefixes = prefix_file.read().splitlines()
-	num_prefixes = randint(2, 5)
-	prefix_list = []
-	for i in range(0, num_prefixes):
-		# no duplicate prefixes
-		pref = random.choice(prefixes).rstrip()
-		while pref in prefix_list:
-			pref = random.choice(prefixes).rstrip()
-		prefix_list.append( pref )
-	noun = random.choice(nouns).rstrip().lower()
-	url = '/new/multi/' + noun + '/'
-	for p in prefix_list[:-1]:
-		url += p
-		url += '+'
-	url += prefix_list[-1]
-	return redirect( url )
-
 @app.route('/multi/<noun>')
-def crazy_noun(noun):
-	import random
+def crazy(noun=None):
+	from random import choice
 	from random import randint
-	import csv
-	prefix_file = open("input/pref.txt")
-	prefixes = prefix_file.read().splitlines()
-	num_prefixes = randint(2, 5)
+	
+	if noun is None:
+		noun, prefix = gen.random_gallery_word()
+	else:
+		prefix = gen.random_prefix()
+
+	num_prefixes = randint(1, 4)
 	prefix_list = []
 	for i in range(0, num_prefixes):
-		# no duplicate prefixes
-		pref = random.choice(prefixes).rstrip()
+		pref = gen.random_prefix()
 		while pref in prefix_list:
-			pref = random.choice(prefixes).rstrip()
+			pref = choice(prefixes).rstrip() # no duplicate prefixes
 		prefix_list.append( pref )
+
 	url = '/new/multi/' + noun + '/'
 	for p in prefix_list[:-1]:
 		url += p
@@ -86,80 +52,48 @@ def crazy_noun(noun):
 	url += prefix_list[-1]
 	return redirect( url )
 
+@app.route('/noun')
+@app.route('/noun/<origin>')
 @app.route('/noun/<origin>/<noun>')
-def noun(origin, noun):
+def noun(origin=None, noun=None):
+
+	origin = origin if origin else request.args['origin']
+	if origin == 'random':
+		noun = gen.random_noun()
+	noun = noun if noun else request.args['noun']
+
 	prefix_file = open("input/pref.txt")
 	prefixes = prefix_file.read().splitlines()
-	print('orogin, noun', origin, noun)
-	return render_template("noun.html", noun = noun, origin = origin, prefixes = prefixes )
+
+	return render_template("noun.html", 
+		noun = noun, 
+		origin = origin, 
+		prefixes = prefixes 
+	)
 
 @app.route('/new/<origin>/<noun>/<prefix>')
 def new_word(origin, noun, prefix):
-	defs = get_noun_defs(noun)
+	defs = gen.get_noun_defs(noun)
 	prefix_list = get_prefix_list(prefix)
 	return render_template("new.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
 @app.route('/new/<noun>/<prefix>')
 def new_word_orphan(noun, prefix):
-	defs = get_noun_defs(noun)
-	prefix_list = get_prefix_list(prefix)
+	defs = gen.get_noun_defs(noun)
+	prefix_list = gen.get_prefix_list(prefix)
 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
-def get_noun_defs(noun):
-	from nltk.corpus import wordnet as wn
-	sets = wn.synsets(noun, wn.NOUN)
-	defs = []
-	for s in sets:
-		defs.append(s.definition())
-	if len(sets) == 0:
-		import csv
-		with open('input/defs.csv', 'rt') as f:
-			reader = csv.reader(f)
-			for row in reader:
-				if row[0] == noun:
-					defs.append(row[1])
-		if len(defs) == 0:
-			defs.append("Not found.")
-	return defs
-
-def get_prefix_list(prefix):
-	import csv
-	prefix_list = []
-	if '+' in prefix: # if more than one prefix
-		prefixes = prefix.split('+')	
-	else:
-		prefixes = [prefix]
-	for pref in prefixes:
-			prefix_list.append({"word":pref, "def":""})
-	with open('input/prefix.csv', 'rt') as f:
-		reader = csv.reader(f)
-		for row in reader:
-			for pref in prefix_list:
-				if row[0] == pref["word"]:
-					pref['def'] = row[1]
-
-	# only for prefixes that are input by user
-	if prefix_list[0]['def'] == "":
-		from nltk.corpus import wordnet as wn
-		def_sets = wn.synsets(prefix)
-		if len(def_sets) > 0:
-			prefix_list[0]['def'] = def_sets[0].definition()
-		else:
-			prefix_list[0]['def'] = "Not found."
-	return prefix_list
 
 @app.route('/nouns/<origin>')
 def nouns(origin):
-	prefix_file = open("input/pref.txt")
-	prefixes = prefix_file.read().splitlines() 
-	return render_template("nouns.html", origin=origin, prefixes=prefixes )
+	return render_template("nouns.html", origin=origin, prefixes=gen.get_prefixes() )
 
 @app.route('/nouns/<origin>/<prefix>')
 def num_nouns(origin, prefix):
-	if prefix == "input":
-		prefix = request.args['prefix']
-	noun_file = open('input/'+origin+'.txt')
-	nouns = noun_file.read().splitlines()
+
+	prefix = prefix if prefix else request.args['prefix']
+	nouns = gen.get_nouns(origin)
+	
 	if (origin == "1,514"):
 		return render_template("nouns-pref.html", origin=origin, nouns=nouns, prefix=prefix )
 	else:
@@ -180,13 +114,14 @@ def num_nouns(origin, prefix):
 
 @app.route('/nouns/<origin>/<prefix>/<letter>')
 def nouns_alpha(origin, prefix, letter):
-	noun_file = open('input/'+origin+'.txt')
-	nouns = noun_file.read().splitlines()
-	letternouns = []
-	for noun in nouns:
-		if letter == noun[0]:
-			letternouns.append( noun )
-	return render_template("nouns-pref.html", origin=origin, nouns=letternouns, prefix=prefix, letter=letter )
+	letternouns = [noun for noun in gen.get_nouns(origin) if noun[0] is letter]
+	return render_template(
+		"nouns-pref.html", 
+		origin=origin, 
+		nouns=letternouns, 
+		prefix=prefix, 
+		letter=letter 
+	)
 
 
 @app.route('/text')
@@ -264,13 +199,9 @@ def random_gallery_word():
 def gallery_word(noun=None, prefix=None):
 
 	referer = request.headers.get('Referer')
-	print(referer)
 
-	#from_input = True # pause gallery if linked 
-	# needs to look at referer
-	start_slideshow = 'noun' not in referer
 	# don't start slide show if it comes from the noun create page
-	print('start_slideshow', start_slideshow)
+	start_slideshow = 'noun' not in referer
 
 	if noun == None:
 		noun, prefix = gen.random_gallery_word()

@@ -14,11 +14,13 @@ window.addEventListener('load', function() {
 	const storedNoun = localStorage.getItem('noun');
 	const storedPrefix = localStorage.getItem('prefix');
 
-	if (storedPrefix && storedNoun && isWordGallery && !inIFrame &&
+	//  check to see if previous url is stored in local host before adding previous button
+	if (storedPrefix && storedNoun && isWordGallery &&
 		storedPrefix != prefix && storedNoun != noun) {
-		prevBtn.style.display = 'block';
+		prevBtn.style.display = 'inline-block';
 	}
 
+	// recursively get text on screen to set timer length
 	function getText(element) {
 		if (element.textContent) 
 			text += element.textContent;
@@ -28,6 +30,7 @@ window.addEventListener('load', function() {
 			}
 		}
 	}
+
 
 	let text = '';
 	getText(gallery);
@@ -44,17 +47,17 @@ window.addEventListener('load', function() {
 		};
 	}
 
-	function reload() {
+
+	function loadNextWord() {
 		progress.style.background = 'transparent';
 		loading.style.display = 'block';
-		if (!inIFrame && isWordGallery) {
 			localStorage.setItem('prefix', prefix);
 			localStorage.setItem('noun', noun);
-			// window.location = window.location.href.split("?")[0];
-			location.href = `${location.origin}/gallery/word`;
-		} else {
-			location.reload();
-		}
+		fetch('/random_gallery_word')
+			.then(response => { return response.json(); })
+			.then(json => {
+				location.href = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
+			});
 	}
 
 	const color = document.getElementsByClassName('new-word')[0].style.color;
@@ -62,8 +65,8 @@ window.addEventListener('load', function() {
 	var wordInterval = setInterval(function() {
 		if (timing) {
 			if (performance.now() > start + time) {
-				reload();
 				clearInterval(wordInterval);
+				loadNextWord();
 			} else {
 				const pct =  100 - (performance.now() - start) / time * 100;
 				progress.style.background = `linear-gradient(90deg, ${color} ${pct - 2}%, transparent ${pct + 2}%`;
@@ -85,8 +88,5 @@ window.addEventListener('load', function() {
 		location.href = `${location.origin}/gallery/word/${storedNoun}/${storedPrefix}`;
 	};
 
-	nextBtn.onclick = function() {
-		reload();
-		
-	};
+	nextBtn.onclick = loadNextWord;
 });
