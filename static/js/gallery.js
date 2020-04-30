@@ -66,7 +66,8 @@ window.addEventListener('load', function() {
 		fetch('/random_gallery_word')
 			.then(response => { return response.json(); })
 			.then(json => {
-				console.log(inIFrame && !reload)
+				console.log('inIframe, !reload', inIFrame, !reload)
+				console.log('wtf', inIFrame && !reload)
 				if (inIFrame && !reload) 
 					window.open(`http://www.indexindexindex.com/gallery/word/${json[0]}/${json[1]}`, "_blank");
 				else 
