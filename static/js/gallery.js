@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
 	const storedPrefix = localStorage.getItem('prefix');
 
 	//  check to see if previous url is stored in local host before adding previous button
-	if (storedPrefix && storedNoun && isWordGallery &&
+	if (storedPrefix && storedNoun && isWordGallery && !inIFrame &&
 		storedPrefix != prefix && storedNoun != noun) {
 		prevBtn.style.display = 'inline-block';
 	}
