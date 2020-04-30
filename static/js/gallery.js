@@ -66,7 +66,7 @@ window.addEventListener('load', function() {
 		fetch('/random_gallery_word')
 			.then(response => { return response.json(); })
 			.then(json => {
-				const origin = inIFrame ? 'https://www.indexindexindex.com' : location.origin;
+				const origin = inIFrame ? 'http://www.indexindexindex.com' : location.origin;
 				location.href = `${origin}/gallery/word/${json[0]}/${json[1]}`;
 			});
 	}
