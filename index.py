@@ -133,7 +133,11 @@ def gallery_word(noun=None, prefix=None):
 	referer = request.headers.get('Referer')
 
 	# don't start slide show if it comes from the noun create page
-	start_slideshow = 'noun' not in referer and 'text' not in referer
+	print(referer)
+	if referer is not None:
+		start_slideshow = 'noun' not in referer and 'text' not in referer
+	else:
+		start_slideshow = True
 
 	if noun == None:
 		noun, prefix = gen.random_gallery_word()
@@ -220,7 +224,7 @@ def page_not_found(e):
 
 @app.errorhandler(Exception)
 def handle_500(e):
-	print(e)
+	print('500 error', e)
 	return render_template("500.html", referrer = request.headers.get('Referer')), 500
 	
 
