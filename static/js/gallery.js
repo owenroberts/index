@@ -58,7 +58,7 @@ window.addEventListener('load', function() {
 	}
 
 
-	function loadNextWord() {
+	function loadNextWord(reload) {
 		progress.style.background = 'transparent';
 		loading.style.display = 'block';
 			localStorage.setItem('prefix', prefix);
@@ -67,7 +67,10 @@ window.addEventListener('load', function() {
 			.then(response => { return response.json(); })
 			.then(json => {
 				const origin = inIFrame ? 'http://www.indexindexindex.com' : location.origin;
-				location.href = `${origin}/gallery/word/${json[0]}/${json[1]}`;
+				if (inIFrame && !reload) 
+					window.open(`${origin}/gallery/word/${json[0]}/${json[1]}`, "_blank");
+				else 
+					location.href = `${origin}/gallery/word/${json[0]}/${json[1]}`;
 			});
 	}
 
@@ -77,7 +80,7 @@ window.addEventListener('load', function() {
 		if (timing) {
 			if (performance.now() > start + time) {
 				clearInterval(wordInterval);
-				loadNextWord();
+				loadNextWord(true);
 			} else {
 				const pct =  100 - (performance.now() - start) / time * 100;
 				progress.style.background = `linear-gradient(90deg, ${color} ${pct - 2}%, transparent ${pct + 2}%`;
