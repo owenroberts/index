@@ -1,11 +1,8 @@
 <!-- gallery-word.html {{ prefix }} {{ noun }} -->
 {% extends "layout.html" %}
-{% block nav %}
-<a href="/">< index home</a>
-{% endblock %}
 {% block content %}
 
-{% if referer %} 
+{% if start_slideshow == False %} 
 	<a id="referer" href="{{ referer }}">back</a> 
 {% endif %}
 
@@ -32,88 +29,22 @@
 	<button id="share-button">Share</button>
 	<button id="download">Download Image</button>
 </div>
+<script>
+	const isWordGallery = true;
+	const prefix = '{{ prefix }}';
+	const noun =  '{{ noun }}';
+	const startSlideshow = '{{ start_slideshow }}' == 'True';
+</script>
+{% include "share.html" %}
 
-<div id="share">
-	<button id="twitter">Share on Twitter</button>
-	<button id="copy-url">Copy URL</button>
-</div>
 
 <div id="loading" style="display:none">
 	<p>Loading...</p>
 </div>
 
 {% block script %}
-<script src="{{ url_for('static',filename='js/html2canvas.min.js') }}"></script>
-<script>
-	const prefix = '{{ prefix }}';
-	const noun =  '{{ noun }}';
-	const startSlideshow = '{{ start_slideshow }}' == 'True';
-
-	const shareButton = document.getElementById('share-button');
-	const share = document.getElementById('share');
-	const download = document.getElementById('download');
-	const copyURL = document.getElementById('copy-url');
-
-	shareButton.onclick = function() {
-		if (share.style.display != 'flex') share.style.display = 'flex';
-		else share.style.display = 'none';
-	};
-
-	twitter.onclick = function() {
-		const msg = `${prefix}${noun} http://www.indexindexindex.com/new/${noun}/${prefix}`;
-		window.open("https://twitter.com/intent/tweet?text=" + msg , "_blank");
-	};
-
-	copyURL.onclick = function() {
-		const el = document.createElement('textarea');
-		el.value = location.href;
-		document.body.appendChild(el);
-		el.select();
-		document.execCommand('copy');
-		document.body.removeChild(el);
-	};
-
-	download.onclick = function() {
-		html2canvas(document.getElementById('gallery'), {
-			scale: 2,
-			x: -128,
-			y: -128,
-			width: 1024,
-			height: 1024
-		}).then(canvas => {
-			const image = canvas.toDataURL("image/png");
-			
-			// for ios 
-			// https://stackoverflow.com/a/57896728
-			const img = new Image();
-			img.crossOrigin = "Anonymous";
-			img.id = 'downloadImage';
-			img.src = image;
-			document.body.appendChild(img);
-
-			const a = document.createElement('a');
-			a.href = downloadImage.src; // id ?
-			a.download = `${prefix}${noun}.png`;
-			a.click();
-			document.body.removeChild(img);
-
-			// this works for desktop
-			// seems to work on ios, creates the image (style needs to be fixed)
-			// possible to open instagram?
-
-		});
-	};
-	
-</script>
-<script>
-	const isWordGallery = true;
-</script>
 <script src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
 <script src="{{ url_for('static',filename='js/gallery.js') }}"></script>
-<script>
-	const color = document.getElementsByClassName('new-word')[0].style.color;
-	document.body.style.setProperty('--ui-color', color);
-</script>
 {% endblock %}
 
 {% endblock %}

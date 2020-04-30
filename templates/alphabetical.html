@@ -9,8 +9,6 @@
 
 {% for letter in alpha %}
 	<p>
-		{{letter}}
-		{{prefix}}
 		<strong>{{letter}}</strong>
 		<span style="float:right;"> ( 25 / {{ d[letter+"num"] }} ) <a href="/nouns/{{origin}}/{{prefix}}/{{letter}}">See all {{ letter }} ⟶</a></span>
 	</p>

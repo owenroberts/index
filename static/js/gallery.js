@@ -1,6 +1,5 @@
 window.addEventListener('load', function() {
 
-
 	const inIFrame = function() {
 		try {
 			return window.self !== window.top;
@@ -9,6 +8,7 @@ window.addEventListener('load', function() {
 		}
 	}();
 	console.log('in iframe?', inIFrame);
+	if (inIFrame) document.getElementById('press-link').remove();
 
 	const words = document.getElementsByClassName('new-word');
 
@@ -66,8 +66,8 @@ window.addEventListener('load', function() {
 		fetch('/random_gallery_word')
 			.then(response => { return response.json(); })
 			.then(json => {
-				const host = inIFrame ? 
-				location.href = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
+				const origin = inIFrame ? 'https://www.indexindexindex.com/' : location.origin;
+				location.href = `${origin}/gallery/word/${json[0]}/${json[1]}`;
 			});
 	}
 

@@ -35,12 +35,12 @@ def crazy(noun=None):
 	if noun is None:
 		noun, prefix = gen.random_gallery_word()
 	else:
-		prefix = gen.random_prefix()
+		prefix = gen.get_random_prefix()
 
 	num_prefixes = randint(1, 4)
 	prefix_list = []
 	for i in range(0, num_prefixes):
-		pref = gen.random_prefix()
+		pref = gen.get_random_prefix()
 		while pref in prefix_list:
 			pref = choice(prefixes).rstrip() # no duplicate prefixes
 		prefix_list.append( pref )
@@ -59,22 +59,19 @@ def noun(origin=None, noun=None):
 
 	origin = origin if origin else request.args['origin']
 	if origin == 'random':
-		noun = gen.random_noun()
+		noun = gen.get_random_noun()
 	noun = noun if noun else request.args['noun']
-
-	prefix_file = open("input/pref.txt")
-	prefixes = prefix_file.read().splitlines()
 
 	return render_template("noun.html", 
 		noun = noun, 
 		origin = origin, 
-		prefixes = prefixes 
+		prefixes = gen.get_prefixes() 
 	)
 
 @app.route('/new/<origin>/<noun>/<prefix>')
 def new_word(origin, noun, prefix):
 	defs = gen.get_noun_defs(noun)
-	prefix_list = get_prefix_list(prefix)
+	prefix_list = gen.get_prefix_list(prefix)
 	return render_template("new.html", origin=origin, noun=noun, defs=defs, prefix_list=prefix_list )
 
 @app.route('/new/<noun>/<prefix>')
@@ -83,7 +80,6 @@ def new_word_orphan(noun, prefix):
 	prefix_list = gen.get_prefix_list(prefix)
 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
-
 @app.route('/nouns/<origin>')
 def nouns(origin):
 	return render_template("nouns.html", origin=origin, prefixes=gen.get_prefixes() )
@@ -91,7 +87,8 @@ def nouns(origin):
 @app.route('/nouns/<origin>/<prefix>')
 def num_nouns(origin, prefix):
 
-	prefix = prefix if prefix else request.args['prefix']
+	prefix = request.args['prefix'] if prefix == 'input' else prefix
+	# prefix = prefix if prefix else request.args['prefix']
 	nouns = gen.get_nouns(origin)
 	
 	if (origin == "1,514"):
@@ -123,28 +120,44 @@ def nouns_alpha(origin, prefix, letter):
 		letter=letter 
 	)
 
+@app.route('/random_gallery_word')
+def random_gallery_word():
+	from flask import jsonify
+	return jsonify(gen.random_gallery_word())
+
+@app.route('/gallery/word')
+@app.route('/gallery/word/')
+@app.route('/gallery/word/<noun>/<prefix>')
+def gallery_word(noun=None, prefix=None):
+
+	referer = request.headers.get('Referer')
+
+	# don't start slide show if it comes from the noun create page
+	start_slideshow = 'noun' not in referer and 'text' not in referer
+
+	if noun == None:
+		noun, prefix = gen.random_gallery_word()
+
+	defs = gen.get_noun_defs(noun)
+	prefix_def = gen.get_prefix_def(prefix)
+
+	return render_template("gallery-word.html", 
+		prefix = prefix, 
+		prefix_def = prefix_def, 
+		noun = noun, 
+		defs = defs,
+		start_slideshow = start_slideshow,
+		referer = referer
+	)
 
 @app.route('/text')
-@app.route('/text/<title>')
-def text(title=None):
-	import text
+def text():
+	if request.method == 'GET' and 'title' in request.args:
+		return redirect( url_for('text', title = request.args['title'] ) )
+	else:
+		return render_template("text-input.html")
 
-	if title == None:
-		title = request.args['title']
-	
-	text_from_file = text.load_text_from_file(title)
-	# data = text.generate_text( text_from_file )
-	new_text = text.generate_text( text_from_file )
-
-
-	return render_template(
-		"text.html",
-		title = title,
-		new_text = new_text
-	)
-	
-
-@app.route('/fromurl')
+@app.route('/url')
 def from_url():
 	import urllib
 	import text
@@ -172,65 +185,33 @@ def from_url():
 			error = "Sorry, that URL did not load correctly.  Try another URL."
 		)
 
-@app.route('/paste', methods=['GET', 'POST'])
+@app.route('/gallery/paste', methods=['GET', 'POST'])
 def paste():
-	import text
 	try:
-		new_text = text.generate_text( request.form['text'] )
+		title = "pasted"
+		new_text = gen.generate_text( request.form['text'] )
 		return render_template(
-			"text.html",
-			title = "text",
-			new_text = new_text
+			"gallery-text.html", title = title, new_text = new_text, back_btn = True
 		)
 	except:
 		return render_template(
-			"gen.html",
+			"text-input.html",
 			error = "Sorry, we encountered an Error.  Try another text."
 		)
-
-@app.route('/random_gallery_word')
-def random_gallery_word():
-	from flask import jsonify
-	return jsonify(gen.random_gallery_word())
-
-@app.route('/gallery/word')
-@app.route('/gallery/word/')
-@app.route('/gallery/word/<noun>/<prefix>')
-def gallery_word(noun=None, prefix=None):
-
-	referer = request.headers.get('Referer')
-
-	# don't start slide show if it comes from the noun create page
-	start_slideshow = 'noun' not in referer
-
-	if noun == None:
-		noun, prefix = gen.random_gallery_word()
-
-	defs = gen.get_noun_defs(noun)
-	prefix_def = gen.get_prefix_def(prefix)
-
-	return render_template("gallery-word.html", 
-		prefix = prefix, 
-		prefix_def = prefix_def, 
-		noun = noun, 
-		defs = defs,
-		start_slideshow = start_slideshow,
-		referer = referer
-	)
 
 @app.route('/gallery/text')
 @app.route('/gallery/text/')
 @app.route('/gallery/text/<title>')
 def gallery_text(title=None):
-	import text
 	from random import choice
+
+	back_btn = title is not None
 
 	title = title if title else choice(['genesis', 'a-day', 'the-waves', 'a-tale-of-two-cities', 'moby-dick', 'the-red-wheelbarrow'])
 
-	text_from_file = text.load_text_from_file( title )
+	new_text = gen.generate_text( gen.load_text_from_file( title ) )
 
-	new_text = text.generate_text( text_from_file )
-	return render_template("gallery-text.html", new_text = new_text)
+	return render_template("gallery-text.html", title = title, new_text = new_text, back_btn = back_btn)
 
 @app.errorhandler(404)
 def page_not_found(e):
