@@ -80,13 +80,13 @@ def new_word_orphan(noun, prefix):
 	prefix_list = gen.get_prefix_list(prefix)
 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
+
 @app.route('/nouns/<origin>')
 def nouns(origin):
 	return render_template("nouns.html", origin=origin, prefixes=gen.get_prefixes() )
 
 @app.route('/nouns/<origin>/<prefix>')
 def num_nouns(origin, prefix):
-
 	prefix = request.args['prefix'] if prefix == 'input' else prefix
 	# prefix = prefix if prefix else request.args['prefix']
 	nouns = gen.get_nouns(origin)
@@ -216,6 +216,113 @@ def gallery_text(title=None):
 	new_text = gen.generate_text( gen.load_text_from_file( title ) )
 
 	return render_template("gallery-text.html", title = title, new_text = new_text, back_btn = back_btn)
+
+@app.route('/phon_input')
+def phone_input():
+	return render_template(
+		'phon_input.html'
+	)
+
+@app.route('/phon_string')
+def phon_trans():
+	string = request.args['string']
+	language = request.args['language']
+	
+	import re
+	import epitran
+	epi = epitran.Epitran(language)
+
+	trans = epi.transliterate(string)
+	line = trans.strip()
+	line = re.sub(r'[\\p{P}\\p{Sm}]+', '', line) # match punctuation or math symbol
+	words = line.split(" ")
+	sentence = []
+	for word in words:
+		sentence.append(word)
+
+	return render_template(
+		'phon_string.html',
+		string = string,
+		sentence = trans,
+		words = words
+	)
+
+@app.route('/phon/test')
+def phon_test():
+	import codecs
+	import re
+	gen_heb = codecs.open('phon/input/genesis_heb.txt', encoding="utf-8").readlines()
+	gen_eng = codecs.open('phon/input/genesis.txt', encoding="utf-8").readlines()
+	gen_heb_ipa = codecs.open('phon/input/genesis_heb_ipa.txt', encoding="utf-8").readlines()
+	gen_eng_ipa = codecs.open('phon/input/genesis_ipa.txt', encoding="utf-8").readlines()
+
+	first_sents = []
+	first_sents.append( gen_eng[0] )
+	first_sents.append( gen_eng_ipa[0] )
+	first_sents.append( gen_heb[0] )
+	first_sents.append( gen_heb_ipa[0] )
+	
+	sentences = []
+
+	for sent in first_sents:
+		_sent = sent.strip()
+		_sent = re.sub(r'[\\p{P}\\p{Sm}]+', '', sent)
+		words = _sent.split(' ')
+		sentences.append({
+			"sentence": sent,
+			"words": words
+		})
+
+
+	return render_template(
+		'phon.html',
+		sentences = sentences
+	)
+
+@app.route('/phon')
+def phon():
+	from phon.mark_letter_switch import MarkovGenerator as Mark
+	import codecs
+	import re
+	f1 = codecs.open('phon/input/genesis_heb_ipa.txt', encoding="utf-8").readlines()
+	f2 = codecs.open('phon/input/genesis_ipa.txt', encoding="utf-8").readlines()
+	files = [f1, f2]
+	lineNum = min(len(f1), len(f2)) # get the lower text line num
+	gen = Mark(n=3, max=20)
+	print(lineNum)
+	for index, file in enumerate(files):
+		for line in file[:lineNum]:
+			line = line.strip()
+			line = re.sub(r'[\\p{P}\\p{Sm}]+', '', line) # match punctuation or math symbol
+			words = line.split(" ")
+			for word in words:
+				gen.feed(word, index)
+	sentences = []
+	for i in range(5):
+		words = []
+		for j in range(10):
+			new = gen.generate()
+			words.append(new)
+		# also include transliterated sentence ...
+		sentences.append({
+			"sentence": " ".join(words),
+			"words": words
+		})
+
+	return render_template(
+		'phon.html',
+		sentences = sentences
+	)
+
+@app.route('/phon/choice')
+def choice():
+	import codecs
+	f1 = codecs.open('phon/input/genesis_ipa.txt', encoding="utf-8").readlines()
+	return render_template(
+		'choice.html',
+		text = f1[:10]
+	)
+
 
 @app.errorhandler(404)
 def page_not_found(e):

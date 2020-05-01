@@ -8,3 +8,4 @@ itsdangerous==0.24
 beautifulsoup4
 nltk==3.4.5
 Flask-SSLify==0.1.5
+epitran==1.8

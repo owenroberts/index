@@ -1,0 +1,28 @@
+<!-- phon.html -->
+{% extends "layout.html" %}
+{% block index1 %}
+{% endblock %}
+{% block content %}
+
+	<h3>Phonemes</h3>
+
+	{% for sentence in sentences %}
+		<div class="phon_sentence" data-sentence="{{sentence.sentence}}">
+		{% for word in sentence.words %}
+			<div class="phon_word" data-word="{{word}}">
+				{% for letter in word %}<span>{{ letter }}</span>{% endfor %}
+			</div>
+		{% endfor %}
+		<br>
+		<button class="play">Listen</button>
+		</div>
+	{% endfor %}
+
+	<script type="text/javascript" src="{{ url_for('static',filename='js/synth/mespeak.js') }}"></script>
+  	<script type="text/javascript" src="{{ url_for('static',filename='js/phon.js') }}"></script>
+
+{% endblock %}
+{% block script %}
+{% endblock %}
+{% block index2 %}
+{% endblock %}

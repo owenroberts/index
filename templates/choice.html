@@ -1,0 +1,34 @@
+<!-- phon.html -->
+{% extends "layout.html" %}
+{% block index1 %}
+{% endblock %}
+{% block content %}
+
+	<h3>Phonemes</h3>
+
+	<div id="orig"></div>
+	<div id="subs"></div>
+
+
+	{% for sentence in text %}
+	{{sentence}}
+		<div class="phon_sentence" data-sentence="{{sentence}}">
+		{% for letter in sentence %}
+			<span class="{{letter}}">{{ letter }}</span>
+		{% endfor %}
+		<br>
+		<button class="play">Listen</button>
+		</div>
+	{% endfor %}
+
+	<script type="text/javascript">
+		window.text = {{ text|tojson|safe }};
+	</script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/synth/mespeak.js') }}"></script>
+  	<script type="text/javascript" src="{{ url_for('static',filename='js/choice.js') }}"></script>
+
+{% endblock %}
+{% block script %}
+{% endblock %}
+{% block index2 %}
+{% endblock %}

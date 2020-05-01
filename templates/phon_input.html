@@ -1,0 +1,39 @@
+<!-- phon_input.html -->
+{% extends "layout.html" %}
+{% block index1 %}
+{% endblock %}
+{% block content %}
+
+
+	<div id="genesis">
+		<p>Genesis</p>
+		<form method="GET" action="/phon_string">
+			<input type="hidden" name="language" value="eng-Latn" checked >
+			<input type="text" name="string" value="In the beginning God created the heaven and the earth." readonly>
+			<input type="submit" value="Transliterate">
+		</form>
+
+		<form method="GET" action="/phon_string">
+			<input type="hidden" name="language" value="spa-Latn" checked >
+			<input type="text" name="string" value="En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios." readonly>
+			<input type="submit" value="Transliterate">
+		</form>
+
+
+	</div>
+
+	<form method="POST" action="/phon">
+		<label>Enter text</label>
+		<textarea type="text" name="text" style="min-width: 280px;"></textarea>
+		<select>
+			<option value="eng-Latn">English</option>
+			<option value="spa-Latn">Spanish</option>
+		</select>
+		<input type="submit" value="Transliterate">
+	</form> 
+
+{% endblock %}
+{% block script %}
+{% endblock %}
+{% block index2 %}
+{% endblock %}
