@@ -217,13 +217,13 @@ def gallery_text(title=None):
 
 	return render_template("gallery-text.html", title = title, new_text = new_text, back_btn = back_btn)
 
-@app.route('/phon_input')
+@app.route('/phon/input')
 def phone_input():
 	return render_template(
 		'phon_input.html'
 	)
 
-@app.route('/phon_string')
+@app.route('/phon/string')
 def phon_trans():
 	string = request.args['string']
 	language = request.args['language']
@@ -322,7 +322,6 @@ def choice():
 		'choice.html',
 		text = f1[:10]
 	)
-
 
 @app.errorhandler(404)
 def page_not_found(e):

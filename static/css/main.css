@@ -59,6 +59,10 @@ li:before {
 	left: -6px;
 }
 
+button, label, input {
+	font: inherit;
+}
+
 button, input {
 	font-size: inherit;
 	background: transparent;

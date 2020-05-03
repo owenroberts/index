@@ -263,14 +263,17 @@ videoPlayer.volume = 0;
 let playPromise;
 let playWaiting = false;
 
-var words = document.getElementsByClassName("phon_word");
+var words = document.getElementsByClassName("phon-word");
 for (let i = 0; i < words.length; i++) {
 	words[i].addEventListener("click", function() {
 		process(this.dataset.word);
 	});
 
-	words[i].style.color = `hsla(${ getRandomInt(120, 350) }, ${getRandomInt(50, 90)}%, ${getRandomInt(50, 70)}%, 1)`;
+	const color = `hsla(${ getRandomInt(120, 350) }, ${getRandomInt(50, 90)}%, ${getRandomInt(50, 70)}%, 1)`;
+	words[i].style.color = color;
 
+	/* hover over letters to see them */
+	const label = document.getElementById('character-label');
 	const letters = words[i].children; 
 	for (let j = 0; j < letters.length; j++) {
 		letters[j].addEventListener('mouseover', ev => {
@@ -278,6 +281,8 @@ for (let i = 0; i < words.length; i++) {
 			const src = `/static/seeing_videos/${videoMap[letter]}.mp4`;
 			if (videoMap[letter] && src != videoPlayer.src.split('/').pop()) {
 				if (!playWaiting) {
+					label.textContent = letter;
+					label.style.color = color;
 					videoPlayer.src = src;
 					playWaiting = true;
 					playPromise = videoPlayer.play();
