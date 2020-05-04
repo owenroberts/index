@@ -6,6 +6,5 @@ zine/
 zine.*
 *.pyc
 bot/
-server.csr
+server.crt
 server.key
-server.pass.key

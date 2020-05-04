@@ -149,3 +149,7 @@ skype call with luke
 # - more espeak parameters: http://www.masswerk.at/mespeak/
 # - print transliterated text? i don't think epitran does this https://github.com/dmort27/epitran
 #	- something else
+
+5.3.2020
+- cmu flite issue
+	- https://stackoverflow.com/questions/42791966/install-makefile-on-heroku-application

@@ -57,7 +57,6 @@ window.addEventListener('load', function() {
 		};
 	}
 
-
 	function loadNextWord(reload) {
 		progress.style.background = 'transparent';
 		loading.style.display = 'block';
@@ -66,10 +65,8 @@ window.addEventListener('load', function() {
 		fetch('/random_gallery_word')
 			.then(response => { return response.json(); })
 			.then(json => {
-				if (reload === true || !inIFrame)
-					location.href = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
-				else
-					window.open(`http://www.indexindexindex.com/gallery/word/${json[0]}/${json[1]}`, "_blank");
+				const url = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
+				window.open(url, (reload === true || !inIFrame) ? '_self' : '_blank' );
 			});
 	}
 
