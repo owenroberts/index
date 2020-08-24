@@ -8,3 +8,5 @@ zine.*
 bot/
 server.crt
 server.key
+*.gdoc
+lib/lex_lookup
