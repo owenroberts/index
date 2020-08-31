@@ -195,7 +195,7 @@ def paste():
 		title = "pasted"
 		new_text = gen.generate_text( request.form['text'] )
 		return render_template(
-			"gallery-text.html", title = title, new_text = new_text, back_btn = True
+			"gallery-text.html", title = title, new_text = new_text, show_back_btn = True
 		)
 	except:
 		return render_template(
@@ -209,13 +209,13 @@ def paste():
 def gallery_text(title=None):
 	from random import choice
 
-	back_btn = title is not None
+	show_back_btn = title is not None
 
 	title = title if title else choice(['genesis', 'a-day', 'the-waves', 'a-tale-of-two-cities', 'moby-dick', 'the-red-wheelbarrow'])
 
 	new_text = gen.generate_text( gen.load_text_from_file( title ) )
 
-	return render_template("gallery-text.html", title = title, new_text = new_text, back_btn = back_btn)
+	return render_template("gallery-text.html", title = title, new_text = new_text, show_back_btn = show_back_btn)
 
 @app.route('/phon/input')
 def phone_input():
@@ -289,7 +289,6 @@ def phon():
 	files = [f1, f2]
 	lineNum = min(len(f1), len(f2)) # get the lower text line num
 	gen = Mark(n=3, max=20)
-	print(lineNum)
 	for index, file in enumerate(files):
 		for line in file[:lineNum]:
 			line = line.strip()
