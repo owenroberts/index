@@ -8,7 +8,6 @@ window.addEventListener('load', function() {
 		}
 	}();
 	console.log('in iframe?', inIFrame);
-	if (inIFrame) document.getElementById('press-link').remove();
 
 	const words = document.getElementsByClassName('new-word');
 
