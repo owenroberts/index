@@ -1,18 +1,15 @@
 * { box-sizing: border-box; }
 
 body {
-
 	--ui-color: black;
 	--highlight-color: #46FDFD; /* turqoise */
-
 	--column-width: 150px;
 
-	padding: 0 1em; 
+	/*padding: 0 1em; */
 	margin: 0; 
 	font: 12pt/1.4 Arial, sans-serif; 
 	-webkit-text-size-adjust: 95%; 
 	min-width: 320px;
-
 }
 
 div {

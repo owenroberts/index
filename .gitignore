@@ -10,3 +10,6 @@ server.crt
 server.key
 *.gdoc
 lib/lex_lookup
+static/ayin_logo-100.png
+static/ayin-logo-animation.json
+static/ayin_logo.png
