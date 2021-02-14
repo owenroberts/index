@@ -3,7 +3,9 @@ const share = document.getElementById('share');
 const download = document.getElementById('download');
 const copyURL = document.getElementById('copy-url');
 
-if (title) { if (title == 'pasted') shareButton.style.display = 'none'; }
+if (typeof title !== 'undefined') { 
+	if (title == 'pasted') shareButton.style.display = 'none'; 
+}
 
 shareButton.onclick = function() {
 	if (share.style.display != 'flex') share.style.display = 'flex';
@@ -12,8 +14,10 @@ shareButton.onclick = function() {
 
 twitter.onclick = function() {
 	const url = location.href;
+	// const msg = typeof noun != 'undefined' ? `${prefix}${noun}` : title;
 	const msg = typeof noun != 'undefined' ? `${prefix}${noun}` : title;
-	window.open(`https://twitter.com/intent/tweet?text=${msg} ${url}`, "_blank");
+
+	window.open(`https://twitter.com/intent/tweet?text=@geneword ${msg} ${url}`, "_blank");
 };
 
 copyURL.onclick = function() {
@@ -27,11 +31,11 @@ copyURL.onclick = function() {
 
 download.onclick = function() {
 	html2canvas(document.getElementById('gallery'), {
-		scale: 2,
-		x: -128,
-		y: -128,
+		scale: 1,
+		x: 256,
+		y: 0,
 		width: 1024,
-		height: 1024
+		height: 768
 	}).then(canvas => {
 		const image = canvas.toDataURL("image/png");
 		

@@ -5,6 +5,13 @@
 	margin-top: 1em;
 	padding: 0;
 
+	display: grid;
+	grid-template-columns: 180px 1fr;
+
+}
+
+#content {
+	margin-top: 0;
 }
 
 #nouns, #prefixes, .prefix, #words, .column {

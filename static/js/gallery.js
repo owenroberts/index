@@ -1,14 +1,5 @@
 window.addEventListener('load', function() {
 
-	const inIFrame = function() {
-		try {
-			return window.self !== window.top;
-		} catch (e) {
-			return true;
-		}
-	}();
-	console.log('in iframe?', inIFrame);
-
 	const words = document.getElementsByClassName('new-word');
 
 	const gallery = document.getElementById('gallery');
@@ -24,7 +15,7 @@ window.addEventListener('load', function() {
 	const storedPrefix = localStorage.getItem('prefix');
 
 	//  check to see if previous url is stored in local host before adding previous button
-	if (storedPrefix && storedNoun && isWordGallery && !inIFrame &&
+	if (storedPrefix && storedNoun && isWordGallery &&
 		storedPrefix != prefix && storedNoun != noun) {
 		prevBtn.style.display = 'inline-block';
 	}
@@ -45,7 +36,7 @@ window.addEventListener('load', function() {
 	getText(gallery);
 	let time = text.split(' ').length * 0.3 * 1000;
 	let start = performance.now();
-	let timing = startSlideshow; // if true this counts down and updates the timiing
+	let timing = false; // startSlideshow; // if true this counts down and updates the timiing
 	let offset = 0;
 
 	if (!startSlideshow) {
@@ -65,7 +56,7 @@ window.addEventListener('load', function() {
 			.then(response => { return response.json(); })
 			.then(json => {
 				const url = `${location.origin}/gallery/word/${json[0]}/${json[1]}`;
-				window.open(url, (reload === true || !inIFrame) ? '_self' : '_blank' );
+				window.open(url, '_self');
 			});
 	}
 

@@ -20,6 +20,10 @@ def index():
 def about():
 	return render_template("about.html")
 
+@app.route('/geneword-about')
+def geneword_about():
+	return render_template("geneword-about.html")
+
 @app.route('/word')
 def word():
 	return render_template("word.html")
