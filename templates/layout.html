@@ -12,9 +12,11 @@
 
 <body>
 	<div id="container">
+		{% block nav %}
 		<div id="ayin-logo">
 			<a href="https://ayinpress.org/projects/"><img src="{{ url_for('static', filename='Ayin_Logo_Black_70.png') }}" alt="ayin-logo"></a>
 		</div>
+		{% endblock %}
 		<div id="content">
 			{% block index1 %}
 				<h1 id="title"><a href="/">Geneword: Index 1</a></h1>

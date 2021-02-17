@@ -1,0 +1,45 @@
+<!-- embed.html {{ prefix }} {{ noun }} -->
+{% extends "layout.html" %}
+{% block nav %}{% endblock %}
+
+{% block content %}
+{% block index1 %}{% endblock %}
+
+<style>
+	#container {
+		display: block;
+	}
+</style>
+
+<div id="gallery" class="gallery-word">
+	<p><a id="word" class="new-word" href="#">{{ prefix }}{{ noun }}</a></p>
+	<p id="prefix-def">{{ prefix_def }}</p>
+	<p>+</p>
+	<ul id="noun-defs">
+		{% for def in defs %}
+		<li>{{ def }}</li>
+		{% endfor %}
+	</ul>
+</div>
+
+<div id="progress"></div>
+<script>
+	const isWordGallery = true;
+	const prefix = '{{ prefix }}';
+	const noun =  '{{ noun }}';
+	const prefix_def = '{{ prefix_def }}';
+	const defs = '{{ defs }}';
+	const startSlideshow = true;
+</script>
+
+<div id="loading" style="display:none">
+	<p>Loading...</p>
+</div>
+
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/galleryColor.js') }}"></script>
+<script src="{{ url_for('static',filename='js/gallery.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

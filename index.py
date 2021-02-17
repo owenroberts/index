@@ -86,7 +86,6 @@ def new_word_orphan(noun, prefix):
 	prefix_list = gen.get_prefix_list(prefix)
 	return render_template("new.html", noun=noun, defs=defs, prefix_list = prefix_list)
 
-
 @app.route('/nouns/<origin>')
 def nouns(origin):
 	return render_template("nouns.html", origin=origin, prefixes=gen.get_prefixes() )
@@ -129,7 +128,23 @@ def nouns_alpha(origin, prefix, letter):
 @app.route('/random_gallery_word')
 def random_gallery_word():
 	from flask import jsonify
-	return jsonify(gen.random_gallery_word())
+	noun, prefix = gen.random_gallery_word()
+	defs = gen.get_noun_defs(noun)
+	prefix_def = gen.get_prefix_def(prefix)
+	return jsonify({ noun: noun, prefix: prefix, defs: defs, prefix_def: prefix_def })
+
+@app.route('/embed')
+def embed():
+	noun, prefix = gen.random_gallery_word()
+	defs = gen.get_noun_defs(noun)
+	prefix_def = gen.get_prefix_def(prefix)
+	return render_template("gallery-embed.html", 
+		prefix=prefix, 
+		prefix_def=prefix_def, 
+		noun=noun, 
+		defs=defs,
+		embed=True
+	)
 
 @app.route('/gallery/word')
 @app.route('/gallery/word/')
